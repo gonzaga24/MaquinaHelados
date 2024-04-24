@@ -4,10 +4,16 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV6.dao;
 
+import com.ejerciciosTrimestre.maquinaHeladosV6.biz.Helado;
+import java.util.ArrayList;
+
 /**
  *
  * @author Alex
  */
 public interface HeladoDAO {
-    
+
+public ArrayList<Helado> getHelados() throws Exception;
+public String getHeladoByPosicion(String posicion) throws Exception;
+public int updateHelados(Helado helado)throws Exception;
 }
