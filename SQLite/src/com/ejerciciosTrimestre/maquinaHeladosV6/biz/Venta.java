@@ -5,12 +5,14 @@
 
 package com.ejerciciosTrimestre.maquinaHeladosV6.biz;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Alex
  */
 public class Venta {
-    private String fechaHora;
+    private LocalDate fechaHora;
     private String posicion;
     private String nombre;
     private double precio;
@@ -21,15 +23,15 @@ public class Venta {
     public String toString() {
         return "Venta{" + "fechaHora=" + fechaHora + ", posicion=" + posicion + ", nombre=" + nombre + ", precio=" + precio + ", tipo=" + tipo + ", cantidad=" + cantidad + '}';
     }
-    
-    public String getFechaHora() {
+
+    public LocalDate getFechaHora() {
         return fechaHora;
     }
 
-    public void setFechaHora(String fechaHora) {
+    public void setFechaHora(LocalDate fechaHora) {
         this.fechaHora = fechaHora;
     }
-
+    
     public String getPosicion() {
         return posicion;
     }

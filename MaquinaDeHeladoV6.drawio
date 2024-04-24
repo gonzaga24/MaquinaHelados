@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-04-24T17:07:38.717Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0" etag="UVUTqGmYgUFgAP7SOSG2" version="24.3.0" type="device">
+<mxfile host="app.diagrams.net" modified="2024-04-24T17:53:08.613Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0" etag="tt0ISU4Zy3n6Zn3Kg98f" version="24.3.0" type="device">
   <diagram name="Página-1" id="V8vYBvbxbATTUr79OCMI">
     <mxGraphModel dx="1434" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -79,7 +79,7 @@
         <mxCell id="UVdojQdIeTxHt3wNE7P5-32" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="UVdojQdIeTxHt3wNE7P5-30" vertex="1">
           <mxGeometry y="26" width="230" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="UVdojQdIeTxHt3wNE7P5-33" value="+ getHelados() : List&amp;lt;Helados&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="UVdojQdIeTxHt3wNE7P5-30" vertex="1">
+        <mxCell id="UVdojQdIeTxHt3wNE7P5-33" value="+ getHelados() : ArrayList&amp;lt;Helado&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="UVdojQdIeTxHt3wNE7P5-30" vertex="1">
           <mxGeometry y="34" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="58-L6Ub-CByeNF2KYp3J-6" value="+ getHeladoByPosicion(String) : Helado" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="UVdojQdIeTxHt3wNE7P5-30">
@@ -94,7 +94,7 @@
         <mxCell id="UVdojQdIeTxHt3wNE7P5-36" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="UVdojQdIeTxHt3wNE7P5-34" vertex="1">
           <mxGeometry y="26" width="260" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="58-L6Ub-CByeNF2KYp3J-12" value="+ getHelados() : List&amp;lt;Helados&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="UVdojQdIeTxHt3wNE7P5-34">
+        <mxCell id="58-L6Ub-CByeNF2KYp3J-12" value="+ getHelados() : ArrayList&amp;lt;Helado&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="UVdojQdIeTxHt3wNE7P5-34">
           <mxGeometry y="34" width="260" height="26" as="geometry" />
         </mxCell>
         <mxCell id="58-L6Ub-CByeNF2KYp3J-14" value="+ updateHelado(Helado) : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="UVdojQdIeTxHt3wNE7P5-34">
@@ -112,7 +112,7 @@
         <mxCell id="58-L6Ub-CByeNF2KYp3J-15" value="+ inputVenta(Venta) : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="UVdojQdIeTxHt3wNE7P5-38">
           <mxGeometry y="34" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="58-L6Ub-CByeNF2KYp3J-16" value="+ getVentas() : List&amp;lt;Ventas&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="UVdojQdIeTxHt3wNE7P5-38">
+        <mxCell id="58-L6Ub-CByeNF2KYp3J-16" value="+ getVentas() : ArrayList&amp;lt;Venta&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="UVdojQdIeTxHt3wNE7P5-38">
           <mxGeometry y="60" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="UVdojQdIeTxHt3wNE7P5-46" value="VentasDAOimpl" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -124,7 +124,7 @@
         <mxCell id="58-L6Ub-CByeNF2KYp3J-10" value="+ inputVenta(Venta) : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="UVdojQdIeTxHt3wNE7P5-46">
           <mxGeometry y="34" width="250" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="UVdojQdIeTxHt3wNE7P5-41" value="+ getVentas() : List&amp;lt;Ventas&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="UVdojQdIeTxHt3wNE7P5-46" vertex="1">
+        <mxCell id="UVdojQdIeTxHt3wNE7P5-41" value="+ getVentas() : ArrayList&amp;lt;Venta&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="UVdojQdIeTxHt3wNE7P5-46" vertex="1">
           <mxGeometry y="60" width="250" height="26" as="geometry" />
         </mxCell>
         <mxCell id="3qmxRhj3Vj1sENhipKEE-1" value="Venta" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">

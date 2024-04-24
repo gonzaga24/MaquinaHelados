@@ -15,7 +15,6 @@ public class Utils {
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (Exception e) {
-            System.out.println("Se ha producido un error al cargar el driver");
             System.exit(1);
         }
     }

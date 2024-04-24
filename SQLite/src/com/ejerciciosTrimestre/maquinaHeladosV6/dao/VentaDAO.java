@@ -4,10 +4,14 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV6.dao;
 
+import com.ejerciciosTrimestre.maquinaHeladosV6.biz.Venta;
+import java.util.ArrayList;
+
 /**
  *
  * @author Alex
  */
 public interface VentaDAO {
-    
+    public int inputVenta(Venta venta) throws Exception;
+    public ArrayList<Venta> getVentas() throws Exception;
 }
