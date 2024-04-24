@@ -1,8 +1,8 @@
-package com.ejerciciosTrimestre.maquinaHeladosV6.BIZ;
+package com.ejerciciosTrimestre.maquinaHeladosV6.biz;
 
-import com.ejerciciosTrimestre.maquinaHeladosV6.excepciones.NotEnoughMoneyException;
-import com.ejerciciosTrimestre.maquinaHeladosV6.excepciones.NotValidPositionException;
-import com.ejerciciosTrimestre.maquinaHeladosV6.excepciones.QuantityExceededException;
+import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.NotEnoughMoneyException;
+import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.NotValidPositionException;
+import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.QuantityExceededException;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Map;

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package com.ejerciciosTrimestre.maquinaHeladosV6.BIZ;
+package com.ejerciciosTrimestre.maquinaHeladosV6.biz;
 
 /**
  *
