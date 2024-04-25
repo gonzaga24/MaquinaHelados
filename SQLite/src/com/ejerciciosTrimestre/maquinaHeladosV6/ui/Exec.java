@@ -5,6 +5,7 @@ import com.ejerciciosTrimestre.maquinaHeladosV6.biz.MaquinaHelados;
 import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.NotEnoughMoneyException;
 import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.NotValidPositionException;
 import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.QuantityExceededException;
+import static com.ejerciciosTrimestre.maquinaHeladosV6.utils.Utils.redondearDecimales;
 import java.util.Scanner;
 
 /**
@@ -128,7 +129,7 @@ public class Exec {
             aux = mh.pedirHelado(posicion);
             if (!(aux == null)) {
                 System.out.println("Puede recoger su helado de " + aux.getSabor());
-                System.out.println("Su cambio es: " + mh.getMonedero() + "€");
+                System.out.println("Su cambio es: " + redondearDecimales(mh.getMonedero()) + "€");
                 mh.setMonedero(0);
             }
         } catch (Exception e) {

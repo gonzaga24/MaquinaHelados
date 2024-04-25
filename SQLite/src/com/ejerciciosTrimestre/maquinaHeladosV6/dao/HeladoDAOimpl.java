@@ -45,7 +45,7 @@ public class HeladoDAOimpl implements HeladoDAO, AutoCloseable {
 
         try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
             while (rs.next()) {
-                ListaHelados.add(new Helado(rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getInt(5), rs.getString(1)));
+                ListaHelados.add(new Helado(rs.getString("nombre"), rs.getDouble("precio"), rs.getString("tipo"), rs.getInt("cantidad"), rs.getString("posicion")));
             }
         } catch (Exception e) {
             throw e;
@@ -57,12 +57,12 @@ public class HeladoDAOimpl implements HeladoDAO, AutoCloseable {
     @Override
     public Helado getHeladoByPosicion(String posicion) throws Exception {
         Helado h;
-        String sql = "SELECT * WHERE posicion = ?";
+        String sql = "SELECT * FROM helado WHERE posicion = ?";
         try (PreparedStatement pstm = con.prepareStatement(sql);) {
             pstm.setString(1, posicion);
 
             try (ResultSet rs = pstm.executeQuery()) {
-                h = new Helado(rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getInt(5), rs.getString(1));
+                h = new Helado(rs.getString("nombre"), rs.getDouble("precio"), rs.getString("tipo"), rs.getInt("cantidad"), rs.getString("posicion"));
             } catch (Exception e) {
                 throw e;
             }
@@ -77,7 +77,7 @@ public class HeladoDAOimpl implements HeladoDAO, AutoCloseable {
     @Override
     public int updateHelado(Helado helado) throws Exception {
         int r = 0;
-        String sql = "UPDATE helado SET cantidad = ? where ?";
+        String sql = "UPDATE helado SET cantidad = ? WHERE posicion = ?";
         try (PreparedStatement pstm = con.prepareStatement(sql);) {
             pstm.setInt(1, helado.getCantidad() - 1);
             pstm.setString(2, helado.getPosicion());
