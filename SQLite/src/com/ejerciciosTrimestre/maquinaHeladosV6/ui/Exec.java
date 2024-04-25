@@ -17,9 +17,7 @@ public class Exec {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         MaquinaHelados mh = new MaquinaHelados();
-        Helado aux = null;
-        String respuesta, posicion;
-        double monedas;
+        String respuesta;
         boolean encendido = true;
 
         do {
@@ -27,37 +25,29 @@ public class Exec {
             respuesta = menuInicial(sc, mh);
 
             if (respuesta.equals("1")) {
-                //Mostrar helados
-                mostrarHelados(mh);
+                try {
+                    //Mostrar helados
+                    System.out.println(mh.toString());
+                } catch (Exception ex) {
+                    System.out.println("Ha ocurrido un error al mostrar el listado de helados.");
+                }
             } else if (respuesta.equals("2")) {
                 //Introducir monedas
-                monedas = introducirMonedas(sc);
-                //Sumar al monedero las monedas que haya introducido por el metodo.
-                mh.setMonedero(mh.getMonedero() + monedas);
+                introducirMonedas(sc, mh);
             } else if (respuesta.equals("3")) {
-                //Pedir helado.
-                //Pedir posición del helado y si el dinero es suficiente o hay helados suficientes le daremos el helado.
-                System.out.print("Introduzca la posición del helado que desea(12): ");
-                posicion = sc.nextLine();
                 try {
-                    aux = mh.pedirHelado(posicion);
-                    if (!(aux == null)) {
-                        System.out.println("Puede recoger su helado de " + aux.getSabor());
-                        System.out.println("Su cambio es: " + mh.getMonedero() + "€");
-                        mh.setMonedero(0);
-                    }
+                    //Pedir helado.
+                    pedirHelado(sc, mh);
                 } catch (NotEnoughMoneyException | NotValidPositionException | QuantityExceededException e) {
                     System.out.println(e.getMessage());
+                } catch (Exception ex) {
+                    System.out.println("Ha ocurrido un erro al pedir el helado.");
                 }
             } else if (respuesta.equals("4")) {
-                encendido = mh.apagarMaquina();
+                apagarMaquina(mh, encendido);
             }
         } while (encendido);
         System.out.println("Hasta la proxima!!!");
-    }
-
-    public static void mostrarHelados(MaquinaHelados mh) {
-        System.out.println(mh);
     }
 
     public static String menuInicial(Scanner sc, MaquinaHelados mh) {
@@ -85,7 +75,7 @@ public class Exec {
 
     }
 
-    public static double introducirMonedas(Scanner sc) {
+    public static void introducirMonedas(Scanner sc, MaquinaHelados mh) {
         String resp;
         double r = 0;
 
@@ -123,7 +113,34 @@ public class Exec {
             }
         } while (!(resp.equalsIgnoreCase("fin")));
         System.out.println("Has introducido " + r + "€");
-        return r;
+        //Sumar al monedero las monedas que haya introducido por el metodo.
+        mh.setMonedero(mh.getMonedero() + r);
+    }
+
+    public static void pedirHelado(Scanner sc, MaquinaHelados mh) throws Exception {
+        Helado aux;
+        String posicion;
+        //Pedir posición del helado y si el dinero es suficiente o hay helados suficientes le daremos el helado.
+        System.out.print("Introduzca la posición del helado que desea(12): ");
+        posicion = sc.nextLine();
+        try {
+            aux = mh.pedirHelado(posicion);
+            if (!(aux == null)) {
+                System.out.println("Puede recoger su helado de " + aux.getSabor());
+                System.out.println("Su cambio es: " + mh.getMonedero() + "€");
+                mh.setMonedero(0);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public static void apagarMaquina(MaquinaHelados mh, boolean encendido) {
+        //Devolver el cambio restante.
+        System.out.println("El cambio es: " + mh.getMonedero());
+        //Decir la cantidad total de dinero recaudado.
+        System.out.println("Las ganacias totales son: " + mh.getIngresos() + "€");
+        encendido = mh.apagarMaquina();
     }
 
 }

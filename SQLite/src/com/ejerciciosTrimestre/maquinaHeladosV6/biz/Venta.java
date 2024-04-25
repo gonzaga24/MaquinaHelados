@@ -9,7 +9,7 @@ package com.ejerciciosTrimestre.maquinaHeladosV6.biz;
  * @author Alex
  */
 public class Venta {
-
+    private String fechaHora;
     private String posicion;
     private String nombre;
     private double precio;
@@ -17,6 +17,15 @@ public class Venta {
     private int cantidad;
 
     public Venta(String posicion, String nombre, double precio, String tipo, int cantidad) {
+        this.posicion = posicion;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.tipo = tipo;
+        this.cantidad = cantidad;
+    }
+
+    public Venta(String fechaHora, String posicion, String nombre, double precio, String tipo, int cantidad) {
+        this.fechaHora = fechaHora;
         this.posicion = posicion;
         this.nombre = nombre;
         this.precio = precio;
@@ -42,6 +51,10 @@ public class Venta {
 
     public int getCantidad() {
         return cantidad;
+    }
+
+    public String getFechaHora() {
+        return fechaHora;
     }
 
 }
