@@ -5,6 +5,7 @@ import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.NotValidPositionExcep
 import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.QuantityExceededException;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -20,7 +21,7 @@ public class MaquinaHelados {
     private double ingresos;
     private Map<String, Helado> helados = new TreeMap<>();
 
-    public MaquinaHelados() {
+    public MaquinaHelados() throws Exception {
         this.monedero = 0;
         this.ingresos = 0;
         File f = new File("./MaquinaDeHelados.csv");
@@ -41,15 +42,16 @@ public class MaquinaHelados {
             }
 
         } catch (Exception e) {
-            System.out.println("Ha ocurrido un error al leer los datos.");
+            throw e;
         }
 
     }
 
     @Override
     public String toString() {
+        ArrayList<Helado> listaHelados = getHelados();
         String txt = "";
-        for (Helado h : helados.values()) {
+        for (Helado h : listaHelados.values()) {
             txt += h.toString() + "\n";
         }
         return txt;
