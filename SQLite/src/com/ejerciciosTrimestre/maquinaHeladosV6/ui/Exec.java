@@ -27,7 +27,7 @@ public class Exec {
             if (respuesta.equals("1")) {
                 try {
                     //Mostrar helados
-                    System.out.println(mh.toString());
+                    System.out.println(mh.mostrarHelados());
                 } catch (Exception ex) {
                     System.out.println("Ha ocurrido un error al mostrar el listado de helados.");
                 }
@@ -41,10 +41,11 @@ public class Exec {
                 } catch (NotEnoughMoneyException | NotValidPositionException | QuantityExceededException e) {
                     System.out.println(e.getMessage());
                 } catch (Exception ex) {
-                    System.out.println("Ha ocurrido un erro al pedir el helado.");
+                    System.out.println("Ha ocurrido un error al pedir el helado.");
                 }
             } else if (respuesta.equals("4")) {
                 apagarMaquina(mh, encendido);
+                encendido = mh.apagarMaquina();
             }
         } while (encendido);
         System.out.println("Hasta la proxima!!!");
@@ -140,7 +141,6 @@ public class Exec {
         System.out.println("El cambio es: " + mh.getMonedero());
         //Decir la cantidad total de dinero recaudado.
         System.out.println("Las ganacias totales son: " + mh.getIngresos() + "€");
-        encendido = mh.apagarMaquina();
     }
 
 }

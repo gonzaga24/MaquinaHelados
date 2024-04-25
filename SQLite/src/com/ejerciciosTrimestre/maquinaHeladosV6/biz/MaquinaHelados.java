@@ -21,13 +21,13 @@ public class MaquinaHelados {
         this.monedero = 0;
         this.ingresos = 0;
     }
-
-    @Override
-    public String toString() throws Exception {
+    
+    
+    public String mostrarHelados() throws Exception {
         String txt = "";
         try (HeladoDAOimpl hdi = new HeladoDAOimpl();) {
             ArrayList<Helado> listaHelados = hdi.getHelados();
-            for (Helado h : listaHelados.values()) {
+            for (Helado h : listaHelados) {
                 txt += h.toString() + "\n";
             }
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class MaquinaHelados {
         try (VentaDAOimpl vdi = new VentaDAOimpl(); HeladoDAOimpl hdi = new HeladoDAOimpl();) {
             //Si la posición tiene dos valores y el monedero es mayor que el precio le damos el helado.
             //Si la posición no existe lanzar "NotValidPositionException"
-            if (!hdi.getHelados.contains(posicion)) {
+            if (hdi.getHeladoByPosicion(posicion) == null) {
                 throw new NotValidPositionException("La posición introducida no es correcta.");
             }
             
@@ -56,7 +56,7 @@ public class MaquinaHelados {
                 throw new QuantityExceededException("En la posición indicada se han agotado los helados.");
             }
             //Le quitamos uno a la cantidad de helados
-            h.setCantidad(h.getCantidad() - 1);
+            hdi.updateHelado(h);
             //Le restamos al monedero el precio del helado
             this.monedero = this.monedero - h.getPrecio();
             //Sumamos a los ingresos el precio del helado
