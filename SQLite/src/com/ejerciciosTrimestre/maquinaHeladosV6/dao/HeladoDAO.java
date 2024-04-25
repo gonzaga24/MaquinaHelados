@@ -14,6 +14,6 @@ import java.util.ArrayList;
 public interface HeladoDAO {
 
 public ArrayList<Helado> getHelados() throws Exception;
-public String getHeladoByPosicion(String posicion) throws Exception;
-public int updateHelados(Helado helado)throws Exception;
+public Helado getHeladoByPosicion(String posicion) throws Exception;
+public int updateHelado(Helado helado)throws Exception;
 }
