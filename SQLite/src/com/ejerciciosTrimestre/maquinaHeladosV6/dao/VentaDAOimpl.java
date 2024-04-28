@@ -4,6 +4,7 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV6.dao;
 
+import com.ejerciciosTrimestre.maquinaHeladosV6.biz.Helado;
 import com.ejerciciosTrimestre.maquinaHeladosV6.biz.Venta;
 import com.ejerciciosTrimestre.maquinaHeladosV6.utils.Utils;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.sql.ResultSet;
 
 /**
  *
- * @author Alex
+ * @author Alex Marcos
  *
  */
 
@@ -79,6 +80,39 @@ public class VentaDAOimpl implements VentaDAO, AutoCloseable {
     @Override
     public void close() throws Exception {
         con.close();
+    }
+
+    @Override
+    public double getDineroRecaudado() throws Exception {
+        double registrosAfectados = 0.0;
+        String sql = "SELECT SUM(precio * cantidad) AS ganancias FROM venta";
+        try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
+            if (rs.next()) {
+                registrosAfectados = rs.getDouble("ganancias");
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return registrosAfectados;
+    }
+
+    @Override
+    public Helado getHeladoMasVendido() throws Exception {
+        Helado heladoMasVendido = null;
+        String sql = "SELECT nombre, tipo, MAX(cantidad) AS Mas_popular FROM venta LIMIT 1";
+
+        try (PreparedStatement pstm = con.prepareStatement(sql);) {
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                heladoMasVendido = new Helado(rs.getString("nombre"), rs.getDouble("precio"), rs.getString("tipo"), rs.getInt("cantidad"), rs.getString("posicion"));
+            } catch (Exception e) {
+                throw e;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return heladoMasVendido;
     }
 
 }

@@ -14,7 +14,7 @@ import java.sql.PreparedStatement;
 
 /**
  *
- * @author Marcos
+ * @author Alex Marcos
  *
  */
 /* 
@@ -162,12 +162,37 @@ public class HeladoDAOimpl implements HeladoDAO, AutoCloseable {
 
     @Override
     public int inputHelado(Helado helado) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int registrosAfectados = 0;
+        String sql = "INSERT INTO helado VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement pstm = con.prepareStatement(sql);) {
+
+            pstm.setString(1, helado.getPosicion());
+            pstm.setString(2, helado.getSabor());
+            pstm.setDouble(3, helado.getPrecio());
+            pstm.setString(4, helado.getTipo());
+            pstm.setInt(5, helado.getCantidad());
+            registrosAfectados = pstm.executeUpdate();
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return registrosAfectados;
     }
 
     @Override
     public int removeHeladoByPosicion(String posicion) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int registrosAfectados = 0;
+        String sql = "DELETE FROM helados WHERE posicion = ?";
+        try (PreparedStatement pstm = con.prepareStatement(sql);) {
+            pstm.setString(2, posicion);
+            registrosAfectados = pstm.executeUpdate();
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return registrosAfectados;
     }
 
 }
