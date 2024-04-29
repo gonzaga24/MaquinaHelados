@@ -51,7 +51,7 @@ public class VentaDAOimpl implements VentaDAO, AutoCloseable {
             pstm.setString(2, venta.getNombre());
             pstm.setDouble(3, venta.getPrecio());
             pstm.setString(4, venta.getTipo());
-            pstm.setInt(5, venta.getCantidad());
+            pstm.setInt(5, 1);
 
             registrosAfectados = pstm.executeUpdate();
         } catch (Exception e) {
@@ -84,22 +84,22 @@ public class VentaDAOimpl implements VentaDAO, AutoCloseable {
 
     @Override
     public double getDineroRecaudado() throws Exception {
-        double registrosAfectados = 0.0;
-        String sql = "SELECT SUM(precio * cantidad) AS ganancias FROM venta";
+        double dineroRecaudado = 0.0;
+        String sql = "SELECT SUM(precio) AS ganancias FROM venta GROUP BY nombre";
         try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
             if (rs.next()) {
-                registrosAfectados = rs.getDouble("ganancias");
+                dineroRecaudado = rs.getDouble("ganancias");
             }
         } catch (Exception e) {
             throw e;
         }
-        return registrosAfectados;
+        return dineroRecaudado;
     }
 
     @Override
     public Helado getHeladoMasVendido() throws Exception {
         Helado heladoMasVendido = null;
-        String sql = "SELECT nombre, tipo, MAX(cantidad) AS Mas_popular FROM venta LIMIT 1";
+        String sql = "SELECT nombre, precio, tipo, SUM(cantidad) AS cantidad, posicion FROM venta GROUP BY nombre ORDER BY SUM(cantidad) DESC LIMIT 1";
 
         try (PreparedStatement pstm = con.prepareStatement(sql);) {
 
