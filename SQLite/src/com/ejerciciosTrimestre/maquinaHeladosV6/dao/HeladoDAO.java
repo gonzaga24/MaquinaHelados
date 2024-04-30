@@ -16,9 +16,4 @@ public interface HeladoDAO {
 public ArrayList<Helado> getHelados() throws Exception;
 public Helado getHeladoByPosicion(String posicion) throws Exception;
 public int updateHelado(Helado helado)throws Exception;
-public int restockHeladoByPosicion(String posicion) throws Exception;
-public ArrayList<Helado> getHeladosOrderByPrecio() throws Exception;
-public int changeSaborOrPrecioByPosicion(String posicion, String nuevoSabor, double nuevoPrecio) throws Exception;
-public int inputHelado(Helado helado) throws Exception;
-public int removeHeladoByPosicion(String posicion) throws Exception;
 }

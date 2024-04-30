@@ -80,39 +80,6 @@ public class VentaDAOimpl implements VentaDAO, AutoCloseable {
     @Override
     public void close() throws Exception {
         con.close();
-    }
-
-    @Override
-    public double getDineroRecaudado() throws Exception {
-        double dineroRecaudado = 0.0;
-        String sql = "SELECT SUM(precio) AS ganancias FROM venta GROUP BY nombre";
-        try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
-            if (rs.next()) {
-                dineroRecaudado = rs.getDouble("ganancias");
-            }
-        } catch (Exception e) {
-            throw e;
-        }
-        return dineroRecaudado;
-    }
-
-    @Override
-    public Helado getHeladoMasVendido() throws Exception {
-        Helado heladoMasVendido = null;
-        String sql = "SELECT nombre, precio, tipo, SUM(cantidad) AS cantidad, posicion FROM venta GROUP BY nombre ORDER BY SUM(cantidad) DESC LIMIT 1";
-
-        try (PreparedStatement pstm = con.prepareStatement(sql);) {
-
-            try (ResultSet rs = pstm.executeQuery()) {
-                heladoMasVendido = new Helado(rs.getString("nombre"), rs.getDouble("precio"), rs.getString("tipo"), rs.getInt("cantidad"), rs.getString("posicion"));
-            } catch (Exception e) {
-                throw e;
-            }
-        } catch (Exception e) {
-            throw e;
-        }
-
-        return heladoMasVendido;
-    }
+    }    
 
 }
