@@ -4,7 +4,6 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV6.dao;
 
-import com.ejerciciosTrimestre.maquinaHeladosV6.biz.Helado;
 import com.ejerciciosTrimestre.maquinaHeladosV6.biz.Venta;
 import com.ejerciciosTrimestre.maquinaHeladosV6.utils.Utils;
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class VentaDAOimpl implements VentaDAO, AutoCloseable {
     }
 
     public VentaDAOimpl() throws Exception {
-        con = DriverManager.getConnection("jdbc:sqlite:./helados.db");
+        con = DriverManager.getConnection(Utils.URL);
     }
 
     @Override
@@ -65,6 +64,7 @@ public class VentaDAOimpl implements VentaDAO, AutoCloseable {
     public ArrayList<Venta> getVentas() throws Exception {
         ArrayList<Venta> listaDeVentas = new ArrayList<>();
         String sql = "SELECT * FROM venta";
+        //TODO: quitar el asterisco y poner nombres
 
         try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
             while (rs.next()) {

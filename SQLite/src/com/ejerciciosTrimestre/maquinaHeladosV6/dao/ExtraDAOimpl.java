@@ -26,7 +26,7 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
     }
 
     public ExtraDAOimpl() throws Exception {
-        con = DriverManager.getConnection("jdbc:sqlite:./helados.db");
+        con = DriverManager.getConnection(Utils.URL);
     }
 
     @Override
@@ -164,7 +164,7 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
 
     @Override
     public void close() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        con.close();
     }
 
 }

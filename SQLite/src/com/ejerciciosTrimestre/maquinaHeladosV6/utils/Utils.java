@@ -18,9 +18,10 @@ public class Utils {
             System.exit(1);
         }
     }
-    
-     public static double redondearDecimales(double d) {
+
+    public static double redondearDecimales(double d) {
         return 1.0d * Math.round(d * 100.0d) / 100.0d;
     }
-    
+
+    public static final String URL = "jdbc:sqlite:./helados.db";
 }

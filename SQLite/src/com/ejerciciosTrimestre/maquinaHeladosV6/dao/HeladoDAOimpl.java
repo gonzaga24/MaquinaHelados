@@ -35,14 +35,14 @@ public class HeladoDAOimpl implements HeladoDAO, AutoCloseable {
     }
 
     public HeladoDAOimpl() throws Exception {
-        con = DriverManager.getConnection("jdbc:sqlite:./helados.db");
+        con = DriverManager.getConnection(Utils.URL);
     }
 
     @Override
     public ArrayList<Helado> getHelados() throws Exception {
         ArrayList<Helado> ListaHelados = new ArrayList<>();
         String sql = "SELECT * FROM helado";
-
+        //el *
         try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
             while (rs.next()) {
                 ListaHelados.add(new Helado(rs.getString("nombre"), rs.getDouble("precio"), rs.getString("tipo"), rs.getInt("cantidad"), rs.getString("posicion")));
@@ -56,13 +56,15 @@ public class HeladoDAOimpl implements HeladoDAO, AutoCloseable {
 
     @Override
     public Helado getHeladoByPosicion(String posicion) throws Exception {
-        Helado h;
+        Helado h = null;
         String sql = "SELECT * FROM helado WHERE posicion = ?";
         try (PreparedStatement pstm = con.prepareStatement(sql);) {
             pstm.setString(1, posicion);
 
             try (ResultSet rs = pstm.executeQuery()) {
-                h = new Helado(rs.getString("nombre"), rs.getDouble("precio"), rs.getString("tipo"), rs.getInt("cantidad"), rs.getString("posicion"));
+                if (rs.next()) {
+                    h = new Helado(rs.getString("nombre"), rs.getDouble("precio"), rs.getString("tipo"), rs.getInt("cantidad"), rs.getString("posicion"));
+                }
             } catch (Exception e) {
                 throw e;
             }
@@ -77,10 +79,13 @@ public class HeladoDAOimpl implements HeladoDAO, AutoCloseable {
     @Override
     public int updateHelado(Helado helado) throws Exception {
         int registrosAfectados = 0;
-        String sql = "UPDATE helado SET cantidad = ? WHERE posicion = ?";
+        String sql = "UPDATE helado SET nombre = ?, tipo = ?, precio=?, cantidad = ? WHERE posicion = ?";
         try (PreparedStatement pstm = con.prepareStatement(sql);) {
-            pstm.setInt(1, helado.getCantidad() - 1);
-            pstm.setString(2, helado.getPosicion());
+            pstm.setString(1,helado.getSabor());
+            pstm.setString(2,helado.getTipo());
+            pstm.setDouble(3,helado.getPrecio());
+            pstm.setInt(4, helado.getCantidad() );
+            pstm.setString(5, helado.getPosicion());
             registrosAfectados = pstm.executeUpdate();
 
         } catch (Exception e) {
