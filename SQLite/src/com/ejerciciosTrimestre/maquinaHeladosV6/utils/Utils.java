@@ -11,6 +11,8 @@ package com.ejerciciosTrimestre.maquinaHeladosV6.utils;
  */
 public class Utils {
 
+    public static final String URL = "jdbc:sqlite:./helados.db";
+    
     public static void cargarDriver() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -23,5 +25,4 @@ public class Utils {
         return 1.0d * Math.round(d * 100.0d) / 100.0d;
     }
 
-    public static final String URL = "jdbc:sqlite:./helados.db";
 }

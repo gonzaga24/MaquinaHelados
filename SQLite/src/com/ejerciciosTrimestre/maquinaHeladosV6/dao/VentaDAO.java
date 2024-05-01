@@ -12,6 +12,8 @@ import java.util.ArrayList;
  * @author Alex
  */
 public interface VentaDAO {
+
     public int inputVenta(Venta venta) throws Exception;
+
     public ArrayList<Venta> getVentas() throws Exception;
 }

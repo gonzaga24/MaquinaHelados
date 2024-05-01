@@ -45,7 +45,7 @@ public class Exec {
                     System.out.println("Ha ocurrido un error al pedir el helado.");
                 }
             } else if (respuesta.equals("4")) {
-                apagarMaquina(mh, encendido);
+                apagarMaquina(mh);
                 encendido = mh.apagarMaquina();
             }
         } while (encendido);
@@ -137,7 +137,7 @@ public class Exec {
         }
     }
 
-    public static void apagarMaquina(MaquinaHelados mh, boolean encendido) {
+    public static void apagarMaquina(MaquinaHelados mh) {
         //Devolver el cambio restante.
         System.out.println("El cambio es: " + mh.getMonedero());
         //Decir la cantidad total de dinero recaudado.
