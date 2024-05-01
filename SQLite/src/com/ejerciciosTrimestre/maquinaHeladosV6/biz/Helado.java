@@ -22,7 +22,7 @@ public class Helado {
 
     @Override
     public String toString() {
-        return "Posición: " + posicion + ", Sabor: " + sabor + "\t" + ", Precio: " + precio + ", Tipo de helado: " + tipo + ", \tCantidad: " + cantidad;
+        return "Posición: " + posicion + " | Sabor: " + sabor + " | Precio: " + precio + " | Tipo de helado: " + tipo + " | Cantidad: " + cantidad;
     }
 
     public String toCSV(Helado helado) {
