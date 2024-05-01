@@ -1,4 +1,4 @@
-package com.ejerciciosTrimestre.maquinaHeladosV6.biz;
+package com.ejerciciosTrimestre.maquinaHeladosV7.biz;
 
 /**
  *

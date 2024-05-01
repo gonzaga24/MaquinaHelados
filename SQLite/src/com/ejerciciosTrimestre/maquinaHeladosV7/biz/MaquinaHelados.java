@@ -1,4 +1,4 @@
-package com.ejerciciosTrimestre.maquinaHeladosV6.biz;
+package com.ejerciciosTrimestre.maquinaHeladosV7.biz;
 
 import com.ejerciciosTrimestre.maquinaHeladosV6.dao.HeladoDAOimpl;
 import com.ejerciciosTrimestre.maquinaHeladosV6.dao.VentaDAOimpl;
