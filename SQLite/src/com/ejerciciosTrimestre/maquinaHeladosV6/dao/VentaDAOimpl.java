@@ -63,12 +63,19 @@ public class VentaDAOimpl implements VentaDAO, AutoCloseable {
     @Override
     public ArrayList<Venta> getVentas() throws Exception {
         ArrayList<Venta> listaDeVentas = new ArrayList<>();
-        String sql = "SELECT * FROM venta";
-        //TODO: quitar el asterisco y poner nombres
+        String sql = "SELECT fecha_hora, posicion, nombre, precio, tipo, cantidad FROM venta";
+       
 
         try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
             while (rs.next()) {
-                listaDeVentas.add(new Venta(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getInt(6)));
+                listaDeVentas.add(new Venta(
+                        rs.getString("fecha_hora"),
+                        rs.getString("posicion"),
+                        rs.getString("nombre"),
+                        rs.getDouble("precio"),
+                        rs.getString("tipo"),
+                        rs.getInt("cantidad")
+                ));
             }
         } catch (Exception e) {
             throw e;

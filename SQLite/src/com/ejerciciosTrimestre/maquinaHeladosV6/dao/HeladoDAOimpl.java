@@ -41,11 +41,17 @@ public class HeladoDAOimpl implements HeladoDAO, AutoCloseable {
     @Override
     public ArrayList<Helado> getHelados() throws Exception {
         ArrayList<Helado> ListaHelados = new ArrayList<>();
-        String sql = "SELECT * FROM helado";
+        String sql = "SELECT nombre, precio, tipo, cantidad, posicion FROM helado";
         //el *
         try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
             while (rs.next()) {
-                ListaHelados.add(new Helado(rs.getString("nombre"), rs.getDouble("precio"), rs.getString("tipo"), rs.getInt("cantidad"), rs.getString("posicion")));
+                ListaHelados.add(new Helado(
+                        rs.getString("nombre"),
+                        rs.getDouble("precio"),
+                        rs.getString("tipo"),
+                        rs.getInt("cantidad"),
+                        rs.getString("posicion")
+                ));
             }
         } catch (Exception e) {
             throw e;
@@ -57,13 +63,19 @@ public class HeladoDAOimpl implements HeladoDAO, AutoCloseable {
     @Override
     public Helado getHeladoByPosicion(String posicion) throws Exception {
         Helado h = null;
-        String sql = "SELECT * FROM helado WHERE posicion = ?";
+        String sql = "SELECT nombre, precio, tipo, cantidad, posicion FROM helado WHERE posicion = ?";
         try (PreparedStatement pstm = con.prepareStatement(sql);) {
             pstm.setString(1, posicion);
 
             try (ResultSet rs = pstm.executeQuery()) {
                 if (rs.next()) {
-                    h = new Helado(rs.getString("nombre"), rs.getDouble("precio"), rs.getString("tipo"), rs.getInt("cantidad"), rs.getString("posicion"));
+                    h = new Helado(
+                            rs.getString("nombre"),
+                            rs.getDouble("precio"),
+                            rs.getString("tipo"),
+                            rs.getInt("cantidad"),
+                            rs.getString("posicion")
+                    );
                 }
             } catch (Exception e) {
                 throw e;
