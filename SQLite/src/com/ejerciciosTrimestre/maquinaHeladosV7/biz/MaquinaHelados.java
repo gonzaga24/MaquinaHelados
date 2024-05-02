@@ -1,10 +1,10 @@
 package com.ejerciciosTrimestre.maquinaHeladosV7.biz;
 
-import com.ejerciciosTrimestre.maquinaHeladosV6.dao.HeladoDAOimpl;
-import com.ejerciciosTrimestre.maquinaHeladosV6.dao.VentaDAOimpl;
-import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.NotEnoughMoneyException;
-import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.NotValidPositionException;
-import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.QuantityExceededException;
+import com.ejerciciosTrimestre.maquinaHeladosV7.dao.HeladoDAOimpl;
+import com.ejerciciosTrimestre.maquinaHeladosV7.dao.VentaDAOimpl;
+import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotEnoughMoneyException;
+import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotValidPositionException;
+import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.QuantityExceededException;
 import java.util.ArrayList;
 
 /**

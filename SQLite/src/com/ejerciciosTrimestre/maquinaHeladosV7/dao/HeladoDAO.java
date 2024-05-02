@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.ejerciciosTrimestre.maquinaHeladosV6.dao;
+package com.ejerciciosTrimestre.maquinaHeladosV7.dao;
 
-import com.ejerciciosTrimestre.maquinaHeladosV6.biz.Helado;
+import com.ejerciciosTrimestre.maquinaHeladosV7.biz.Helado;
 import java.util.ArrayList;
 
 /**

@@ -1,5 +1,5 @@
 
-package com.ejerciciosTrimestre.maquinaHeladosV6.exceptions;
+package com.ejerciciosTrimestre.maquinaHeladosV7.exceptions;
 
 /**
  *

@@ -1,11 +1,11 @@
-package com.ejerciciosTrimestre.maquinaHeladosV6.ui;
+package com.ejerciciosTrimestre.maquinaHeladosV7.ui;
 
-import com.ejerciciosTrimestre.maquinaHeladosV6.biz.Helado;
-import com.ejerciciosTrimestre.maquinaHeladosV6.biz.MaquinaHelados;
-import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.NotEnoughMoneyException;
-import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.NotValidPositionException;
-import com.ejerciciosTrimestre.maquinaHeladosV6.exceptions.QuantityExceededException;
-import static com.ejerciciosTrimestre.maquinaHeladosV6.utils.Utils.redondearDecimales;
+import com.ejerciciosTrimestre.maquinaHeladosV7.biz.Helado;
+import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
+import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotEnoughMoneyException;
+import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotValidPositionException;
+import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.QuantityExceededException;
+import static com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils.redondearDecimales;
 import java.util.Scanner;
 
 /**
