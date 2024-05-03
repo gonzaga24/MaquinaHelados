@@ -4,6 +4,12 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
+import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
+import com.ejerciciosTrimestre.maquinaHeladosV7.biz.Venta;
+import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author dev
@@ -15,6 +21,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
      */
     public DialogInformeVentas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        aux = new MaquinaHelados();
         initComponents();
     }
 
@@ -27,21 +34,96 @@ public class DialogInformeVentas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaVentas = new javax.swing.JTable();
+        txtError = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
+        tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Fecha y hora", "Posición", "Sabor", "Precio", "Tipo", "Cantidad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaVentas.setColumnSelectionAllowed(true);
+        tablaVentas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaVentas);
+        tablaVentas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tablaVentas.getColumnModel().getColumnCount() > 0) {
+            tablaVentas.getColumnModel().getColumn(0).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(1).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(2).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(3).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(4).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1)
+                .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(276, 276, 276)
+                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(284, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        txtError.setVisible(false);
+        ArrayList<Venta> listaVentas;
+        DefaultTableModel m = (DefaultTableModel) this.tablaVentas.getModel();
+        m.setRowCount(0);
+        try {
+            listaVentas = aux.getVentas();
+            for (Venta v : listaVentas) {
+                Object[] tmp = {v.getFechaHora(), v.getPosicion(), v.getNombre(), v.getPrecio(), v.getTipo(), v.getCantidad()};
+                m.addRow(tmp);
+            }
+        } catch (Exception ex) {
+           txtError.setText("Ha ocurrido un error al mostrar las ventas");
+            txtError.setVisible(true);
+        }
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -86,5 +168,14 @@ public class DialogInformeVentas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaVentas;
+    private javax.swing.JLabel txtError;
     // End of variables declaration//GEN-END:variables
+    private MaquinaHelados aux;
+
+    public JTable getTablaVentas() {
+        return tablaVentas;
+    }
+
 }

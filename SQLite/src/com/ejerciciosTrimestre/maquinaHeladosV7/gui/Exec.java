@@ -59,6 +59,9 @@ public class Exec extends javax.swing.JFrame {
         posicionUno = new javax.swing.JButton();
         pedirHelado = new javax.swing.JButton();
         txtError = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        informeVentas = new javax.swing.JMenuItem();
 
         devuelto.setResizable(false);
 
@@ -256,6 +259,20 @@ public class Exec extends javax.swing.JFrame {
 
         txtError.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
 
+        jMenu1.setText("Menu");
+
+        informeVentas.setText("Informe de ventas");
+        informeVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                informeVentasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(informeVentas);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -343,7 +360,7 @@ public class Exec extends javax.swing.JFrame {
                         .addGap(22, 22, 22)))
                 .addGap(31, 31, 31)
                 .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         txtError.setVisible(false);
@@ -370,9 +387,7 @@ public class Exec extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        if (verMonedero.isVisible()) {
-            verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
-        }
+        verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
         rellenarTablaHelados();
     }//GEN-LAST:event_formComponentShown
 
@@ -465,6 +480,12 @@ public class Exec extends javax.swing.JFrame {
 
     }//GEN-LAST:event_pedirHeladoActionPerformed
 
+    private void informeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informeVentasActionPerformed
+        // TODO add your handling code here:
+        DialogInformeVentas di = new DialogInformeVentas(this, true);
+        di.setVisible(true);
+    }//GEN-LAST:event_informeVentasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -490,6 +511,18 @@ public class Exec extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Exec.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -520,7 +553,8 @@ public class Exec extends javax.swing.JFrame {
                 m.addRow(tmp);
             }
         } catch (Exception ex) {
-            System.out.println("Ha ocurrido un error al mostrar los helados.");
+            txtError.setText("Ha ocurrido un error al mostrar los helados.");
+            txtError.setVisible(true);
         }
     }
 
@@ -529,7 +563,10 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton devolverDinero;
     private javax.swing.JDialog devuelto;
     private javax.swing.JDialog heladoDevuelto;
+    private javax.swing.JMenuItem informeVentas;
     private javax.swing.JButton introducirMonedas;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton pedirHelado;
