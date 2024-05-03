@@ -35,6 +35,17 @@ public class MaquinaHelados {
         return txt;
     }
     
+    public ArrayList<Helado> getHelados() throws Exception {
+        ArrayList<Helado> listaHelados; 
+        try (HeladoDAOimpl hdi = new HeladoDAOimpl();) {
+            listaHelados = hdi.getHelados();
+        } catch (Exception e) {
+            throw e;
+        }
+        
+        return listaHelados;
+    }
+    
     public Helado pedirHelado(String posicion) throws NotEnoughMoneyException, QuantityExceededException, NotValidPositionException, Exception {
         Helado h;
         try (VentaDAOimpl vdi = new VentaDAOimpl(); HeladoDAOimpl hdi = new HeladoDAOimpl();) {

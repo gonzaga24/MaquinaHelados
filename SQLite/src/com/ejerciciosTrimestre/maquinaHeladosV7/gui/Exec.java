@@ -4,12 +4,17 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
+import com.ejerciciosTrimestre.maquinaHeladosV7.biz.Helado;
 import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author dev
- * 
+ *
  */
 public class Exec extends javax.swing.JFrame {
 
@@ -34,6 +39,8 @@ public class Exec extends javax.swing.JFrame {
         introducirMonedas = new javax.swing.JButton();
         devolverDinero = new javax.swing.JButton();
         verMonedero = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaHelados = new javax.swing.JTable();
 
         devuelto.setResizable(false);
 
@@ -60,6 +67,11 @@ public class Exec extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         introducirMonedas.setText("Introducir monedas");
         introducirMonedas.addActionListener(new java.awt.event.ActionListener() {
@@ -79,23 +91,58 @@ public class Exec extends javax.swing.JFrame {
         verMonedero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         verMonedero.setFocusable(false);
 
+        tablaHelados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Posicion", "Sabor", "Tipo", "Precio", "Cantidad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaHelados.setColumnSelectionAllowed(true);
+        tablaHelados.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(tablaHelados);
+        tablaHelados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(260, Short.MAX_VALUE)
-                .addComponent(verMonedero, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(devolverDinero)
-                .addGap(18, 18, 18)
-                .addComponent(introducirMonedas)
-                .addGap(111, 111, 111))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(168, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(verMonedero, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(devolverDinero)
+                        .addGap(18, 18, 18)
+                        .addComponent(introducirMonedas)
+                        .addGap(111, 111, 111))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(271, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(introducirMonedas)
                     .addComponent(devolverDinero)
@@ -122,6 +169,25 @@ public class Exec extends javax.swing.JFrame {
         mh.setMonedero(0);
         verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
     }//GEN-LAST:event_devolverDineroActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        if (verMonedero.isVisible()) {
+            verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+        }
+        ArrayList<Helado> listaHelados;
+        DefaultTableModel m = (DefaultTableModel) this.tablaHelados.getModel();
+        m.setRowCount(0);
+        try {
+            listaHelados = mh.getHelados();
+            for (Helado h : listaHelados) {
+                Object[] tmp = {h.getPosicion(), h.getSabor(), h.getTipo(), h.getPrecio(), h.getCantidad()};
+                m.addRow(tmp);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Exec.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -162,6 +228,8 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton devolverDinero;
     private javax.swing.JDialog devuelto;
     private javax.swing.JButton introducirMonedas;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tablaHelados;
     private javax.swing.JLabel txtUser;
     private javax.swing.JTextField verMonedero;
     // End of variables declaration//GEN-END:variables
