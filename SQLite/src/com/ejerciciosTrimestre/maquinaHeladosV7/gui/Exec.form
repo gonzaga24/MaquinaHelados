@@ -109,6 +109,11 @@
     <Component class="javax.swing.JTextField" name="verMonedero">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>

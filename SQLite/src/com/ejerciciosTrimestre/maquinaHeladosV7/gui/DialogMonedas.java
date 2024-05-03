@@ -18,12 +18,7 @@ public class DialogMonedas extends javax.swing.JDialog {
      */
     public DialogMonedas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
-    }
-
-    public DialogMonedas(MaquinaHelados mh, java.awt.Frame owner, boolean modal) {
-        super(owner, modal);
-        this.aux = mh;
+        aux = new MaquinaHelados();
         initComponents();
     }
 

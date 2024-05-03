@@ -5,7 +5,6 @@
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
 import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
-import java.awt.Point;
 
 /**
  *
@@ -77,6 +76,7 @@ public class Exec extends javax.swing.JFrame {
         });
 
         verMonedero.setEditable(false);
+        verMonedero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         verMonedero.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,8 +109,9 @@ public class Exec extends javax.swing.JFrame {
     private void introducirMonedasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introducirMonedasActionPerformed
         // TODO add your handling code here:
         // TODO hacer que la ventana actualice el monedero en tiempo real:
-        DialogMonedas dm = new DialogMonedas(mh, this, true);
+        DialogMonedas dm = new DialogMonedas(this, true);
         dm.setVisible(true);
+        mh = dm.getAux();
         verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
     }//GEN-LAST:event_introducirMonedasActionPerformed
 
