@@ -4,9 +4,13 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
+import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
+import java.awt.Point;
+
 /**
  *
  * @author dev
+ * 
  */
 public class Exec extends javax.swing.JFrame {
 
@@ -26,21 +30,97 @@ public class Exec extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        devuelto = new javax.swing.JDialog();
+        txtUser = new javax.swing.JLabel();
+        introducirMonedas = new javax.swing.JButton();
+        devolverDinero = new javax.swing.JButton();
+        verMonedero = new javax.swing.JTextField();
+
+        devuelto.setResizable(false);
+
+        txtUser.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout devueltoLayout = new javax.swing.GroupLayout(devuelto.getContentPane());
+        devuelto.getContentPane().setLayout(devueltoLayout);
+        devueltoLayout.setHorizontalGroup(
+            devueltoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(devueltoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        devueltoLayout.setVerticalGroup(
+            devueltoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(devueltoLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        devuelto.setSize(500, 100);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        introducirMonedas.setText("Introducir monedas");
+        introducirMonedas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                introducirMonedasActionPerformed(evt);
+            }
+        });
+
+        devolverDinero.setText("D");
+        devolverDinero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                devolverDineroActionPerformed(evt);
+            }
+        });
+
+        verMonedero.setEditable(false);
+        verMonedero.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(260, Short.MAX_VALUE)
+                .addComponent(verMonedero, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(devolverDinero)
+                .addGap(18, 18, 18)
+                .addComponent(introducirMonedas)
+                .addGap(111, 111, 111))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(271, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(introducirMonedas)
+                    .addComponent(devolverDinero)
+                    .addComponent(verMonedero, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(206, 206, 206))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void introducirMonedasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introducirMonedasActionPerformed
+        // TODO add your handling code here:
+        // TODO hacer que la ventana actualice el monedero en tiempo real:
+        DialogMonedas dm = new DialogMonedas(mh, this, true);
+        dm.setVisible(true);
+        verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+    }//GEN-LAST:event_introducirMonedasActionPerformed
+
+    private void devolverDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverDineroActionPerformed
+        // TODO add your handling code here:
+        devuelto.setVisible(true);
+        txtUser.setText("Su dinero le ha sido duevuelto " + Double.toString(mh.getMonedero()) + "€");
+        mh.setMonedero(0);
+        verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+    }//GEN-LAST:event_devolverDineroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +158,11 @@ public class Exec extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton devolverDinero;
+    private javax.swing.JDialog devuelto;
+    private javax.swing.JButton introducirMonedas;
+    private javax.swing.JLabel txtUser;
+    private javax.swing.JTextField verMonedero;
     // End of variables declaration//GEN-END:variables
+    private MaquinaHelados mh = new MaquinaHelados();
 }

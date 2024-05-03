@@ -24,5 +24,4 @@ public class Utils {
     public static double redondearDecimales(double d) {
         return 1.0d * Math.round(d * 100.0d) / 100.0d;
     }
-
 }

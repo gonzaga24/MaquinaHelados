@@ -79,7 +79,7 @@ public class Exec {
 
     public static void introducirMonedas(Scanner sc, MaquinaHelados mh) {
         String resp;
-        double r = 0;
+        double cantidadIntroducida = 0;
 
         System.out.println("\t" + "Introduzca monedas");
         System.out.println("---------------------------------------------------------------");
@@ -93,30 +93,30 @@ public class Exec {
 
             if (resp.equalsIgnoreCase("fin") || resp.equals("1") || resp.equals("2") || resp.equals("3") || resp.equals("4") || resp.equals("5") || resp.equals("6") || resp.equals("7") || resp.equals("8")) {
                 if (resp.equals("1")) {
-                    r = r + 2;
+                    cantidadIntroducida = cantidadIntroducida + 2;
                 } else if (resp.equals("2")) {
-                    r = r + 1;
+                    cantidadIntroducida = cantidadIntroducida + 1;
                 } else if (resp.equals("3")) {
-                    r = r + 0.50;
+                    cantidadIntroducida = cantidadIntroducida + 0.50;
                 } else if (resp.equals("4")) {
-                    r = r + 0.20;
+                    cantidadIntroducida = cantidadIntroducida + 0.20;
                 } else if (resp.equals("5")) {
-                    r = r + 0.10;
+                    cantidadIntroducida = cantidadIntroducida + 0.10;
                 } else if (resp.equals("6")) {
-                    r = r + 0.05;
+                    cantidadIntroducida = cantidadIntroducida + 0.05;
                 } else if (resp.equals("7")) {
-                    r = r + 0.02;
+                    cantidadIntroducida = cantidadIntroducida + 0.02;
                 } else if (resp.equals("8")) {
-                    r = r + 0.01;
+                    cantidadIntroducida = cantidadIntroducida + 0.01;
                 }
             } else {
                 System.out.println("Valor incorrecto");
                 System.out.println();
             }
         } while (!(resp.equalsIgnoreCase("fin")));
-        System.out.println("Has introducido " + r + "€");
+        System.out.println("Has introducido " + cantidadIntroducida + "€");
         //Sumar al monedero las monedas que haya introducido por el metodo.
-        mh.setMonedero(mh.getMonedero() + r);
+        mh.setMonedero(mh.getMonedero() + cantidadIntroducida);
     }
 
     public static void pedirHelado(Scanner sc, MaquinaHelados mh) throws Exception {

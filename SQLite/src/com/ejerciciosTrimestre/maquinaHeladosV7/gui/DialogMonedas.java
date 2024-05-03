@@ -4,6 +4,9 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
+import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
+import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
+
 /**
  *
  * @author dev
@@ -18,6 +21,12 @@ public class DialogMonedas extends javax.swing.JDialog {
         initComponents();
     }
 
+    public DialogMonedas(MaquinaHelados mh, java.awt.Frame owner, boolean modal) {
+        super(owner, modal);
+        this.aux = mh;
+        initComponents();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +36,173 @@ public class DialogMonedas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        verCantidadIntroducida = new javax.swing.JTextField();
+        unCentimo = new javax.swing.JButton();
+        dosCentimos = new javax.swing.JButton();
+        cincoCentimos = new javax.swing.JButton();
+        diezCentimos = new javax.swing.JButton();
+        veinteCentimos = new javax.swing.JButton();
+        cincuentaCentimos = new javax.swing.JButton();
+        unEuro = new javax.swing.JButton();
+        dosEuros = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(null);
+        setResizable(false);
+
+        verCantidadIntroducida.setEditable(false);
+        verCantidadIntroducida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        verCantidadIntroducida.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        verCantidadIntroducida.setFocusable(false);
+
+        unCentimo.setText("0.01€");
+        unCentimo.setToolTipText("");
+        unCentimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unCentimoActionPerformed(evt);
+            }
+        });
+
+        dosCentimos.setText("0.02€");
+        dosCentimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dosCentimosActionPerformed(evt);
+            }
+        });
+
+        cincoCentimos.setText("0.05€");
+        cincoCentimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cincoCentimosActionPerformed(evt);
+            }
+        });
+
+        diezCentimos.setText("0.10€");
+        diezCentimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diezCentimosActionPerformed(evt);
+            }
+        });
+
+        veinteCentimos.setText("0.20€");
+        veinteCentimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                veinteCentimosActionPerformed(evt);
+            }
+        });
+
+        cincuentaCentimos.setText("0.50€");
+        cincuentaCentimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cincuentaCentimosActionPerformed(evt);
+            }
+        });
+
+        unEuro.setText("1€");
+        unEuro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unEuroActionPerformed(evt);
+            }
+        });
+
+        dosEuros.setText("2€");
+        dosEuros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dosEurosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(veinteCentimos)
+                        .addGap(18, 18, 18)
+                        .addComponent(cincuentaCentimos)
+                        .addGap(18, 18, 18)
+                        .addComponent(unEuro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(unCentimo)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(verCantidadIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(dosCentimos)
+                                .addGap(18, 18, 18)
+                                .addComponent(cincoCentimos)))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(diezCentimos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dosEuros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(verCantidadIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unCentimo)
+                    .addComponent(dosCentimos)
+                    .addComponent(cincoCentimos)
+                    .addComponent(diezCentimos))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(veinteCentimos)
+                    .addComponent(cincuentaCentimos)
+                    .addComponent(unEuro)
+                    .addComponent(dosEuros))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void unCentimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unCentimoActionPerformed
+        // TODO add your handling code here:
+        sumarCantidad(0.01);
+    }//GEN-LAST:event_unCentimoActionPerformed
+
+    private void dosCentimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosCentimosActionPerformed
+        // TODO add your handling code here:
+        sumarCantidad(0.02);
+    }//GEN-LAST:event_dosCentimosActionPerformed
+
+    private void cincoCentimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincoCentimosActionPerformed
+        // TODO add your handling code here:
+        sumarCantidad(0.05);
+    }//GEN-LAST:event_cincoCentimosActionPerformed
+
+    private void diezCentimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diezCentimosActionPerformed
+        // TODO add your handling code here:
+        sumarCantidad(0.10);
+    }//GEN-LAST:event_diezCentimosActionPerformed
+
+    private void veinteCentimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veinteCentimosActionPerformed
+        // TODO add your handling code here:
+        sumarCantidad(0.20);
+    }//GEN-LAST:event_veinteCentimosActionPerformed
+
+    private void cincuentaCentimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincuentaCentimosActionPerformed
+        // TODO add your handling code here:
+        sumarCantidad(0.50);
+    }//GEN-LAST:event_cincuentaCentimosActionPerformed
+
+    private void unEuroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unEuroActionPerformed
+        // TODO add your handling code here:
+        sumarCantidad(1);
+    }//GEN-LAST:event_unEuroActionPerformed
+
+    private void dosEurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosEurosActionPerformed
+        // TODO add your handling code here:
+        sumarCantidad(2);
+    }//GEN-LAST:event_dosEurosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -85,6 +246,26 @@ public class DialogMonedas extends javax.swing.JDialog {
         });
     }
 
+    public void sumarCantidad(double cantidad) {
+        cantidad += aux.getMonedero();
+        aux.setMonedero(Utils.redondearDecimales(cantidad));
+        verCantidadIntroducida.setText(Double.toString(aux.getMonedero()) + "€");
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cincoCentimos;
+    private javax.swing.JButton cincuentaCentimos;
+    private javax.swing.JButton diezCentimos;
+    private javax.swing.JButton dosCentimos;
+    private javax.swing.JButton dosEuros;
+    private javax.swing.JButton unCentimo;
+    private javax.swing.JButton unEuro;
+    private javax.swing.JButton veinteCentimos;
+    private javax.swing.JTextField verCantidadIntroducida;
     // End of variables declaration//GEN-END:variables
+    private MaquinaHelados aux;
+
+    public MaquinaHelados getAux() {
+        return aux;
+    }
 }
