@@ -6,9 +6,10 @@ package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
 import com.ejerciciosTrimestre.maquinaHeladosV7.biz.Helado;
 import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
+import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotEnoughMoneyException;
+import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotValidPositionException;
+import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.QuantityExceededException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,6 +37,8 @@ public class Exec extends javax.swing.JFrame {
 
         devuelto = new javax.swing.JDialog();
         txtUser = new javax.swing.JLabel();
+        heladoDevuelto = new javax.swing.JDialog();
+        txtHelado = new javax.swing.JLabel();
         introducirMonedas = new javax.swing.JButton();
         devolverDinero = new javax.swing.JButton();
         verMonedero = new javax.swing.JTextField();
@@ -54,6 +57,8 @@ public class Exec extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         posicionCero = new javax.swing.JButton();
         posicionUno = new javax.swing.JButton();
+        pedirHelado = new javax.swing.JButton();
+        txtError = new javax.swing.JLabel();
 
         devuelto.setResizable(false);
 
@@ -78,6 +83,29 @@ public class Exec extends javax.swing.JFrame {
 
         devuelto.setSize(500, 100);
 
+        heladoDevuelto.setResizable(false);
+
+        txtHelado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout heladoDevueltoLayout = new javax.swing.GroupLayout(heladoDevuelto.getContentPane());
+        heladoDevuelto.getContentPane().setLayout(heladoDevueltoLayout);
+        heladoDevueltoLayout.setHorizontalGroup(
+            heladoDevueltoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(heladoDevueltoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(txtHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
+        );
+        heladoDevueltoLayout.setVerticalGroup(
+            heladoDevueltoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(heladoDevueltoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        heladoDevuelto.setSize(700, 200);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -86,6 +114,7 @@ public class Exec extends javax.swing.JFrame {
             }
         });
 
+        introducirMonedas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         introducirMonedas.setText("Introducir monedas");
         introducirMonedas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,68 +246,83 @@ public class Exec extends javax.swing.JFrame {
             }
         });
 
+        pedirHelado.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        pedirHelado.setText("Pedir helado");
+        pedirHelado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pedirHeladoActionPerformed(evt);
+            }
+        });
+
+        txtError.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(168, Short.MAX_VALUE)
+                .addContainerGap(209, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(verPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(16, 16, 16)
-                                .addComponent(borrarPosicion)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(posicionCinco)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(posicionSeis)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(posicionSiete)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(posicionOcho)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(posicionNueve))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(posicionCero)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(posicionUno)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(posicionDos)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(posicionTres)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(posicionCuatro)))
-                                .addGap(15, 15, 15))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(verMonedero, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(devolverDinero)
                         .addGap(18, 18, 18)
                         .addComponent(introducirMonedas)
-                        .addGap(61, 61, 61))))
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(verPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(16, 16, 16)
+                            .addComponent(borrarPosicion)
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(posicionCinco)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(posicionSeis)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(posicionSiete)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(posicionOcho)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(posicionNueve))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(posicionCero)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(posicionUno)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(posicionDos)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(posicionTres)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(posicionCuatro))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(pedirHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(164, 164, 164)))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(introducirMonedas)
                     .addComponent(devolverDinero)
                     .addComponent(verMonedero, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pedirHelado)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(posicionCero)
                             .addComponent(posicionUno)
@@ -297,8 +341,12 @@ public class Exec extends javax.swing.JFrame {
                             .addComponent(verPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(borrarPosicion))
                         .addGap(22, 22, 22)))
-                .addGap(74, 74, 74))
+                .addGap(31, 31, 31)
+                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
+
+        txtError.setVisible(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -325,18 +373,7 @@ public class Exec extends javax.swing.JFrame {
         if (verMonedero.isVisible()) {
             verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
         }
-        ArrayList<Helado> listaHelados;
-        DefaultTableModel m = (DefaultTableModel) this.tablaHelados.getModel();
-        m.setRowCount(0);
-        try {
-            listaHelados = mh.getHelados();
-            for (Helado h : listaHelados) {
-                Object[] tmp = {h.getPosicion(), h.getSabor(), h.getTipo(), h.getPrecio(), h.getCantidad()};
-                m.addRow(tmp);
-            }
-        } catch (Exception ex) {
-            System.out.println("Ha ocurrido un error al mostrar los helados.");
-        }
+        rellenarTablaHelados();
     }//GEN-LAST:event_formComponentShown
 
     private void verPosicionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verPosicionKeyTyped
@@ -401,6 +438,33 @@ public class Exec extends javax.swing.JFrame {
         introducirPosicion("1");
     }//GEN-LAST:event_posicionUnoActionPerformed
 
+    private void pedirHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedirHeladoActionPerformed
+        String posicion = verPosicion.getText();
+        Helado h;
+        try {
+            // TODO add your handling code here:
+            h = mh.pedirHelado(posicion);
+            heladoDevuelto.setVisible(true);
+            txtHelado.setText("Puede recoger su helado sabor " + h.getSabor() + " de tipo " + h.getTipo() + " Su cambio es: " + mh.getMonedero());
+            mh.setMonedero(0);
+            verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+            rellenarTablaHelados();
+        } catch (QuantityExceededException ex) {
+            txtError.setText(ex.getMessage());
+            txtError.setVisible(true);
+        } catch (NotValidPositionException ex) {
+            txtError.setText(ex.getMessage());
+            txtError.setVisible(true);
+        } catch (NotEnoughMoneyException ex) {
+            txtError.setText(ex.getMessage());
+            txtError.setVisible(true);
+        } catch (Exception ex) {
+            txtError.setText("Ha ocurrido un error al pedir el helado.");
+            txtError.setVisible(true);
+        }
+
+    }//GEN-LAST:event_pedirHeladoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -427,6 +491,9 @@ public class Exec extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Exec.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -435,10 +502,25 @@ public class Exec extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void introducirPosicion(String posicion) {
         if (verPosicion.getText().length() < 2) {
             verPosicion.setText(verPosicion.getText() + posicion);
+        }
+    }
+
+    public void rellenarTablaHelados() {
+        ArrayList<Helado> listaHelados;
+        DefaultTableModel m = (DefaultTableModel) this.tablaHelados.getModel();
+        m.setRowCount(0);
+        try {
+            listaHelados = mh.getHelados();
+            for (Helado h : listaHelados) {
+                Object[] tmp = {h.getPosicion(), h.getSabor(), h.getTipo(), h.getPrecio(), h.getCantidad()};
+                m.addRow(tmp);
+            }
+        } catch (Exception ex) {
+            System.out.println("Ha ocurrido un error al mostrar los helados.");
         }
     }
 
@@ -446,9 +528,11 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton borrarPosicion;
     private javax.swing.JButton devolverDinero;
     private javax.swing.JDialog devuelto;
+    private javax.swing.JDialog heladoDevuelto;
     private javax.swing.JButton introducirMonedas;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton pedirHelado;
     private javax.swing.JButton posicionCero;
     private javax.swing.JButton posicionCinco;
     private javax.swing.JButton posicionCuatro;
@@ -460,6 +544,8 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton posicionTres;
     private javax.swing.JButton posicionUno;
     private javax.swing.JTable tablaHelados;
+    private javax.swing.JLabel txtError;
+    private javax.swing.JLabel txtHelado;
     private javax.swing.JLabel txtUser;
     private javax.swing.JTextField verMonedero;
     private javax.swing.JTextField verPosicion;
