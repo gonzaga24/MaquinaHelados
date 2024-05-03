@@ -158,7 +158,7 @@ public class Exec extends javax.swing.JFrame {
         // TODO hacer que la ventana actualice el monedero en tiempo real:
         DialogMonedas dm = new DialogMonedas(this, true);
         dm.setVisible(true);
-        mh = dm.getAux();
+        mh.setMonedero(mh.getMonedero() + dm.getAux().getMonedero());
         verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
     }//GEN-LAST:event_introducirMonedasActionPerformed
 
