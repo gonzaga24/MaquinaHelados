@@ -9,6 +9,7 @@ import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotEnoughMoneyException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotValidPositionException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.QuantityExceededException;
+import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,6 +25,24 @@ public class Exec extends javax.swing.JFrame {
      */
     public Exec() {
         initComponents();
+        tablaHelados.getTableHeader().setDefaultRenderer(new Utils.CentrarTitulosColumnas());
+        for (int i = 0; i < tablaHelados.getColumnCount(); i++) {
+            tablaHelados.getColumnModel().getColumn(i).setCellRenderer(new Utils.CentrarTexto());
+        }
+    }
+
+    private class CentrarTexto extends Utils.CentrarTexto {
+
+        public CentrarTexto() {
+            super();
+        }
+    }
+
+    private class CentrarTitulosColumnas extends Utils.CentrarTitulosColumnas {
+
+        public CentrarTitulosColumnas() {
+            super();
+        }
     }
 
     /**
@@ -160,11 +179,13 @@ public class Exec extends javax.swing.JFrame {
             }
         });
         tablaHelados.setColumnSelectionAllowed(true);
+        tablaHelados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaHelados.setShowGrid(false);
+        tablaHelados.setShowHorizontalLines(true);
         tablaHelados.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(tablaHelados);
         tablaHelados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        verPosicion.setBackground(new java.awt.Color(255, 255, 255));
         verPosicion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         verPosicion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -278,7 +299,7 @@ public class Exec extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
+                .addContainerGap(212, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(verMonedero, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,7 +342,7 @@ public class Exec extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(pedirHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(164, 164, 164)))
-                .addGap(28, 28, 28))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -490,6 +511,7 @@ public class Exec extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -544,14 +566,17 @@ public class Exec extends javax.swing.JFrame {
 
     public void rellenarTablaHelados() {
         ArrayList<Helado> listaHelados;
+
         DefaultTableModel m = (DefaultTableModel) this.tablaHelados.getModel();
         m.setRowCount(0);
         try {
+
             listaHelados = mh.getHelados();
             for (Helado h : listaHelados) {
                 Object[] tmp = {h.getPosicion(), h.getSabor(), h.getTipo(), h.getPrecio(), h.getCantidad()};
                 m.addRow(tmp);
             }
+
         } catch (Exception ex) {
             txtError.setText("Ha ocurrido un error al mostrar los helados.");
             txtError.setVisible(true);

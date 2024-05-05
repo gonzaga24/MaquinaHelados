@@ -6,6 +6,7 @@ package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
 import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
 import com.ejerciciosTrimestre.maquinaHeladosV7.biz.Venta;
+import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +24,20 @@ public class DialogInformeVentas extends javax.swing.JDialog {
         super(parent, modal);
         aux = new MaquinaHelados();
         initComponents();
+    }
+
+    private class CentrarTexto extends Utils.CentrarTexto {
+
+        public CentrarTexto() {
+            super();
+        }
+    }
+
+    private class CentrarTitulosColumnas extends Utils.CentrarTitulosColumnas {
+
+        public CentrarTitulosColumnas() {
+            super();
+        }
     }
 
     /**
@@ -109,6 +124,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
+        tablaVentas.getTableHeader().setDefaultRenderer(new Utils.CentrarTitulosColumnas());
         txtError.setVisible(false);
         ArrayList<Venta> listaVentas;
         DefaultTableModel m = (DefaultTableModel) this.tablaVentas.getModel();
@@ -119,8 +135,12 @@ public class DialogInformeVentas extends javax.swing.JDialog {
                 Object[] tmp = {v.getFechaHora(), v.getPosicion(), v.getNombre(), v.getPrecio(), v.getTipo(), v.getCantidad()};
                 m.addRow(tmp);
             }
+            for (int i = 0; i < m.getColumnCount(); i++) {
+                tablaVentas.getColumnModel().getColumn(i).setCellRenderer(new Utils.CentrarTexto());
+            }
+
         } catch (Exception ex) {
-           txtError.setText("Ha ocurrido un error al mostrar las ventas");
+            txtError.setText("Ha ocurrido un error al mostrar las ventas");
             txtError.setVisible(true);
         }
     }//GEN-LAST:event_formComponentShown
@@ -129,6 +149,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
