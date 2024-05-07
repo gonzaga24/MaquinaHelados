@@ -110,7 +110,7 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
             pstm.setString(2, helado.getSabor());
             pstm.setDouble(3, helado.getPrecio());
             pstm.setString(4, helado.getTipo());
-            pstm.setInt(5, helado.getCantidad());
+            pstm.setInt(5, 5);
             registrosAfectados = pstm.executeUpdate();
 
         } catch (Exception e) {
