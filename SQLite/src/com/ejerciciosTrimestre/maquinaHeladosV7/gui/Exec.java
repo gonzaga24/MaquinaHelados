@@ -72,6 +72,11 @@ public class Exec extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         informeVentas = new javax.swing.JMenuItem();
+        jMenuReponerHelado = new javax.swing.JMenuItem();
+        jMenuEliminarHelado = new javax.swing.JMenuItem();
+        jMenuInsertarHelado = new javax.swing.JMenuItem();
+        jMenuHeladoMasVendido = new javax.swing.JMenuItem();
+        jMenuHeladoMenosVendido = new javax.swing.JMenuItem();
 
         devuelto.setResizable(false);
 
@@ -305,6 +310,26 @@ public class Exec extends javax.swing.JFrame {
         });
         jMenu1.add(informeVentas);
 
+        jMenuReponerHelado.setText("Reponer helado");
+        jMenuReponerHelado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuReponerHeladoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuReponerHelado);
+
+        jMenuEliminarHelado.setText("Eliminar helado");
+        jMenu1.add(jMenuEliminarHelado);
+
+        jMenuInsertarHelado.setText("Insertar nuevo helado");
+        jMenu1.add(jMenuInsertarHelado);
+
+        jMenuHeladoMasVendido.setText("Helado mas vendido");
+        jMenu1.add(jMenuHeladoMasVendido);
+
+        jMenuHeladoMenosVendido.setText("Helado menos vendido");
+        jMenu1.add(jMenuHeladoMenosVendido);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -392,7 +417,7 @@ public class Exec extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrarPosicion)
                             .addComponent(verPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         pack();
@@ -521,6 +546,10 @@ public class Exec extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void jMenuReponerHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuReponerHeladoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuReponerHeladoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -594,6 +623,11 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton introducirMonedas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuEliminarHelado;
+    private javax.swing.JMenuItem jMenuHeladoMasVendido;
+    private javax.swing.JMenuItem jMenuHeladoMenosVendido;
+    private javax.swing.JMenuItem jMenuInsertarHelado;
+    private javax.swing.JMenuItem jMenuReponerHelado;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel mensajeError;
