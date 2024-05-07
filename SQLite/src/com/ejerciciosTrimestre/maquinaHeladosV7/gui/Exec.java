@@ -11,6 +11,7 @@ import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotValidPositionExcep
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.QuantityExceededException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,6 +30,7 @@ public class Exec extends javax.swing.JFrame {
         for (int i = 0; i < tablaHelados.getColumnCount(); i++) {
             tablaHelados.getColumnModel().getColumn(i).setCellRenderer(new Utils.CentrarTexto());
         }
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     }
 
 
@@ -120,6 +122,11 @@ public class Exec extends javax.swing.JFrame {
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -493,6 +500,20 @@ public class Exec extends javax.swing.JFrame {
         DialogInformeVentas di = new DialogInformeVentas(this, true);
         di.setVisible(true);
     }//GEN-LAST:event_informeVentasActionPerformed
+
+    private void cerrar(){
+        String boton[] = {"Recoger Dinero"};
+        int eleccion = JOptionPane.showOptionDialog(this, "No se olvide recoger su vuelta", "Titulo",0,0, null, boton, this);
+        if(eleccion==JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+    }
+    
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+        cerrar();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
