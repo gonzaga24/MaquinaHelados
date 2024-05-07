@@ -161,7 +161,7 @@ public class Exec extends javax.swing.JFrame {
             }
         });
 
-        devolverDinero.setText("D");
+        devolverDinero.setText("Devolucion");
         devolverDinero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 devolverDineroActionPerformed(evt);
@@ -224,7 +224,7 @@ public class Exec extends javax.swing.JFrame {
             }
         });
 
-        borrarPosicion.setText("D");
+        borrarPosicion.setText("Borrar");
         borrarPosicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarPosicionActionPerformed(evt);
@@ -405,9 +405,12 @@ public class Exec extends javax.swing.JFrame {
         DialogMonedas dm = new DialogMonedas(this, true);
         dm.setVisible(true);
         mh.setMonedero(mh.getMonedero() + dm.getAux().getMonedero());
-        verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+        //verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+        verMonedero.getActionListeners();
     }//GEN-LAST:event_introducirMonedasActionPerformed
 
+    
+    
     private void devolverDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverDineroActionPerformed
         // TODO add your handling code here:
         devuelto.setVisible(true);
@@ -547,22 +550,6 @@ public class Exec extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Exec.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
