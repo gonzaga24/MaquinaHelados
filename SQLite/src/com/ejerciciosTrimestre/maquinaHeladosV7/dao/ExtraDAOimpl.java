@@ -173,4 +173,23 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
         con.close();
     }
 
+    @Override
+    public Helado getHeladoMenosVendido() throws Exception {
+        Helado heladoMenosVendido = null;
+        String sql = "SELECT nombre, precio, tipo, SUM(cantidad) AS cantidad, posicion FROM venta GROUP BY nombre ORDER BY SUM(cantidad) LIMIT 1";
+
+        try (PreparedStatement pstm = con.prepareStatement(sql);) {
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                heladoMenosVendido = new Helado(rs.getString("nombre"), rs.getDouble("precio"), rs.getString("tipo"), rs.getInt("cantidad"), rs.getString("posicion"));
+            } catch (Exception e) {
+                throw e;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return heladoMenosVendido;
+    }
+
 }

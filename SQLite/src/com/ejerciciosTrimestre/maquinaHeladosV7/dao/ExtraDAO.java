@@ -27,4 +27,6 @@ public interface ExtraDAO {
     public double getDineroRecaudado() throws Exception;
 
     public Helado getHeladoMasVendido() throws Exception;
+
+    public Helado getHeladoMenosVendido() throws Exception;
 }
