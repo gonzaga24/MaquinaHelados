@@ -4,6 +4,9 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
+import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
+import java.awt.Frame;
+
 /**
  *
  * @author dev
@@ -18,6 +21,16 @@ public class DialogCambioFinal extends javax.swing.JDialog {
         initComponents();
     }
 
+    public DialogCambioFinal(MaquinaHelados aux, Frame owner, boolean modal) {
+        super(owner, modal);
+        this.aux = aux;
+        initComponents();
+    }
+
+    public MaquinaHelados getAux() {
+        return aux;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +40,41 @@ public class DialogCambioFinal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        devolverCambio = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
+        devolverCambio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        devolverCambio.setText("No olvide su dinero: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(devolverCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(devolverCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        devolverCambio.setText(devolverCambio.getText() + aux.getMonedero() + "€");
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -86,5 +119,7 @@ public class DialogCambioFinal extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel devolverCambio;
     // End of variables declaration//GEN-END:variables
+    private MaquinaHelados aux;
 }

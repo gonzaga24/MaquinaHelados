@@ -26,13 +26,14 @@ public class Exec extends javax.swing.JFrame {
      */
     public Exec() {
         initComponents();
+        //Centra los textos
         tablaHelados.getTableHeader().setDefaultRenderer(new Utils.CentrarTitulosColumnas());
         for (int i = 0; i < tablaHelados.getColumnCount(); i++) {
             tablaHelados.getColumnModel().getColumn(i).setCellRenderer(new Utils.CentrarTexto());
         }
+        //No permite cerrar la ventana
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +48,8 @@ public class Exec extends javax.swing.JFrame {
         txtUser = new javax.swing.JLabel();
         heladoDevuelto = new javax.swing.JDialog();
         txtHelado = new javax.swing.JLabel();
+        ventanaError = new javax.swing.JDialog();
+        mensajeError = new javax.swing.JLabel();
         introducirMonedas = new javax.swing.JButton();
         devolverDinero = new javax.swing.JButton();
         verMonedero = new javax.swing.JTextField();
@@ -66,7 +69,6 @@ public class Exec extends javax.swing.JFrame {
         posicionCero = new javax.swing.JButton();
         posicionUno = new javax.swing.JButton();
         pedirHelado = new javax.swing.JButton();
-        txtError = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         informeVentas = new javax.swing.JMenuItem();
@@ -116,6 +118,27 @@ public class Exec extends javax.swing.JFrame {
         );
 
         heladoDevuelto.setSize(700, 200);
+
+        mensajeError.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout ventanaErrorLayout = new javax.swing.GroupLayout(ventanaError.getContentPane());
+        ventanaError.getContentPane().setLayout(ventanaErrorLayout);
+        ventanaErrorLayout.setHorizontalGroup(
+            ventanaErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventanaErrorLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(mensajeError)
+                .addContainerGap(372, Short.MAX_VALUE))
+        );
+        ventanaErrorLayout.setVerticalGroup(
+            ventanaErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventanaErrorLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(mensajeError)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+
+        ventanaError.setSize(500, 200);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -272,8 +295,6 @@ public class Exec extends javax.swing.JFrame {
             }
         });
 
-        txtError.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-
         jMenu1.setText("Menu");
 
         informeVentas.setText("Informe de ventas");
@@ -331,8 +352,7 @@ public class Exec extends javax.swing.JFrame {
                                     .addComponent(posicionCuatro))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(pedirHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(164, 164, 164)))
@@ -373,12 +393,8 @@ public class Exec extends javax.swing.JFrame {
                             .addComponent(verPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(borrarPosicion))
                         .addGap(22, 22, 22)))
-                .addGap(31, 31, 31)
-                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
-
-        txtError.setVisible(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -479,18 +495,10 @@ public class Exec extends javax.swing.JFrame {
             mh.setMonedero(0);
             verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
             rellenarTablaHelados();
-        } catch (QuantityExceededException ex) {
-            txtError.setText(ex.getMessage());
-            txtError.setVisible(true);
-        } catch (NotValidPositionException ex) {
-            txtError.setText(ex.getMessage());
-            txtError.setVisible(true);
-        } catch (NotEnoughMoneyException ex) {
-            txtError.setText(ex.getMessage());
-            txtError.setVisible(true);
+        } catch (QuantityExceededException | NotValidPositionException | NotEnoughMoneyException ex) {
+            ventanaError(ex.getMessage());
         } catch (Exception ex) {
-            txtError.setText("Ha ocurrido un error al pedir el helado.");
-            txtError.setVisible(true);
+            ventanaError("Ha ocurrido un error al pedir el helado.");
         }
 
     }//GEN-LAST:event_pedirHeladoActionPerformed
@@ -501,18 +509,15 @@ public class Exec extends javax.swing.JFrame {
         di.setVisible(true);
     }//GEN-LAST:event_informeVentasActionPerformed
 
-    private void cerrar(){
-        String boton[] = {"Recoger Dinero"};
-        int eleccion = JOptionPane.showOptionDialog(this, "No se olvide recoger su vuelta", "Titulo",0,0, null, boton, this);
-        if(eleccion==JOptionPane.YES_OPTION){
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        //cerrar();
+        if (mh.getMonedero() > 0) {
+            DialogCambioFinal dcf = new DialogCambioFinal(mh, this, true);
+            dcf.setVisible(true);
+            System.exit(0);
+        } else {
             System.exit(0);
         }
-    }
-    
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-
-        cerrar();
-        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosing
 
     /**
@@ -586,9 +591,13 @@ public class Exec extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            txtError.setText("Ha ocurrido un error al mostrar los helados.");
-            txtError.setVisible(true);
+            ventanaError("Ha ocurrido un error al mostrar los helados.");
         }
+    }
+
+    public void ventanaError(String texto) {
+        ventanaError.setVisible(true);
+        mensajeError.setText(texto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -602,6 +611,7 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel mensajeError;
     private javax.swing.JButton pedirHelado;
     private javax.swing.JButton posicionCero;
     private javax.swing.JButton posicionCinco;
@@ -614,9 +624,9 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton posicionTres;
     private javax.swing.JButton posicionUno;
     private javax.swing.JTable tablaHelados;
-    private javax.swing.JLabel txtError;
     private javax.swing.JLabel txtHelado;
     private javax.swing.JLabel txtUser;
+    private javax.swing.JDialog ventanaError;
     private javax.swing.JTextField verMonedero;
     private javax.swing.JTextField verPosicion;
     // End of variables declaration//GEN-END:variables
