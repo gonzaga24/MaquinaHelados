@@ -31,19 +31,6 @@ public class Exec extends javax.swing.JFrame {
         }
     }
 
-    private class CentrarTexto extends Utils.CentrarTexto {
-
-        public CentrarTexto() {
-            super();
-        }
-    }
-
-    private class CentrarTitulosColumnas extends Utils.CentrarTitulosColumnas {
-
-        public CentrarTitulosColumnas() {
-            super();
-        }
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
