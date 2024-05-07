@@ -405,8 +405,7 @@ public class Exec extends javax.swing.JFrame {
         DialogMonedas dm = new DialogMonedas(this, true);
         dm.setVisible(true);
         mh.setMonedero(mh.getMonedero() + dm.getAux().getMonedero());
-        //verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
-        verMonedero.getActionListeners();
+        verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
     }//GEN-LAST:event_introducirMonedasActionPerformed
 
     
