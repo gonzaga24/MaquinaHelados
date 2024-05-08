@@ -92,6 +92,16 @@ public class MaquinaHelados {
         return h;
     }
 
+    public double getDineroRecaudado() throws Exception {
+        double dineroRecaudado = 0;
+        try (ExtraDAOimpl edi = new ExtraDAOimpl();){
+            dineroRecaudado = edi.getDineroRecaudado();
+        }catch (Exception e){
+            throw e;
+        }
+        return dineroRecaudado;
+    }
+    
     public Helado getHeladoMasVendido() throws Exception {
         Helado h = null;
         try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
