@@ -36,6 +36,17 @@ public class MaquinaHelados {
         }
         return txt;
     }
+    
+    public ArrayList<Helado> getHeladosOrderByPrecio() throws Exception {
+        ArrayList<Helado> listaHelados;
+        try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
+            listaHelados = edi.getHeladosOrderByPrecio();
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return listaHelados;
+    }
 
     public ArrayList<Helado> getHelados() throws Exception {
         ArrayList<Helado> listaHelados;

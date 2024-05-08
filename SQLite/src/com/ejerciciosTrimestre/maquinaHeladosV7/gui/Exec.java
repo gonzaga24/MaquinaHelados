@@ -71,6 +71,7 @@ public class Exec extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         informeVentas = new javax.swing.JMenuItem();
+        heladosOrderPrecio = new javax.swing.JMenuItem();
         jMenuReponerHelado = new javax.swing.JMenuItem();
         jMenuEliminarHelado = new javax.swing.JMenuItem();
         jMenuInsertarHelado = new javax.swing.JMenuItem();
@@ -308,6 +309,14 @@ public class Exec extends javax.swing.JFrame {
             }
         });
         jMenu1.add(informeVentas);
+
+        heladosOrderPrecio.setText("Ver helados ordenados por precio");
+        heladosOrderPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                heladosOrderPrecioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(heladosOrderPrecio);
 
         jMenuReponerHelado.setText("Reponer helado");
         jMenuReponerHelado.addActionListener(new java.awt.event.ActionListener() {
@@ -549,6 +558,25 @@ public class Exec extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuReponerHeladoActionPerformed
 
+    private void heladosOrderPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heladosOrderPrecioActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Helado> listaHelados;
+
+        DefaultTableModel m = (DefaultTableModel) this.tablaHelados.getModel();
+        m.setRowCount(0);
+        try {
+
+            listaHelados = mh.getHeladosOrderByPrecio();
+            for (Helado h : listaHelados) {
+                Object[] tmp = {h.getPosicion(), h.getSabor(), h.getTipo(), h.getPrecio(), h.getCantidad()};
+                m.addRow(tmp);
+            }
+
+        } catch (Exception ex) {
+            ventanaError("Ha ocurrido un error al mostrar los helados.");
+        }
+    }//GEN-LAST:event_heladosOrderPrecioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -618,6 +646,7 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton devolverDinero;
     private javax.swing.JDialog devuelto;
     private javax.swing.JDialog heladoDevuelto;
+    private javax.swing.JMenuItem heladosOrderPrecio;
     private javax.swing.JMenuItem informeVentas;
     private javax.swing.JButton introducirMonedas;
     private javax.swing.JMenu jMenu1;
