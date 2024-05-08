@@ -263,9 +263,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
 
     private void reponerHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reponerHeladoActionPerformed
         // TODO add your handling code here:
-        //Controlar las excepciones
-        //Reponer el helado por la posición
-        //Si no salta una excepción abriremos el Dialog de confirmación
+        //Al darle a reponer el helado se le pedira una confirmación:
         //Si el usuario esta seguro se repondra el stock del helado
         //Si el usuario no esta seguro volvera a la ventana de pedir la posición
     }//GEN-LAST:event_reponerHeladoActionPerformed
@@ -335,6 +333,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
     private void botonSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiActionPerformed
         // TODO add your handling code here:
         //Reponer el helado y volver a la venta principal
+        //Controlar excepciones
     }//GEN-LAST:event_botonSiActionPerformed
 
     private void botonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNoActionPerformed
