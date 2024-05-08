@@ -1,5 +1,6 @@
 package com.ejerciciosTrimestre.maquinaHeladosV7.biz;
 
+import com.ejerciciosTrimestre.maquinaHeladosV7.dao.ExtraDAOimpl;
 import com.ejerciciosTrimestre.maquinaHeladosV7.dao.HeladoDAOimpl;
 import com.ejerciciosTrimestre.maquinaHeladosV7.dao.VentaDAOimpl;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotEnoughMoneyException;
@@ -14,15 +15,15 @@ import java.util.ArrayList;
  *
  */
 public class MaquinaHelados {
-    
+
     private double monedero;
     private double ingresos;
-    
+
     public MaquinaHelados() {
         this.monedero = 0;
         this.ingresos = 0;
     }
-    
+
     public String mostrarHelados() throws Exception {
         String txt = "";
         try (HeladoDAOimpl hdi = new HeladoDAOimpl();) {
@@ -35,36 +36,36 @@ public class MaquinaHelados {
         }
         return txt;
     }
-    
+
     public ArrayList<Helado> getHelados() throws Exception {
-        ArrayList<Helado> listaHelados; 
+        ArrayList<Helado> listaHelados;
         try (HeladoDAOimpl hdi = new HeladoDAOimpl();) {
             listaHelados = hdi.getHelados();
         } catch (Exception e) {
             throw e;
         }
-        
+
         return listaHelados;
     }
-    
+
     public ArrayList<Venta> getVentas() throws Exception {
-         ArrayList<Venta> listaVentas; 
+        ArrayList<Venta> listaVentas;
         try (VentaDAOimpl vdi = new VentaDAOimpl();) {
             listaVentas = vdi.getVentas();
         } catch (Exception e) {
             throw e;
         }
-        
+
         return listaVentas;
     }
-    
+
     public Helado pedirHelado(String posicion) throws NotEnoughMoneyException, QuantityExceededException, NotValidPositionException, Exception {
         Helado h;
         try (VentaDAOimpl vdi = new VentaDAOimpl(); HeladoDAOimpl hdi = new HeladoDAOimpl();) {
             //Si la posición tiene dos valores y el monedero es mayor que el precio le damos el helado.
             //Si la posición no existe lanzar "NotValidPositionException"
             h = hdi.getHeladoByPosicion(posicion);
-            
+
             if (h == null) {
                 throw new NotValidPositionException("La posición introducida no es correcta.");
             } else //Si no tiene suficiente dinero lanzar "NotEnoughMoneyException"
@@ -90,32 +91,57 @@ public class MaquinaHelados {
         }
         return h;
     }
-      public Helado getHeladoMasVendido() throws Exception {
-          //falta terminar el metodo subido solo para q este la excepcion
+
+    public Helado getHeladoMasVendido() throws Exception {
         Helado h = null;
-        if(h == null){
-            throw new NotEnoughtSellsException("No se ha vendido ningun helado");
+        try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
+            h = edi.getHeladoMasVendido();
+            if (h == null) {//cuando no hay ventas se muestra esto
+                throw new NotEnoughtSellsException("No se ha vendido ningun helado");
+            } else {
+                return h;
+            }
+
+        } catch (Exception e) {
+            throw e;
         }
-        return h;
+
     }
+
+    public Helado getHeladoMenosVendido() throws Exception {
+        Helado h = null;
+        try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
+            h = edi.getHeladoMenosVendido();
+            if (h == null) {//cuando no hay ventas se muestra esto
+                throw new NotEnoughtSellsException("No se ha vendido ningun helado");
+            } else {
+                return h;
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+    }
+    
     public boolean apagarMaquina() {
         return false;
     }
-    
+
     public double getMonedero() {
         return monedero;
     }
-    
+
     public void setMonedero(double monedero) {
         this.monedero = monedero;
     }
-    
+
     public double getIngresos() {
         return ingresos;
     }
-    
+
     public void setIngresos(double ingresos) {
         this.ingresos = ingresos;
     }
-    
+
 }
