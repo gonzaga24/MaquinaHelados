@@ -123,7 +123,7 @@ public class MaquinaHelados {
         }
 
     }
-    
+
     public boolean apagarMaquina() {
         return false;
     }
