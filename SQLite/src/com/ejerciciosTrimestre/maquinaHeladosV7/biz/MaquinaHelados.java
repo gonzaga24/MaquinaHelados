@@ -3,6 +3,7 @@ package com.ejerciciosTrimestre.maquinaHeladosV7.biz;
 import com.ejerciciosTrimestre.maquinaHeladosV7.dao.HeladoDAOimpl;
 import com.ejerciciosTrimestre.maquinaHeladosV7.dao.VentaDAOimpl;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotEnoughMoneyException;
+import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotEnoughtSellsException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotValidPositionException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.QuantityExceededException;
 import java.util.ArrayList;
@@ -89,7 +90,14 @@ public class MaquinaHelados {
         }
         return h;
     }
-    
+      public Helado getHeladoMasVendido() throws Exception {
+          //falta terminar el metodo subido solo para q este la excepcion
+        Helado h = null;
+        if(h == null){
+            throw new NotEnoughtSellsException("No se ha vendido ningun helado");
+        }
+        return h;
+    }
     public boolean apagarMaquina() {
         return false;
     }
