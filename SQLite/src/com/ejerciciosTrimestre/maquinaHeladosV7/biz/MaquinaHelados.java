@@ -145,6 +145,14 @@ public class MaquinaHelados {
 
     }
 
+    public void reponerHelado(String posicion) throws Exception {
+        try(ExtraDAOimpl edi = new ExtraDAOimpl();) {
+            edi.restockHeladoByPosicion(posicion);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
     public boolean apagarMaquina() {
         return false;
     }
@@ -164,5 +172,6 @@ public class MaquinaHelados {
     public void setIngresos(double ingresos) {
         this.ingresos = ingresos;
     }
+
 
 }

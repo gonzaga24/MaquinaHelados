@@ -4,6 +4,7 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
+
 /**
  *
  * @author Silvana
@@ -15,6 +16,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
      */
     public DialogReponerHelado(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.padre = (Exec) parent;
         initComponents();
     }
 
@@ -31,6 +33,8 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         textoConfirmación = new javax.swing.JLabel();
         botonSi = new javax.swing.JButton();
         botonNo = new javax.swing.JButton();
+        ventanaError = new javax.swing.JDialog();
+        mensajeError = new javax.swing.JLabel();
         textoAlUsuario = new javax.swing.JLabel();
         posicionIntroducida = new javax.swing.JTextField();
         reponerHelado = new javax.swing.JButton();
@@ -45,6 +49,10 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         posicionDos = new javax.swing.JButton();
         posicionTres = new javax.swing.JButton();
         borrarPosicion = new javax.swing.JButton();
+
+        confirmaciónHelado.setAlwaysOnTop(true);
+        confirmaciónHelado.setModal(true);
+        confirmaciónHelado.setResizable(false);
 
         textoConfirmación.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoConfirmación.setText("¿Esta seguro de que quiere reponer el helado?");
@@ -70,13 +78,13 @@ public class DialogReponerHelado extends javax.swing.JDialog {
             .addGroup(confirmaciónHeladoLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(botonSi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
                 .addComponent(botonNo)
                 .addGap(70, 70, 70))
             .addGroup(confirmaciónHeladoLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(textoConfirmación, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(textoConfirmación, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         confirmaciónHeladoLayout.setVerticalGroup(
             confirmaciónHeladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,8 +95,31 @@ public class DialogReponerHelado extends javax.swing.JDialog {
                 .addGroup(confirmaciónHeladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonSi)
                     .addComponent(botonNo))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        confirmaciónHelado.setSize(400, 200);
+
+        mensajeError.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout ventanaErrorLayout = new javax.swing.GroupLayout(ventanaError.getContentPane());
+        ventanaError.getContentPane().setLayout(ventanaErrorLayout);
+        ventanaErrorLayout.setHorizontalGroup(
+            ventanaErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventanaErrorLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(mensajeError)
+                .addContainerGap(372, Short.MAX_VALUE))
+        );
+        ventanaErrorLayout.setVerticalGroup(
+            ventanaErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventanaErrorLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(mensajeError)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+
+        ventanaError.setSize(500, 200);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -266,6 +297,9 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         //Al darle a reponer el helado se le pedira una confirmación:
         //Si el usuario esta seguro se repondra el stock del helado
         //Si el usuario no esta seguro volvera a la ventana de pedir la posición
+        if (!posicionIntroducida.getText().isEmpty()) {
+            confirmaciónHelado.setVisible(true);
+        }
     }//GEN-LAST:event_reponerHeladoActionPerformed
 
     private void posicionCuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCuatroActionPerformed
@@ -331,14 +365,22 @@ public class DialogReponerHelado extends javax.swing.JDialog {
     }//GEN-LAST:event_posicionIntroducidaKeyTyped
 
     private void botonSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiActionPerformed
-        // TODO add your handling code here:
-        //Reponer el helado y volver a la venta principal
-        //Controlar excepciones
+        try {
+            // TODO add your handling code here:
+            //Reponer el helado y volver a la venta principal
+            this.padre.getMh().reponerHelado(posicionIntroducida.getText());
+            confirmaciónHelado.dispose();
+            this.dispose();
+        } catch (Exception ex) {
+            ventanaError(ex.getMessage());
+        }
+        
     }//GEN-LAST:event_botonSiActionPerformed
 
     private void botonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNoActionPerformed
         // TODO add your handling code here:
         //Volver atras
+        confirmaciónHelado.dispose();
     }//GEN-LAST:event_botonNoActionPerformed
 
     /**
@@ -388,12 +430,19 @@ public class DialogReponerHelado extends javax.swing.JDialog {
             posicionIntroducida.setText(posicionIntroducida.getText() + posicion);
         }
     }
-
+    
+    public void ventanaError(String texto) {
+        ventanaError.setVisible(true);
+        mensajeError.setText(texto);
+    }
+    
+    private Exec padre;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton borrarPosicion;
     private javax.swing.JButton botonNo;
     private javax.swing.JButton botonSi;
     private javax.swing.JDialog confirmaciónHelado;
+    private javax.swing.JLabel mensajeError;
     private javax.swing.JButton posicionCero;
     private javax.swing.JButton posicionCinco;
     private javax.swing.JButton posicionCuatro;
@@ -408,5 +457,6 @@ public class DialogReponerHelado extends javax.swing.JDialog {
     private javax.swing.JButton reponerHelado;
     private javax.swing.JLabel textoAlUsuario;
     private javax.swing.JLabel textoConfirmación;
+    private javax.swing.JDialog ventanaError;
     // End of variables declaration//GEN-END:variables
 }

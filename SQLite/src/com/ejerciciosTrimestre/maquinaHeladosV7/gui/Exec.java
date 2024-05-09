@@ -556,6 +556,8 @@ public class Exec extends javax.swing.JFrame {
 
     private void jMenuReponerHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuReponerHeladoActionPerformed
         // TODO add your handling code here:
+        DialogReponerHelado drh = new DialogReponerHelado(this, true);
+        drh.setVisible(true);
     }//GEN-LAST:event_jMenuReponerHeladoActionPerformed
 
     private void heladosOrderPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heladosOrderPrecioActionPerformed
@@ -678,4 +680,8 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JTextField verPosicion;
     // End of variables declaration//GEN-END:variables
     private MaquinaHelados mh = new MaquinaHelados();
+
+    public MaquinaHelados getMh() {
+        return mh;
+    }
 }
