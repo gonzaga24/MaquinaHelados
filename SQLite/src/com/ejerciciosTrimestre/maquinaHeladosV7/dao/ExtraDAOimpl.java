@@ -48,7 +48,7 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
     @Override
     public ArrayList<Helado> getHeladosOrderByPrecio() throws Exception {
         ArrayList<Helado> ListaHeladosOrdenada = new ArrayList<>();
-        String sql = "SELECT nombre, precio, tipo, cantidad, posicion FROM helado ORDER BY Precio";
+        String sql = "SELECT nombre, precio, tipo, cantidad, posicion FROM helado ORDER BY Precio DESC";
 
         try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
             while (rs.next()) {
