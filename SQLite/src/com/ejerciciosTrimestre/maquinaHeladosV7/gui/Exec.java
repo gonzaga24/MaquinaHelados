@@ -436,8 +436,7 @@ public class Exec extends javax.swing.JFrame {
         // TODO hacer que la ventana actualice el monedero en tiempo real:
         DialogMonedas dm = new DialogMonedas(this, true);
         dm.setVisible(true);
-        mh.setMonedero(mh.getMonedero() + dm.getAux().getMonedero());
-        verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+        refreshVerMonedero();
     }//GEN-LAST:event_introducirMonedasActionPerformed
 
     
@@ -447,12 +446,12 @@ public class Exec extends javax.swing.JFrame {
         devuelto.setVisible(true);
         txtUser.setText("Su dinero le ha sido duevuelto " + Double.toString(mh.getMonedero()) + "€");
         mh.setMonedero(0);
-        verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+        refreshVerMonedero();
     }//GEN-LAST:event_devolverDineroActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+        refreshVerMonedero();
         rellenarTablaHelados();
     }//GEN-LAST:event_formComponentShown
 
@@ -527,7 +526,7 @@ public class Exec extends javax.swing.JFrame {
             heladoDevuelto.setVisible(true);
             txtHelado.setText("Puede recoger su helado sabor " + h.getSabor() + " de tipo " + h.getTipo() + " Su cambio es: " + mh.getMonedero());
             mh.setMonedero(0);
-            verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+            refreshVerMonedero();
             rellenarTablaHelados();
         } catch (QuantityExceededException | NotValidPositionException | NotEnoughMoneyException ex) {
             ventanaError(ex.getMessage());
@@ -636,6 +635,10 @@ public class Exec extends javax.swing.JFrame {
         } catch (Exception ex) {
             ventanaError("Ha ocurrido un error al mostrar los helados.");
         }
+    }
+    
+    public void refreshVerMonedero() {
+        this.verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
     }
 
     public void ventanaError(String texto) {

@@ -4,7 +4,6 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
-import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
 import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
 
 /**
@@ -18,7 +17,7 @@ public class DialogMonedas extends javax.swing.JDialog {
      */
     public DialogMonedas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        aux = new MaquinaHelados();
+        this.padre = (Exec) parent;
         initComponents();
     }
 
@@ -45,6 +44,11 @@ public class DialogMonedas extends javax.swing.JDialog {
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(null);
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         verCantidadIntroducida.setEditable(false);
         verCantidadIntroducida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -199,6 +203,11 @@ public class DialogMonedas extends javax.swing.JDialog {
         sumarCantidad(2);
     }//GEN-LAST:event_dosEurosActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        this.verCantidadIntroducida.setText(Double.toString(padre.getMh().getMonedero()) + "€");
+    }//GEN-LAST:event_formComponentShown
+
     /**
      * @param args the command line arguments
      */
@@ -242,11 +251,13 @@ public class DialogMonedas extends javax.swing.JDialog {
     }
 
     public void sumarCantidad(double cantidad) {
-        cantidad += aux.getMonedero();
-        aux.setMonedero(Utils.redondearDecimales(cantidad));
-        verCantidadIntroducida.setText(Double.toString(aux.getMonedero()) + "€");
+        cantidad += padre.getMh().getMonedero();
+        padre.getMh().setMonedero(Utils.redondearDecimales(cantidad));
+        verCantidadIntroducida.setText(Double.toString(padre.getMh().getMonedero()) + "€");
+        padre.refreshVerMonedero();
     }
-
+    
+    private Exec padre;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cincoCentimos;
     private javax.swing.JButton cincuentaCentimos;
@@ -258,9 +269,4 @@ public class DialogMonedas extends javax.swing.JDialog {
     private javax.swing.JButton veinteCentimos;
     private javax.swing.JTextField verCantidadIntroducida;
     // End of variables declaration//GEN-END:variables
-    private MaquinaHelados aux;
-
-    public MaquinaHelados getAux() {
-        return aux;
-    }
 }
