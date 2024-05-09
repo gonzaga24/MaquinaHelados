@@ -33,8 +33,6 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         textoConfirmación = new javax.swing.JLabel();
         botonSi = new javax.swing.JButton();
         botonNo = new javax.swing.JButton();
-        ventanaError = new javax.swing.JDialog();
-        mensajeError = new javax.swing.JLabel();
         textoAlUsuario = new javax.swing.JLabel();
         posicionIntroducida = new javax.swing.JTextField();
         reponerHelado = new javax.swing.JButton();
@@ -99,27 +97,6 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         );
 
         confirmaciónHelado.setSize(400, 200);
-
-        mensajeError.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
-        javax.swing.GroupLayout ventanaErrorLayout = new javax.swing.GroupLayout(ventanaError.getContentPane());
-        ventanaError.getContentPane().setLayout(ventanaErrorLayout);
-        ventanaErrorLayout.setHorizontalGroup(
-            ventanaErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ventanaErrorLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(mensajeError)
-                .addContainerGap(372, Short.MAX_VALUE))
-        );
-        ventanaErrorLayout.setVerticalGroup(
-            ventanaErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ventanaErrorLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(mensajeError)
-                .addContainerGap(79, Short.MAX_VALUE))
-        );
-
-        ventanaError.setSize(500, 200);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -265,7 +242,6 @@ public class DialogReponerHelado extends javax.swing.JDialog {
                 .addComponent(textoAlUsuario)
                 .addGap(18, 18, 18)
                 .addComponent(posicionIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -284,7 +260,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(borrarPosicion)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(reponerHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -372,7 +348,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
             confirmaciónHelado.dispose();
             this.dispose();
         } catch (Exception ex) {
-            ventanaError(ex.getMessage());
+            padre.ventanaError(ex.getMessage());
         }
         
     }//GEN-LAST:event_botonSiActionPerformed
@@ -430,19 +406,13 @@ public class DialogReponerHelado extends javax.swing.JDialog {
             posicionIntroducida.setText(posicionIntroducida.getText() + posicion);
         }
     }
-    
-    public void ventanaError(String texto) {
-        ventanaError.setVisible(true);
-        mensajeError.setText(texto);
-    }
-    
+           
     private Exec padre;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton borrarPosicion;
     private javax.swing.JButton botonNo;
     private javax.swing.JButton botonSi;
     private javax.swing.JDialog confirmaciónHelado;
-    private javax.swing.JLabel mensajeError;
     private javax.swing.JButton posicionCero;
     private javax.swing.JButton posicionCinco;
     private javax.swing.JButton posicionCuatro;
@@ -457,6 +427,5 @@ public class DialogReponerHelado extends javax.swing.JDialog {
     private javax.swing.JButton reponerHelado;
     private javax.swing.JLabel textoAlUsuario;
     private javax.swing.JLabel textoConfirmación;
-    private javax.swing.JDialog ventanaError;
     // End of variables declaration//GEN-END:variables
 }

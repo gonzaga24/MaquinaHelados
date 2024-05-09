@@ -9,7 +9,6 @@ import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotEnoughMoneyException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotValidPositionException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.QuantityExceededException;
-import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,11 +24,6 @@ public class Exec extends javax.swing.JFrame {
      */
     public Exec() {
         initComponents();
-        //Centra los textos
-        tablaHelados.getTableHeader().setDefaultRenderer(new Utils.CentrarTitulosColumnas());
-        for (int i = 0; i < tablaHelados.getColumnCount(); i++) {
-            tablaHelados.getColumnModel().getColumn(i).setCellRenderer(new Utils.CentrarTexto());
-        }
         //No permite cerrar la ventana
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     }

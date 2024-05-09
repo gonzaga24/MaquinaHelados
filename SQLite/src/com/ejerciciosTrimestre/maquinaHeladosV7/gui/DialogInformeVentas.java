@@ -4,11 +4,11 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
-import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
 import com.ejerciciosTrimestre.maquinaHeladosV7.biz.Venta;
 import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
 import java.util.ArrayList;
-import javax.swing.JTable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,22 +22,8 @@ public class DialogInformeVentas extends javax.swing.JDialog {
      */
     public DialogInformeVentas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        aux = new MaquinaHelados();
+        this.padre = (Exec) parent;
         initComponents();
-    }
-
-    private class CentrarTexto extends Utils.CentrarTexto {
-
-        public CentrarTexto() {
-            super();
-        }
-    }
-
-    private class CentrarTitulosColumnas extends Utils.CentrarTitulosColumnas {
-
-        public CentrarTitulosColumnas() {
-            super();
-        }
     }
 
     /**
@@ -49,9 +35,43 @@ public class DialogInformeVentas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
+        ventanaIngresosTotales = new javax.swing.JDialog();
+        textoIngresosTotales = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVentas = new javax.swing.JTable();
         txtError = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuVentas = new javax.swing.JMenu();
+        verIngresosTotales = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
+
+        ventanaIngresosTotales.setAlwaysOnTop(true);
+        ventanaIngresosTotales.setAutoRequestFocus(false);
+        ventanaIngresosTotales.setModal(true);
+        ventanaIngresosTotales.setResizable(false);
+
+        textoIngresosTotales.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout ventanaIngresosTotalesLayout = new javax.swing.GroupLayout(ventanaIngresosTotales.getContentPane());
+        ventanaIngresosTotales.getContentPane().setLayout(ventanaIngresosTotalesLayout);
+        ventanaIngresosTotalesLayout.setHorizontalGroup(
+            ventanaIngresosTotalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventanaIngresosTotalesLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(textoIngresosTotales, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        ventanaIngresosTotalesLayout.setVerticalGroup(
+            ventanaIngresosTotalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventanaIngresosTotalesLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(textoIngresosTotales, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        ventanaIngresosTotales.setSize(400, 100);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -83,7 +103,10 @@ public class DialogInformeVentas extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tablaVentas.setColumnSelectionAllowed(true);
+        // Set the renderer for the first column to center the text
+        tablaVentas.setFillsViewportHeight(true);
+        tablaVentas.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        tablaVentas.setShowVerticalLines(true);
         tablaVentas.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaVentas);
         tablaVentas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -95,6 +118,21 @@ public class DialogInformeVentas extends javax.swing.JDialog {
             tablaVentas.getColumnModel().getColumn(4).setResizable(false);
             tablaVentas.getColumnModel().getColumn(5).setResizable(false);
         }
+        tablaVentas.getAccessibleContext().setAccessibleName("");
+
+        menuVentas.setText("Menú");
+
+        verIngresosTotales.setText("Ver ingresos totales");
+        verIngresosTotales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verIngresosTotalesActionPerformed(evt);
+            }
+        });
+        menuVentas.add(verIngresosTotales);
+
+        jMenuBar1.add(menuVentas);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,10 +151,10 @@ public class DialogInformeVentas extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
                 .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -124,26 +162,31 @@ public class DialogInformeVentas extends javax.swing.JDialog {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        tablaVentas.getTableHeader().setDefaultRenderer(new Utils.CentrarTitulosColumnas());
         txtError.setVisible(false);
         ArrayList<Venta> listaVentas;
         DefaultTableModel m = (DefaultTableModel) this.tablaVentas.getModel();
         m.setRowCount(0);
         try {
-            listaVentas = aux.getVentas();
+            listaVentas = padre.getMh().getVentas();
             for (Venta v : listaVentas) {
                 Object[] tmp = {v.getFechaHora(), v.getPosicion(), v.getNombre(), v.getPrecio(), v.getTipo(), v.getCantidad()};
                 m.addRow(tmp);
             }
-            for (int i = 0; i < m.getColumnCount(); i++) {
-                tablaVentas.getColumnModel().getColumn(i).setCellRenderer(new Utils.CentrarTexto());
-            }
-
         } catch (Exception ex) {
             txtError.setText("Ha ocurrido un error al mostrar las ventas");
             txtError.setVisible(true);
         }
     }//GEN-LAST:event_formComponentShown
+
+    private void verIngresosTotalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verIngresosTotalesActionPerformed
+        // TODO add your handling code here:
+        ventanaIngresosTotales.setVisible(true);
+        try {
+            textoIngresosTotales.setText("Los ingresos totales son: " + Double.toString(padre.getMh().getDineroRecaudado()) + "€");
+        } catch (Exception ex) {
+            padre.ventanaError(ex.getMessage());
+        }
+    }//GEN-LAST:event_verIngresosTotalesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,16 +230,20 @@ public class DialogInformeVentas extends javax.swing.JDialog {
             }
         });
     }
+   
+
+    private Exec padre;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu menuVentas;
     private javax.swing.JTable tablaVentas;
+    private javax.swing.JLabel textoIngresosTotales;
     private javax.swing.JLabel txtError;
+    private javax.swing.JDialog ventanaIngresosTotales;
+    private javax.swing.JMenuItem verIngresosTotales;
     // End of variables declaration//GEN-END:variables
-    private MaquinaHelados aux;
-
-    public JTable getTablaVentas() {
-        return tablaVentas;
-    }
 
 }
