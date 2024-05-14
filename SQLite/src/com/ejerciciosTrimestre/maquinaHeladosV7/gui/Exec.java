@@ -118,6 +118,8 @@ public class Exec extends javax.swing.JFrame {
 
         heladoDevuelto.setSize(700, 200);
 
+        ventanaError.setModal(true);
+
         mensajeError.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout ventanaErrorLayout = new javax.swing.GroupLayout(ventanaError.getContentPane());
