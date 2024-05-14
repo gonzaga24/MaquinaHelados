@@ -7,8 +7,6 @@ package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 import com.ejerciciosTrimestre.maquinaHeladosV7.biz.Venta;
 import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -173,18 +171,17 @@ public class DialogInformeVentas extends javax.swing.JDialog {
                 m.addRow(tmp);
             }
         } catch (Exception ex) {
-            txtError.setText("Ha ocurrido un error al mostrar las ventas");
-            txtError.setVisible(true);
+            this.padre.ventanaError("Ha ocurrido un error al mostrar las ventas");
         }
     }//GEN-LAST:event_formComponentShown
 
     private void verIngresosTotalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verIngresosTotalesActionPerformed
         // TODO add your handling code here:
-        ventanaIngresosTotales.setVisible(true);
         try {
-            textoIngresosTotales.setText("Los ingresos totales son: " + Double.toString(padre.getMh().getDineroRecaudado()) + "€");
+            textoIngresosTotales.setText("Los ingresos totales son: " + Double.toString(Utils.redondearDecimales(padre.getMh().getDineroRecaudado())) + "€");
+            ventanaIngresosTotales.setVisible(true);
         } catch (Exception ex) {
-            padre.ventanaError(ex.getMessage());
+            padre.ventanaError(ex.toString());
         }
     }//GEN-LAST:event_verIngresosTotalesActionPerformed
 
@@ -230,7 +227,6 @@ public class DialogInformeVentas extends javax.swing.JDialog {
             }
         });
     }
-   
 
     private Exec padre;
 

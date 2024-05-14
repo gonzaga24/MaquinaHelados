@@ -138,7 +138,7 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
     @Override
     public double getDineroRecaudado() throws Exception {
         double dineroRecaudado = 0.0;
-        String sql = "SELECT SUM(precio) AS ganancias FROM venta GROUP BY nombre";
+        String sql = "SELECT SUM(precio) AS ganancias FROM venta";
         try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
             if (rs.next()) {
                 dineroRecaudado = rs.getDouble("ganancias");
