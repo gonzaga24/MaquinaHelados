@@ -4,9 +4,6 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
-import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
-import java.awt.Frame;
-
 /**
  *
  * @author dev
@@ -18,17 +15,8 @@ public class DialogCambioFinal extends javax.swing.JDialog {
      */
     public DialogCambioFinal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.padre = (Exec) parent;
         initComponents();
-    }
-
-    public DialogCambioFinal(MaquinaHelados aux, Frame owner, boolean modal) {
-        super(owner, modal);
-        this.aux = aux;
-        initComponents();
-    }
-
-    public MaquinaHelados getAux() {
-        return aux;
     }
 
     /**
@@ -73,7 +61,7 @@ public class DialogCambioFinal extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        devolverCambio.setText(devolverCambio.getText() + aux.getMonedero() + "€");
+        devolverCambio.setText(devolverCambio.getText() + this.padre.getMh().getMonedero() + "€");
     }//GEN-LAST:event_formComponentShown
 
     /**
@@ -117,9 +105,10 @@ public class DialogCambioFinal extends javax.swing.JDialog {
             }
         });
     }
-
+    
+    private Exec padre;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel devolverCambio;
     // End of variables declaration//GEN-END:variables
-    private MaquinaHelados aux;
+
 }

@@ -546,7 +546,7 @@ public class Exec extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         //cerrar();
         if (mh.getMonedero() > 0) {
-            DialogCambioFinal dcf = new DialogCambioFinal(mh, this, true);
+            DialogCambioFinal dcf = new DialogCambioFinal( this, true);
             dcf.setVisible(true);
             System.exit(0);
         } else {
