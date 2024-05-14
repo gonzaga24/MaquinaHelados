@@ -146,8 +146,12 @@ public class MaquinaHelados {
     }
 
     public void reponerHelado(String posicion) throws Exception {
+        int registrosModificados;
         try(ExtraDAOimpl edi = new ExtraDAOimpl();) {
-            edi.restockHeladoByPosicion(posicion);
+            registrosModificados = edi.restockHeladoByPosicion(posicion);
+            if (registrosModificados == 0) {
+                throw new NotValidPositionException("La posición introducida no es correcta.");
+            }
         } catch (Exception e) {
             throw e;
         }

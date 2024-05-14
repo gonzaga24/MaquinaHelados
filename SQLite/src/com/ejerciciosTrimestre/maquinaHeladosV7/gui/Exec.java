@@ -9,6 +9,7 @@ import com.ejerciciosTrimestre.maquinaHeladosV7.biz.MaquinaHelados;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotEnoughMoneyException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotValidPositionException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.QuantityExceededException;
+import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -519,7 +520,7 @@ public class Exec extends javax.swing.JFrame {
             // TODO add your handling code here:
             h = mh.pedirHelado(posicion);
             heladoDevuelto.setVisible(true);
-            txtHelado.setText("Puede recoger su helado sabor " + h.getSabor() + " de tipo " + h.getTipo() + " Su cambio es: " + mh.getMonedero());
+            txtHelado.setText("Puede recoger su helado sabor " + h.getSabor() + " de tipo " + h.getTipo() + " Su cambio es: " + Utils.redondearDecimales(mh.getMonedero()));
             mh.setMonedero(0);
             refreshVerMonedero();
             rellenarTablaHelados();

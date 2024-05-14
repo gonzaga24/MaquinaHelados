@@ -345,10 +345,12 @@ public class DialogReponerHelado extends javax.swing.JDialog {
             // TODO add your handling code here:
             //Reponer el helado y volver a la venta principal
             this.padre.getMh().reponerHelado(posicionIntroducida.getText());
+            this.padre.rellenarTablaHelados();
             confirmaciónHelado.dispose();
             this.dispose();
         } catch (Exception ex) {
             padre.ventanaError(ex.getMessage());
+            confirmaciónHelado.dispose();
         }
         
     }//GEN-LAST:event_botonSiActionPerformed
