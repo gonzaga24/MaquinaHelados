@@ -183,7 +183,7 @@ public class Exec extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -570,7 +570,7 @@ public class Exec extends javax.swing.JFrame {
 
             listaHelados = mh.getHeladosOrderByPrecio();
             for (Helado h : listaHelados) {
-                Object[] tmp = {h.getPosicion(), h.getSabor(), h.getTipo(), h.getPrecio(), h.getCantidad()};
+                Object[] tmp = {h.getPosicion(), h.getSabor(), h.getTipo(), Utils.formatoDecimal(h.getPrecio()) + "€", h.getCantidad()};
                 m.addRow(tmp);
             }
 
@@ -635,7 +635,7 @@ public class Exec extends javax.swing.JFrame {
 
             listaHelados = mh.getHelados();
             for (Helado h : listaHelados) {
-                Object[] tmp = {h.getPosicion(), h.getSabor(), h.getTipo(), h.getPrecio(), h.getCantidad()};
+                Object[] tmp = {h.getPosicion(), h.getSabor(), h.getTipo(), Utils.formatoDecimal(h.getPrecio()) + "€", h.getCantidad()};
                 m.addRow(tmp);
             }
 

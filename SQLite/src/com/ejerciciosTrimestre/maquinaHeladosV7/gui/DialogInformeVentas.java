@@ -87,7 +87,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -102,6 +102,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
             }
         });
         // Set the renderer for the first column to center the text
+        tablaVentas.setColumnSelectionAllowed(true);
         tablaVentas.setFillsViewportHeight(true);
         tablaVentas.setSelectionBackground(new java.awt.Color(102, 102, 255));
         tablaVentas.setShowVerticalLines(true);
@@ -167,7 +168,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
         try {
             listaVentas = padre.getMh().getVentas();
             for (Venta v : listaVentas) {
-                Object[] tmp = {v.getFechaHora(), v.getPosicion(), v.getNombre(), v.getPrecio(), v.getTipo(), v.getCantidad()};
+                Object[] tmp = {v.getFechaHora(), v.getPosicion(), v.getNombre(), Utils.formatoDecimal(v.getPrecio()) + "€", v.getTipo(), v.getCantidad()};
                 m.addRow(tmp);
             }
         } catch (Exception ex) {

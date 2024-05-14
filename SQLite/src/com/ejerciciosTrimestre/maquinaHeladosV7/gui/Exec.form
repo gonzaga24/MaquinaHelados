@@ -349,7 +349,7 @@
                 <Column editable="false" title="Posicion" type="java.lang.String"/>
                 <Column editable="false" title="Sabor" type="java.lang.String"/>
                 <Column editable="false" title="Tipo" type="java.lang.String"/>
-                <Column editable="false" title="Precio" type="java.lang.Double"/>
+                <Column editable="false" title="Precio" type="java.lang.String"/>
                 <Column editable="false" title="Cantidad" type="java.lang.Integer"/>
               </Table>
             </Property>
