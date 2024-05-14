@@ -4,6 +4,8 @@
  */
 package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
 
+import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
+
 /**
  *
  * @author dev
@@ -61,7 +63,7 @@ public class DialogCambioFinal extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        devolverCambio.setText(devolverCambio.getText() + this.padre.getMh().getMonedero() + "€");
+        devolverCambio.setText(devolverCambio.getText() + Utils.formatoDecimal(this.padre.getMh().getMonedero()) + "€");
     }//GEN-LAST:event_formComponentShown
 
     /**

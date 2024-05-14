@@ -445,7 +445,7 @@ public class Exec extends javax.swing.JFrame {
     private void devolverDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverDineroActionPerformed
         // TODO add your handling code here:
         devuelto.setVisible(true);
-        txtUser.setText("Su dinero le ha sido duevuelto " + Double.toString(mh.getMonedero()) + "€");
+        txtUser.setText("Su dinero le ha sido duevuelto " + Utils.formatoDecimal(mh.getMonedero()) + "€");
         mh.setMonedero(0);
         refreshVerMonedero();
     }//GEN-LAST:event_devolverDineroActionPerformed
@@ -645,7 +645,7 @@ public class Exec extends javax.swing.JFrame {
     }
 
     public void refreshVerMonedero() {
-        this.verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
+        this.verMonedero.setText(Utils.formatoDecimal(mh.getMonedero()) + "€");
     }
 
     public void ventanaError(String texto) {

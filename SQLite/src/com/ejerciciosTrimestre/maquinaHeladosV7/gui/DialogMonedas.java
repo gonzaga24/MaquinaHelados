@@ -205,7 +205,7 @@ public class DialogMonedas extends javax.swing.JDialog {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        this.verCantidadIntroducida.setText(Double.toString(padre.getMh().getMonedero()) + "€");
+        this.verCantidadIntroducida.setText(Utils.formatoDecimal(this.padre.getMh().getMonedero()) + "€");
     }//GEN-LAST:event_formComponentShown
 
     /**
@@ -253,7 +253,7 @@ public class DialogMonedas extends javax.swing.JDialog {
     public void sumarCantidad(double cantidad) {
         cantidad += padre.getMh().getMonedero();
         padre.getMh().setMonedero(Utils.redondearDecimales(cantidad));
-        verCantidadIntroducida.setText(Double.toString(padre.getMh().getMonedero()) + "€");
+        verCantidadIntroducida.setText(Utils.formatoDecimal(this.padre.getMh().getMonedero()) + "€");
         padre.refreshVerMonedero();
     }
     
