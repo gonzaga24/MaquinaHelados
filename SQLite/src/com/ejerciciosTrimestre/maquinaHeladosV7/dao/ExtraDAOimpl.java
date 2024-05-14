@@ -123,7 +123,7 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
     @Override
     public int removeHeladoByPosicion(String posicion) throws Exception {
         int registrosAfectados = 0;
-        String sql = "DELETE FROM helados WHERE posicion = ?";
+        String sql = "DELETE FROM helado WHERE posicion = ?";
         try (PreparedStatement pstm = con.prepareStatement(sql);) {
             pstm.setString(2, posicion);
             registrosAfectados = pstm.executeUpdate();

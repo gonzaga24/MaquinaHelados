@@ -106,8 +106,8 @@ public class Exec extends javax.swing.JFrame {
             heladoDevueltoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(heladoDevueltoLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(txtHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addComponent(txtHelado, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE)
+                .addContainerGap())
         );
         heladoDevueltoLayout.setVerticalGroup(
             heladoDevueltoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,7 +525,7 @@ public class Exec extends javax.swing.JFrame {
             // TODO add your handling code here:
             h = mh.pedirHelado(posicion);
             heladoDevuelto.setVisible(true);
-            txtHelado.setText("Puede recoger su helado sabor " + h.getSabor() + " de tipo " + h.getTipo() + " Su cambio es: " + Utils.redondearDecimales(mh.getMonedero()));
+            txtHelado.setText("Puede recoger su helado sabor " + h.getSabor() + " de tipo " + h.getTipo() + " --- Su cambio es: " + Utils.redondearDecimales(mh.getMonedero()));
             mh.setMonedero(0);
             refreshVerMonedero();
             rellenarTablaHelados();
