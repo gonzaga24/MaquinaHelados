@@ -435,8 +435,7 @@ public class Exec extends javax.swing.JFrame {
         refreshVerMonedero();
     }//GEN-LAST:event_introducirMonedasActionPerformed
 
-    
-    
+
     private void devolverDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverDineroActionPerformed
         // TODO add your handling code here:
         devuelto.setVisible(true);
@@ -632,14 +631,14 @@ public class Exec extends javax.swing.JFrame {
             ventanaError("Ha ocurrido un error al mostrar los helados.");
         }
     }
-    
+
     public void refreshVerMonedero() {
         this.verMonedero.setText(Double.toString(mh.getMonedero()) + "€");
     }
 
     public void ventanaError(String texto) {
-        ventanaError.setVisible(true);
         mensajeError.setText(texto);
+        ventanaError.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
