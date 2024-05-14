@@ -327,6 +327,11 @@ public class Exec extends javax.swing.JFrame {
         jMenu1.add(jMenuEliminarHelado);
 
         jMenuInsertarHelado.setText("Insertar nuevo helado");
+        jMenuInsertarHelado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuInsertarHeladoActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuInsertarHelado);
 
         jMenuHeladoMasVendido.setText("Helado mas vendido");
@@ -573,6 +578,12 @@ public class Exec extends javax.swing.JFrame {
             ventanaError("Ha ocurrido un error al mostrar los helados.");
         }
     }//GEN-LAST:event_heladosOrderPrecioActionPerformed
+
+    private void jMenuInsertarHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInsertarHeladoActionPerformed
+        // TODO add your handling code here:
+        DialogIntroducirHelado dih = new DialogIntroducirHelado(this, true);
+        dih.setVisible(true);
+    }//GEN-LAST:event_jMenuInsertarHeladoActionPerformed
 
     /**
      * @param args the command line arguments

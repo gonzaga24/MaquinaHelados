@@ -145,7 +145,7 @@ public class MaquinaHelados {
 
     }
 
-    public void reponerHelado(String posicion) throws Exception {
+    public int reponerHelado(String posicion) throws Exception {
         int registrosModificados;
         try(ExtraDAOimpl edi = new ExtraDAOimpl();) {
             registrosModificados = edi.restockHeladoByPosicion(posicion);
@@ -155,6 +155,19 @@ public class MaquinaHelados {
         } catch (Exception e) {
             throw e;
         }
+        return registrosModificados;
+    }
+    
+    public int inputHelado(String posicion, String sabor, double precio, String tipo) throws Exception {
+        int registrosAfectados;
+        Helado helado = new Helado(sabor, precio, tipo, 0, posicion);
+        try(ExtraDAOimpl edi = new ExtraDAOimpl();) {
+            registrosAfectados = edi.inputHelado(helado);                
+        } catch (Exception e) {
+            throw e;
+        }
+        
+        return registrosAfectados;
     }
     
     public boolean apagarMaquina() {
