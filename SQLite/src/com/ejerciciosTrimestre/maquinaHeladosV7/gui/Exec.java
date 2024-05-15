@@ -11,6 +11,7 @@ import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotValidPositionExcep
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.QuantityExceededException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -101,6 +102,8 @@ public class Exec extends javax.swing.JFrame {
         heladoDevuelto.setResizable(false);
 
         txtHelado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        txtCambio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         tipoHelado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -557,7 +560,11 @@ public class Exec extends javax.swing.JFrame {
             heladoDevuelto.setVisible(true);
             txtHelado.setText("Puede recoger su helado sabor " + h.getSabor() + " de tipo " + h.getTipo());
             if (h.getTipo().equalsIgnoreCase("tarrina")) {
-                
+                tipoHelado.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoTarrina.png")));
+            } else if (h.getTipo().equalsIgnoreCase("palo")) {
+                tipoHelado.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoPalo.png")));
+            } else if (h.getTipo().equalsIgnoreCase("cucurucho")) {
+                tipoHelado.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoCucurucho.png")));
             }
             txtCambio.setText(" Su cambio es: " + Utils.formatoDecimal(mh.getMonedero()) + "€");
             mh.setMonedero(0);
