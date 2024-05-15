@@ -179,7 +179,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
     private void verIngresosTotalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verIngresosTotalesActionPerformed
         // TODO add your handling code here:
         try {
-            textoIngresosTotales.setText("Los ingresos totales son: " + Double.toString(Utils.redondearDecimales(padre.getMh().getDineroRecaudado())) + "€");
+            textoIngresosTotales.setText("Los ingresos totales son: " + Utils.formatoDecimal(this.padre.getMh().getDineroRecaudado()) + "€");
             ventanaIngresosTotales.setVisible(true);
         } catch (Exception ex) {
             padre.ventanaError(ex.toString());

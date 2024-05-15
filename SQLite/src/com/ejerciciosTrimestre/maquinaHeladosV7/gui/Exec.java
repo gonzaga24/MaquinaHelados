@@ -453,11 +453,12 @@ public class Exec extends javax.swing.JFrame {
 
 
     private void devolverDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverDineroActionPerformed
-        // TODO add your handling code here:
-        devuelto.setVisible(true);
-        txtUser.setText("Su dinero le ha sido duevuelto " + Utils.formatoDecimal(mh.getMonedero()) + "€");
-        mh.setMonedero(0);
-        refreshVerMonedero();
+        if (mh.getMonedero() > 0) {
+            devuelto.setVisible(true);
+            txtUser.setText("Su dinero le ha sido duevuelto " + Utils.formatoDecimal(mh.getMonedero()) + "€");
+            mh.setMonedero(0);
+            refreshVerMonedero();
+        }
     }//GEN-LAST:event_devolverDineroActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
