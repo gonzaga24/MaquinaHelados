@@ -51,11 +51,12 @@ public class DialogMonedas extends javax.swing.JDialog {
         });
 
         verCantidadIntroducida.setEditable(false);
+        verCantidadIntroducida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         verCantidadIntroducida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         verCantidadIntroducida.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verCantidadIntroducida.setFocusable(false);
 
-        unCentimo.setText("0.01€");
+        unCentimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/unCentimo.png"))); // NOI18N
         unCentimo.setToolTipText("");
         unCentimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,49 +64,49 @@ public class DialogMonedas extends javax.swing.JDialog {
             }
         });
 
-        dosCentimos.setText("0.02€");
+        dosCentimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/dosCentimos.png"))); // NOI18N
         dosCentimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dosCentimosActionPerformed(evt);
             }
         });
 
-        cincoCentimos.setText("0.05€");
+        cincoCentimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/cincoCentimos.png"))); // NOI18N
         cincoCentimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cincoCentimosActionPerformed(evt);
             }
         });
 
-        diezCentimos.setText("0.10€");
+        diezCentimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/diezCentimos.png"))); // NOI18N
         diezCentimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 diezCentimosActionPerformed(evt);
             }
         });
 
-        veinteCentimos.setText("0.20€");
+        veinteCentimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/veinteCentimos.png"))); // NOI18N
         veinteCentimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 veinteCentimosActionPerformed(evt);
             }
         });
 
-        cincuentaCentimos.setText("0.50€");
+        cincuentaCentimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/cincuentaCentimos.png"))); // NOI18N
         cincuentaCentimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cincuentaCentimosActionPerformed(evt);
             }
         });
 
-        unEuro.setText("1€");
+        unEuro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/unEuro.png"))); // NOI18N
         unEuro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unEuroActionPerformed(evt);
             }
         });
 
-        dosEuros.setText("2€");
+        dosEuros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/dosEuros.png"))); // NOI18N
         dosEuros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dosEurosActionPerformed(evt);
@@ -117,35 +118,37 @@ public class DialogMonedas extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(veinteCentimos)
-                        .addGap(18, 18, 18)
-                        .addComponent(cincuentaCentimos)
-                        .addGap(18, 18, 18)
-                        .addComponent(unEuro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(unCentimo)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(verCantidadIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(veinteCentimos)
+                                .addGap(18, 18, 18)
+                                .addComponent(cincuentaCentimos)
+                                .addGap(18, 18, 18)
+                                .addComponent(unEuro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(unCentimo)
+                                .addGap(18, 18, 18)
                                 .addComponent(dosCentimos)
                                 .addGap(18, 18, 18)
-                                .addComponent(cincoCentimos)))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(diezCentimos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dosEuros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                                .addComponent(cincoCentimos)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(diezCentimos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dosEuros)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(verCantidadIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(verCantidadIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(unCentimo)
                     .addComponent(dosCentimos)
@@ -157,7 +160,7 @@ public class DialogMonedas extends javax.swing.JDialog {
                     .addComponent(cincuentaCentimos)
                     .addComponent(unEuro)
                     .addComponent(dosEuros))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
