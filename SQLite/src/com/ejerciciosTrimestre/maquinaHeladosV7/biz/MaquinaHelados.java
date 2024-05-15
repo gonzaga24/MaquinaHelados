@@ -36,7 +36,7 @@ public class MaquinaHelados {
         }
         return txt;
     }
-    
+
     public ArrayList<Helado> getHeladosOrderByPrecio() throws Exception {
         ArrayList<Helado> listaHelados;
         try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
@@ -105,14 +105,14 @@ public class MaquinaHelados {
 
     public double getDineroRecaudado() throws Exception {
         double dineroRecaudado = 0;
-        try (ExtraDAOimpl edi = new ExtraDAOimpl();){
+        try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
             dineroRecaudado = edi.getDineroRecaudado();
-        }catch (Exception e){
+        } catch (Exception e) {
             throw e;
         }
         return dineroRecaudado;
     }
-    
+
     public Helado getHeladoMasVendido() throws Exception {
         Helado h = null;
         try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
@@ -127,6 +127,20 @@ public class MaquinaHelados {
             throw e;
         }
 
+    }
+
+    public int eliminarHelado(String posicion) throws Exception {
+        int registrosModificados;
+
+        try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
+            registrosModificados = edi.removeHeladoByPosicion(posicion);
+            if (registrosModificados == 0) {
+                throw new NotValidPositionException("La posición introducida no es correcta.");
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return registrosModificados;
     }
 
     public Helado getHeladoMenosVendido() throws Exception {
@@ -147,7 +161,7 @@ public class MaquinaHelados {
 
     public int reponerHelado(String posicion) throws Exception {
         int registrosModificados;
-        try(ExtraDAOimpl edi = new ExtraDAOimpl();) {
+        try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
             registrosModificados = edi.restockHeladoByPosicion(posicion);
             if (registrosModificados == 0) {
                 throw new NotValidPositionException("La posición introducida no es correcta.");
@@ -157,19 +171,19 @@ public class MaquinaHelados {
         }
         return registrosModificados;
     }
-    
+
     public int inputHelado(String posicion, String sabor, double precio, String tipo) throws Exception {
         int registrosAfectados;
         Helado helado = new Helado(sabor, precio, tipo, 0, posicion);
-        try(ExtraDAOimpl edi = new ExtraDAOimpl();) {
-            registrosAfectados = edi.inputHelado(helado);                
+        try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
+            registrosAfectados = edi.inputHelado(helado);
         } catch (Exception e) {
             throw e;
         }
-        
+
         return registrosAfectados;
     }
-    
+
     public boolean apagarMaquina() {
         return false;
     }
@@ -189,6 +203,5 @@ public class MaquinaHelados {
     public void setIngresos(double ingresos) {
         this.ingresos = ingresos;
     }
-
 
 }

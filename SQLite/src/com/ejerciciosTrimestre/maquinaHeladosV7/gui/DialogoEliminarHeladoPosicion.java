@@ -9,12 +9,12 @@ package com.ejerciciosTrimestre.maquinaHeladosV7.gui;
  *
  * @author Silvana
  */
-public class DialogReponerHelado extends javax.swing.JDialog {
+public class DialogoEliminarHeladoPosicion extends javax.swing.JDialog {
 
     /**
      * Creates new form DialogReponerHelado
      */
-    public DialogReponerHelado(java.awt.Frame parent, boolean modal) {
+    public DialogoEliminarHeladoPosicion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.padre = (Exec) parent;
         initComponents();
@@ -35,7 +35,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         botonNo = new javax.swing.JButton();
         textoAlUsuario = new javax.swing.JLabel();
         posicionIntroducida = new javax.swing.JTextField();
-        reponerHelado = new javax.swing.JButton();
+        eliminarHelado = new javax.swing.JButton();
         posicionCuatro = new javax.swing.JButton();
         posicionCinco = new javax.swing.JButton();
         posicionSeis = new javax.swing.JButton();
@@ -53,7 +53,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         confirmaciónHelado.setResizable(false);
 
         textoConfirmación.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoConfirmación.setText("¿Esta seguro de que quiere reponer el helado?");
+        textoConfirmación.setText("¿Esta seguro de que quiere eliminar el helado?");
 
         botonSi.setText("Si");
         botonSi.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +99,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         confirmaciónHelado.setSize(400, 200);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setModal(true);
 
         textoAlUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textoAlUsuario.setText("Introduzca la posición del helado");
@@ -109,10 +110,10 @@ public class DialogReponerHelado extends javax.swing.JDialog {
             }
         });
 
-        reponerHelado.setText("Reponer");
-        reponerHelado.addActionListener(new java.awt.event.ActionListener() {
+        eliminarHelado.setText("Eliminar");
+        eliminarHelado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reponerHeladoActionPerformed(evt);
+                eliminarHeladoActionPerformed(evt);
             }
         });
 
@@ -197,43 +198,42 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 53, Short.MAX_VALUE)
+                .addComponent(textoAlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(reponerHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
+                        .addComponent(borrarPosicion)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoAlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(posicionIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(borrarPosicion)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(posicionCinco)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionSeis)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionSiete)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionOcho)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionNueve))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(posicionCero)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionUno)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionDos)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionTres)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionCuatro))))))
-                        .addGap(0, 55, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(posicionCinco)
+                                .addGap(18, 18, 18)
+                                .addComponent(posicionSeis)
+                                .addGap(18, 18, 18)
+                                .addComponent(posicionSiete)
+                                .addGap(18, 18, 18)
+                                .addComponent(posicionOcho)
+                                .addGap(18, 18, 18)
+                                .addComponent(posicionNueve))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(posicionCero)
+                                .addGap(18, 18, 18)
+                                .addComponent(posicionUno)
+                                .addGap(18, 18, 18)
+                                .addComponent(posicionDos)
+                                .addGap(18, 18, 18)
+                                .addComponent(posicionTres)
+                                .addGap(18, 18, 18)
+                                .addComponent(posicionCuatro))
+                            .addComponent(eliminarHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(posicionIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,6 +244,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
                 .addComponent(posicionIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(posicionCero)
                             .addComponent(posicionUno)
@@ -258,25 +259,25 @@ public class DialogReponerHelado extends javax.swing.JDialog {
                             .addComponent(posicionOcho)
                             .addComponent(posicionNueve)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addGap(46, 46, 46)
                         .addComponent(borrarPosicion)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(reponerHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(eliminarHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void reponerHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reponerHeladoActionPerformed
+    private void eliminarHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarHeladoActionPerformed
         // TODO add your handling code here:
         //Al darle a reponer el helado se le pedira una confirmación:
-        //Si el usuario esta seguro se repondra el stock del helado
+        
         //Si el usuario no esta seguro volvera a la ventana de pedir la posición
         if (!posicionIntroducida.getText().isEmpty()) {
             confirmaciónHelado.setVisible(true);
         }
-    }//GEN-LAST:event_reponerHeladoActionPerformed
+    }//GEN-LAST:event_eliminarHeladoActionPerformed
 
     private void posicionCuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCuatroActionPerformed
         // TODO add your handling code here:
@@ -343,14 +344,15 @@ public class DialogReponerHelado extends javax.swing.JDialog {
     private void botonSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiActionPerformed
         try {
             // TODO add your handling code here:
-            //Reponer el helado y volver a la venta principal
-            this.padre.getMh().reponerHelado(posicionIntroducida.getText());
+            //Eliminar el helado y volver a la venta principal
+            this.padre.getMh().eliminarHelado(posicionIntroducida.getText());
             this.padre.rellenarTablaHelados();
             confirmaciónHelado.dispose();
             this.dispose();
         } catch (Exception ex) {
             confirmaciónHelado.dispose();
-            padre.ventanaError(ex.getMessage());
+            padre.ventanaError(ex.toString());
+            ex.printStackTrace();
         }
         
     }//GEN-LAST:event_botonSiActionPerformed
@@ -378,20 +380,23 @@ public class DialogReponerHelado extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogReponerHelado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoEliminarHeladoPosicion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogReponerHelado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoEliminarHeladoPosicion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogReponerHelado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoEliminarHeladoPosicion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogReponerHelado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoEliminarHeladoPosicion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DialogReponerHelado dialog = new DialogReponerHelado(new javax.swing.JFrame(), true);
+                DialogoEliminarHeladoPosicion dialog = new DialogoEliminarHeladoPosicion(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -415,6 +420,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
     private javax.swing.JButton botonNo;
     private javax.swing.JButton botonSi;
     private javax.swing.JDialog confirmaciónHelado;
+    private javax.swing.JButton eliminarHelado;
     private javax.swing.JButton posicionCero;
     private javax.swing.JButton posicionCinco;
     private javax.swing.JButton posicionCuatro;
@@ -426,7 +432,6 @@ public class DialogReponerHelado extends javax.swing.JDialog {
     private javax.swing.JButton posicionSiete;
     private javax.swing.JButton posicionTres;
     private javax.swing.JButton posicionUno;
-    private javax.swing.JButton reponerHelado;
     private javax.swing.JLabel textoAlUsuario;
     private javax.swing.JLabel textoConfirmación;
     // End of variables declaration//GEN-END:variables

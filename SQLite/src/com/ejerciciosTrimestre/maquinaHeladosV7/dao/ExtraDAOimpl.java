@@ -125,7 +125,7 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
         int registrosAfectados = 0;
         String sql = "DELETE FROM helado WHERE posicion = ?";
         try (PreparedStatement pstm = con.prepareStatement(sql);) {
-            pstm.setString(2, posicion);
+            pstm.setString(1, posicion);
             registrosAfectados = pstm.executeUpdate();
 
         } catch (Exception e) {

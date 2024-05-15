@@ -11,7 +11,6 @@ import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.NotValidPositionExcep
 import com.ejerciciosTrimestre.maquinaHeladosV7.exceptions.QuantityExceededException;
 import com.ejerciciosTrimestre.maquinaHeladosV7.utils.Utils;
 import java.util.ArrayList;
-import javax.swing.Icon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -71,10 +70,10 @@ public class Exec extends javax.swing.JFrame {
         informeVentas = new javax.swing.JMenuItem();
         heladosOrderPrecio = new javax.swing.JMenuItem();
         jMenuReponerHelado = new javax.swing.JMenuItem();
-        jMenuEliminarHelado = new javax.swing.JMenuItem();
         jMenuInsertarHelado = new javax.swing.JMenuItem();
         jMenuHeladoMasVendido = new javax.swing.JMenuItem();
         jMenuHeladoMenosVendido = new javax.swing.JMenuItem();
+        eliminarHeladoPosicionMenu = new javax.swing.JMenuItem();
 
         devuelto.setResizable(false);
 
@@ -349,9 +348,6 @@ public class Exec extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuReponerHelado);
 
-        jMenuEliminarHelado.setText("Eliminar helado");
-        jMenu1.add(jMenuEliminarHelado);
-
         jMenuInsertarHelado.setText("Insertar nuevo helado");
         jMenuInsertarHelado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,6 +361,14 @@ public class Exec extends javax.swing.JFrame {
 
         jMenuHeladoMenosVendido.setText("Helado menos vendido");
         jMenu1.add(jMenuHeladoMenosVendido);
+
+        eliminarHeladoPosicionMenu.setText("Eliminar helado");
+        eliminarHeladoPosicionMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarHeladoPosicionMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(eliminarHeladoPosicionMenu);
 
         jMenuBar1.add(jMenu1);
 
@@ -615,6 +619,12 @@ public class Exec extends javax.swing.JFrame {
         dih.setVisible(true);
     }//GEN-LAST:event_jMenuInsertarHeladoActionPerformed
 
+    private void eliminarHeladoPosicionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarHeladoPosicionMenuActionPerformed
+        DialogoEliminarHeladoPosicion dehp = new DialogoEliminarHeladoPosicion(this, true);
+        dehp.setVisible(true);
+    }//GEN-LAST:event_eliminarHeladoPosicionMenuActionPerformed
+    
+   
     /**
      * @param args the command line arguments
      */
@@ -687,13 +697,13 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton borrarPosicion;
     private javax.swing.JButton devolverDinero;
     private javax.swing.JDialog devuelto;
+    private javax.swing.JMenuItem eliminarHeladoPosicionMenu;
     private javax.swing.JDialog heladoDevuelto;
     private javax.swing.JMenuItem heladosOrderPrecio;
     private javax.swing.JMenuItem informeVentas;
     private javax.swing.JButton introducirMonedas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuEliminarHelado;
     private javax.swing.JMenuItem jMenuHeladoMasVendido;
     private javax.swing.JMenuItem jMenuHeladoMenosVendido;
     private javax.swing.JMenuItem jMenuInsertarHelado;
