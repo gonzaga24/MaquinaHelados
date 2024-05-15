@@ -129,6 +129,23 @@ public class MaquinaHelados {
 
     }
 
+    public int eliminarHelado(String posicion) throws Exception {
+
+        int registrosModificados;
+
+        try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
+            registrosModificados = edi.removeHeladoByPosicion(posicion);
+            if (registrosModificados == 0) {
+                throw new NotValidPositionException("La posición introducida no es correcta.");
+
+            }
+            return registrosModificados;
+        } catch (Exception e) {
+            throw e;
+        }
+
+    }
+    
     public Helado getHeladoMenosVendido() throws Exception {
         Helado h = null;
         try (ExtraDAOimpl edi = new ExtraDAOimpl();) {

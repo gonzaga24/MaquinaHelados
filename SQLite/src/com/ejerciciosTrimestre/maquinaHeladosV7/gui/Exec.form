@@ -122,6 +122,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Menu"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu1ActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="informeVentas">
               <Properties>
@@ -147,11 +150,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuReponerHeladoActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuEliminarHelado">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar helado"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuInsertarHelado">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Insertar nuevo helado"/>
@@ -169,6 +167,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Helado menos vendido"/>
               </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="eliminarHeladoPosicionMenu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar helado"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarHeladoPosicionMenuActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
