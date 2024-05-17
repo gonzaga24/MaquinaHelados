@@ -183,6 +183,19 @@ public class MaquinaHelados {
 
         return registrosAfectados;
     }
+    
+    public int changeSaborOrPrecioByPosicion (String posicion, String sabor, double precio) throws Exception {
+       int registrosModificados;
+        try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
+            registrosModificados = edi.changeSaborOrPrecioByPosicion(posicion, sabor, precio);
+            if (registrosModificados == 0) {
+                throw new NotValidPositionException("La posición introducida no es correcta.");
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return registrosModificados;
+    }
 
     public boolean apagarMaquina() {
         return false;

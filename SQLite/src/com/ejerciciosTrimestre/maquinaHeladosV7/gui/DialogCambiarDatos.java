@@ -15,6 +15,7 @@ public class DialogCambiarDatos extends javax.swing.JDialog {
      */
     public DialogCambiarDatos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.padre = (Exec) parent;
         initComponents();
     }
 
@@ -38,30 +39,23 @@ public class DialogCambiarDatos extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButtonInsertarModificaciones.setText("Modificar");
+        jButtonInsertarModificaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertarModificacionesActionPerformed(evt);
+            }
+        });
 
         labelPsocionHelado.setText("Introduzca la posicion del helado");
 
-        jTextPosicionHelado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextPosicionHeladoActionPerformed(evt);
+        jTextPosicionHelado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextPosicionHeladoKeyTyped(evt);
             }
         });
 
         labelSaborHealdo.setText("Introduzca el nuevo sabor del helado");
 
-        jTexttSaborHelado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTexttSaborHeladoActionPerformed(evt);
-            }
-        });
-
         labelPrecioHealdo.setText("Introduzca el nuevo precio del helado");
-
-        jTexttPrecioHelado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTexttPrecioHeladoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,17 +99,23 @@ public class DialogCambiarDatos extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextPosicionHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPosicionHeladoActionPerformed
+    private void jTextPosicionHeladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPosicionHeladoKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextPosicionHeladoActionPerformed
+        if (jTextPosicionHelado.getText().length() >= 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextPosicionHeladoKeyTyped
 
-    private void jTexttSaborHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTexttSaborHeladoActionPerformed
+    private void jButtonInsertarModificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarModificacionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTexttSaborHeladoActionPerformed
-
-    private void jTexttPrecioHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTexttPrecioHeladoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTexttPrecioHeladoActionPerformed
+        try {
+            this.padre.getMh().changeSaborOrPrecioByPosicion(jTextPosicionHelado.getText(), jTexttSaborHelado.getText(), Double.parseDouble(jTexttPrecioHelado.getText()));
+            this.padre.rellenarTablaHelados();
+            this.dispose();
+        } catch (Exception ex) {
+            this.padre.ventanaError(ex.toString());
+        }
+    }//GEN-LAST:event_jButtonInsertarModificacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,7 +158,7 @@ public class DialogCambiarDatos extends javax.swing.JDialog {
             }
         });
     }
-
+    private Exec padre;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonInsertarModificaciones;
     private java.awt.TextField jTextPosicionHelado;

@@ -72,11 +72,11 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
         int registrosAfectados = 0;
         String sql = "WHERE posicion = ?";
         if (nuevoSabor.isEmpty() && Double.toString(nuevoPrecio).length() > 0) {
-            sql = "UPDATE helado SET sabor = ? " + sql;
+            sql = "UPDATE helado SET nombre = ? " + sql;
         } else if (!nuevoSabor.isEmpty() && Double.toString(nuevoPrecio).length() == 0) {
             sql = "UPDATE helado SET precio = ? " + sql;
         } else {
-            sql = "UPDATE helado SET sabor = ?, precio = ? " + sql;
+            sql = "UPDATE helado SET nombre = ?, precio = ? " + sql;
         }
 
         try (PreparedStatement pstm = con.prepareStatement(sql);) {
