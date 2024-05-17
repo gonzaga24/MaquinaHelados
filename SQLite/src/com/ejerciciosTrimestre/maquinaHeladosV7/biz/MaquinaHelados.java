@@ -119,14 +119,11 @@ public class MaquinaHelados {
             h = edi.getHeladoMasVendido();
             if (h == null) {//cuando no hay ventas se muestra esto
                 throw new NotEnoughtSellsException("No se ha vendido ningun helado");
-            } else {
-                return h;
             }
-
         } catch (Exception e) {
             throw e;
         }
-
+        return h;
     }
 
     public int eliminarHelado(String posicion) throws Exception {
@@ -149,14 +146,11 @@ public class MaquinaHelados {
             h = edi.getHeladoMenosVendido();
             if (h == null) {//cuando no hay ventas se muestra esto
                 throw new NotEnoughtSellsException("No se ha vendido ningun helado");
-            } else {
-                return h;
             }
-
         } catch (Exception e) {
             throw e;
         }
-
+        return h;
     }
 
     public int reponerHelado(String posicion) throws Exception {
@@ -183,9 +177,9 @@ public class MaquinaHelados {
 
         return registrosAfectados;
     }
-    
-    public int changeSaborOrPrecioByPosicion (String posicion, String sabor, double precio) throws Exception {
-       int registrosModificados;
+
+    public int changeSaborOrPrecioByPosicion(String posicion, String sabor, double precio) throws Exception {
+        int registrosModificados;
         try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
             registrosModificados = edi.changeSaborOrPrecioByPosicion(posicion, sabor, precio);
             if (registrosModificados == 0) {

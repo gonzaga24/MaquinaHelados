@@ -535,8 +535,6 @@ public class Exec extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void introducirMonedasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introducirMonedasActionPerformed
-        // TODO add your handling code here:
-        // TODO hacer que la ventana actualice el monedero en tiempo real:
         DialogMonedas dm = new DialogMonedas(this, true);
         dm.setVisible(true);
         refreshVerMonedero();
@@ -544,7 +542,6 @@ public class Exec extends javax.swing.JFrame {
 
 
     private void devolverDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverDineroActionPerformed
-        // TODO add your handling code here:
         if (mh.getMonedero() > 0) {
             devuelto.setVisible(true);
             txtUser.setText("Su dinero le ha sido duevuelto " + Utils.formatoDecimal(mh.getMonedero()) + "€");
@@ -554,70 +551,57 @@ public class Exec extends javax.swing.JFrame {
     }//GEN-LAST:event_devolverDineroActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
         refreshVerMonedero();
         rellenarTablaHelados();
     }//GEN-LAST:event_formComponentShown
 
     private void verPosicionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verPosicionKeyTyped
-        // TODO add your handling code here:
         if (verPosicion.getText().length() >= 2) {
             evt.consume();
         }
     }//GEN-LAST:event_verPosicionKeyTyped
 
     private void posicionDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionDosActionPerformed
-        // TODO add your handling code here:
         introducirPosicion("2");
     }//GEN-LAST:event_posicionDosActionPerformed
 
     private void posicionTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionTresActionPerformed
-        // TODO add your handling code here:
         introducirPosicion("3");
     }//GEN-LAST:event_posicionTresActionPerformed
 
     private void borrarPosicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarPosicionActionPerformed
-        // TODO add your handling code here:
         verPosicion.setText("");
     }//GEN-LAST:event_borrarPosicionActionPerformed
 
     private void posicionCuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCuatroActionPerformed
-        // TODO add your handling code here:
         introducirPosicion("4");
     }//GEN-LAST:event_posicionCuatroActionPerformed
 
     private void posicionCincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCincoActionPerformed
-        // TODO add your handling code here:
         introducirPosicion("5");
     }//GEN-LAST:event_posicionCincoActionPerformed
 
     private void posicionSeisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionSeisActionPerformed
-        // TODO add your handling code here:
         introducirPosicion("6");
     }//GEN-LAST:event_posicionSeisActionPerformed
 
     private void posicionSieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionSieteActionPerformed
-        // TODO add your handling code here:
         introducirPosicion("7");
     }//GEN-LAST:event_posicionSieteActionPerformed
 
     private void posicionOchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionOchoActionPerformed
-        // TODO add your handling code here:
         introducirPosicion("8");
     }//GEN-LAST:event_posicionOchoActionPerformed
 
     private void posicionNueveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionNueveActionPerformed
-        // TODO add your handling code here:
         introducirPosicion("9");
     }//GEN-LAST:event_posicionNueveActionPerformed
 
     private void posicionCeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCeroActionPerformed
-        // TODO add your handling code here:
         introducirPosicion("0");
     }//GEN-LAST:event_posicionCeroActionPerformed
 
     private void posicionUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionUnoActionPerformed
-        // TODO add your handling code here:
         introducirPosicion("1");
     }//GEN-LAST:event_posicionUnoActionPerformed
 
@@ -625,7 +609,6 @@ public class Exec extends javax.swing.JFrame {
         String posicion = verPosicion.getText();
         Helado h;
         try {
-            // TODO add your handling code here:
             h = mh.pedirHelado(posicion);
             heladoDevuelto.setVisible(true);
             txtHelado.setText("Puede recoger su helado sabor " + h.getSabor() + " de tipo " + h.getTipo());
@@ -649,13 +632,11 @@ public class Exec extends javax.swing.JFrame {
     }//GEN-LAST:event_pedirHeladoActionPerformed
 
     private void informeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informeVentasActionPerformed
-        // TODO add your handling code here:
         DialogInformeVentas di = new DialogInformeVentas(this, true);
         di.setVisible(true);
     }//GEN-LAST:event_informeVentasActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        //cerrar();
         if (mh.getMonedero() > 0) {
             DialogCambioFinal dcf = new DialogCambioFinal(this, true);
             dcf.setVisible(true);
@@ -666,13 +647,11 @@ public class Exec extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jMenuReponerHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuReponerHeladoActionPerformed
-        // TODO add your handling code here:
         DialogReponerHelado drh = new DialogReponerHelado(this, true);
         drh.setVisible(true);
     }//GEN-LAST:event_jMenuReponerHeladoActionPerformed
 
     private void heladosOrderPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heladosOrderPrecioActionPerformed
-        // TODO add your handling code here:
         ArrayList<Helado> listaHelados;
 
         DefaultTableModel m = (DefaultTableModel) this.tablaHelados.getModel();
@@ -691,7 +670,6 @@ public class Exec extends javax.swing.JFrame {
     }//GEN-LAST:event_heladosOrderPrecioActionPerformed
 
     private void jMenuInsertarHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInsertarHeladoActionPerformed
-        // TODO add your handling code here:
         DialogIntroducirHelado dih = new DialogIntroducirHelado(this, true);
         dih.setVisible(true);
     }//GEN-LAST:event_jMenuInsertarHeladoActionPerformed
@@ -702,15 +680,12 @@ public class Exec extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarHeladoPosicionMenuActionPerformed
 
     private void jMenuCambiarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCambiarDatosActionPerformed
-        // TODO add your handling code here:
         DialogCambiarDatos dcd = new DialogCambiarDatos(this, true);
         dcd.setVisible(true);
     }//GEN-LAST:event_jMenuCambiarDatosActionPerformed
 
     private void jMenuHeladoMasVendidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuHeladoMasVendidoActionPerformed
-        // TODO add your handling code here:
         try {
-
             masMenosVendido.setVisible(true);
         } catch (Exception ex) {
             ventanaError(ex.toString());
@@ -719,12 +694,9 @@ public class Exec extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuHeladoMasVendidoActionPerformed
 
     private void jButtonMasVendidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMasVendidoActionPerformed
-        // TODO add your handling code here:
-
         try {
-
-            mostrarHeladoMasMenos.setText("El helado mas vendido es: " + mh.getHeladoMenosVendido());
-
+            Helado h = mh.getHeladoMenosVendido();
+            mostrarHeladoMasMenos.setText("El helado mas vendido es: " + h.getSabor() + ", de tipo: " + h.getTipo() + " y su precio es: " + Utils.formatoDecimal(h.getPrecio()) + "€");
         } catch (Exception ex) {
             ventanaError(ex.toString());
         }
@@ -733,12 +705,9 @@ public class Exec extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMasVendidoActionPerformed
 
     private void jButtonMenosVendidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenosVendidoActionPerformed
-        // TODO add your handling code here:
-
         try {
-
-            mostrarHeladoMasMenos.setText("El helado mas vendido es: " + mh.getHeladoMasVendido());
-
+            Helado h = mh.getHeladoMasVendido();
+            mostrarHeladoMasMenos.setText("El helado mas vendido es: " + h.getSabor() + ", de tipo: " + h.getTipo() + " y su precio es: " + Utils.formatoDecimal(h.getPrecio()) + "€");
         } catch (Exception ex) {
             ventanaError(ex.toString());
         }
