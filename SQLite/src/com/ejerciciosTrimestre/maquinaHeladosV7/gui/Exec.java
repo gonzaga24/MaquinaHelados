@@ -51,6 +51,7 @@ public class Exec extends javax.swing.JFrame {
         mostrarHeladoMasMenos = new javax.swing.JLabel();
         jButtonMasVendido = new javax.swing.JButton();
         jButtonMenosVendido = new javax.swing.JButton();
+        tipoHeladoMasMenosVendido = new javax.swing.JLabel();
         introducirMonedas = new javax.swing.JButton();
         devolverDinero = new javax.swing.JButton();
         verMonedero = new javax.swing.JTextField();
@@ -185,26 +186,34 @@ public class Exec extends javax.swing.JFrame {
         masMenosVendidoLayout.setHorizontalGroup(
             masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(masMenosVendidoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(mostrarHeladoMasMenos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(masMenosVendidoLayout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(jButtonMasVendido)
-                .addGap(100, 100, 100)
-                .addComponent(jButtonMenosVendido)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGroup(masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(jButtonMasVendido)
+                        .addGap(100, 100, 100)
+                        .addComponent(jButtonMenosVendido))
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(mostrarHeladoMasMenos, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34)
+                .addComponent(tipoHeladoMasMenosVendido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 75, Short.MAX_VALUE))
         );
         masMenosVendidoLayout.setVerticalGroup(
             masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(masMenosVendidoLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(mostrarHeladoMasMenos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonMasVendido)
-                    .addComponent(jButtonMenosVendido))
-                .addGap(56, 56, 56))
+                .addGroup(masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addComponent(tipoHeladoMasMenosVendido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addComponent(mostrarHeladoMasMenos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 59, Short.MAX_VALUE)
+                        .addGroup(masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonMasVendido)
+                            .addComponent(jButtonMenosVendido))
+                        .addGap(56, 56, 56))))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -544,7 +553,7 @@ public class Exec extends javax.swing.JFrame {
     private void devolverDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverDineroActionPerformed
         if (mh.getMonedero() > 0) {
             devuelto.setVisible(true);
-            txtUser.setText("Su dinero le ha sido duevuelto " + Utils.formatoDecimal(mh.getMonedero()) + "€");
+            txtUser.setText("Su dinero le ha sido devuelto " + Utils.formatoDecimal(mh.getMonedero()) + "€");
             mh.setMonedero(0);
             refreshVerMonedero();
         }
@@ -697,6 +706,13 @@ public class Exec extends javax.swing.JFrame {
         try {
             Helado h = mh.getHeladoMenosVendido();
             mostrarHeladoMasMenos.setText("El helado mas vendido es: " + h.getSabor() + ", de tipo: " + h.getTipo() + " y su precio es: " + Utils.formatoDecimal(h.getPrecio()) + "€");
+            if (h.getTipo().equalsIgnoreCase("tarrina")) {
+                tipoHeladoMasMenosVendido.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoTarrina.png")));
+            } else if (h.getTipo().equalsIgnoreCase("palo")) {
+                tipoHeladoMasMenosVendido.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoPalo.png")));
+            } else if (h.getTipo().equalsIgnoreCase("cucurucho")) {
+                tipoHeladoMasMenosVendido.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoCucurucho.png")));
+            }
         } catch (Exception ex) {
             ventanaError(ex.toString());
         }
@@ -708,6 +724,13 @@ public class Exec extends javax.swing.JFrame {
         try {
             Helado h = mh.getHeladoMasVendido();
             mostrarHeladoMasMenos.setText("El helado mas vendido es: " + h.getSabor() + ", de tipo: " + h.getTipo() + " y su precio es: " + Utils.formatoDecimal(h.getPrecio()) + "€");
+            if (h.getTipo().equalsIgnoreCase("tarrina")) {
+                tipoHeladoMasMenosVendido.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoTarrina.png")));
+            } else if (h.getTipo().equalsIgnoreCase("palo")) {
+                tipoHeladoMasMenosVendido.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoPalo.png")));
+            } else if (h.getTipo().equalsIgnoreCase("cucurucho")) {
+                tipoHeladoMasMenosVendido.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoCucurucho.png")));
+            }
         } catch (Exception ex) {
             ventanaError(ex.toString());
         }
@@ -816,6 +839,7 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton posicionUno;
     private javax.swing.JTable tablaHelados;
     private javax.swing.JLabel tipoHelado;
+    private javax.swing.JLabel tipoHeladoMasMenosVendido;
     private javax.swing.JLabel txtCambio;
     private javax.swing.JLabel txtHelado;
     private javax.swing.JLabel txtUser;
