@@ -109,7 +109,11 @@ public class DialogCambiarDatos extends javax.swing.JDialog {
     private void jButtonInsertarModificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarModificacionesActionPerformed
         // TODO add your handling code here:
         try {
-            this.padre.getMh().changeSaborOrPrecioByPosicion(jTextPosicionHelado.getText(), jTexttSaborHelado.getText(), Double.parseDouble(jTexttPrecioHelado.getText()));
+            if (!jTexttPrecioHelado.getText().isEmpty()) {
+                this.padre.getMh().changeSaborOrPrecioByPosicion(jTextPosicionHelado.getText(), jTexttSaborHelado.getText(), Double.parseDouble(jTexttPrecioHelado.getText()));
+            } else {
+                this.padre.getMh().changeSaborOrPrecioByPosicion(jTextPosicionHelado.getText(), jTexttSaborHelado.getText(), 0);
+            }
             this.padre.rellenarTablaHelados();
             this.dispose();
         } catch (Exception ex) {

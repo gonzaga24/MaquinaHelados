@@ -553,7 +553,7 @@ public class Exec extends javax.swing.JFrame {
     private void devolverDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverDineroActionPerformed
         if (mh.getMonedero() > 0) {
             devuelto.setVisible(true);
-            txtUser.setText("Su dinero le ha sido devuelto " + Utils.formatoDecimal(mh.getMonedero()) + "€");
+            txtUser.setText("Puede retirar su dinero " + Utils.formatoDecimal(mh.getMonedero()) + "€");
             mh.setMonedero(0);
             refreshVerMonedero();
         }
@@ -617,25 +617,29 @@ public class Exec extends javax.swing.JFrame {
     private void pedirHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedirHeladoActionPerformed
         String posicion = verPosicion.getText();
         Helado h;
-        try {
-            h = mh.pedirHelado(posicion);
-            heladoDevuelto.setVisible(true);
-            txtHelado.setText("Puede recoger su helado sabor " + h.getSabor() + " de tipo " + h.getTipo());
-            if (h.getTipo().equalsIgnoreCase("tarrina")) {
-                tipoHelado.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoTarrina.png")));
-            } else if (h.getTipo().equalsIgnoreCase("palo")) {
-                tipoHelado.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoPalo.png")));
-            } else if (h.getTipo().equalsIgnoreCase("cucurucho")) {
-                tipoHelado.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoCucurucho.png")));
+        if (!verPosicion.getText().isEmpty()) {
+            try {
+                h = mh.pedirHelado(posicion);
+                heladoDevuelto.setVisible(true);
+                txtHelado.setText("Puede recoger su helado sabor " + h.getSabor() + " de tipo " + h.getTipo());
+                if (h.getTipo().equalsIgnoreCase("tarrina")) {
+                    tipoHelado.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoTarrina.png")));
+                } else if (h.getTipo().equalsIgnoreCase("palo")) {
+                    tipoHelado.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoPalo.png")));
+                } else if (h.getTipo().equalsIgnoreCase("cucurucho")) {
+                    tipoHelado.setIcon(new ImageIcon(getClass().getResource("/resources/imgs/heladoCucurucho.png")));
+                }
+                txtCambio.setText(" Su cambio es: " + Utils.formatoDecimal(mh.getMonedero()) + "€");
+                mh.setMonedero(0);
+                refreshVerMonedero();
+                rellenarTablaHelados();
+            } catch (QuantityExceededException | NotValidPositionException | NotEnoughMoneyException ex) {
+                ventanaError(ex.getMessage());
+            } catch (Exception ex) {
+                ventanaError("Ha ocurrido un error al pedir el helado.");
             }
-            txtCambio.setText(" Su cambio es: " + Utils.formatoDecimal(mh.getMonedero()) + "€");
-            mh.setMonedero(0);
-            refreshVerMonedero();
-            rellenarTablaHelados();
-        } catch (QuantityExceededException | NotValidPositionException | NotEnoughMoneyException ex) {
-            ventanaError(ex.getMessage());
-        } catch (Exception ex) {
-            ventanaError("Ha ocurrido un error al pedir el helado.");
+        } else {
+            ventanaError("Introduzca una posición porfavor");
         }
 
     }//GEN-LAST:event_pedirHeladoActionPerformed

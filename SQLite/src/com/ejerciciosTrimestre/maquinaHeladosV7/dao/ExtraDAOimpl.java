@@ -53,11 +53,11 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
         try (PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery();) {
             while (rs.next()) {
                 ListaHeladosOrdenada.add(new Helado(
-                rs.getString("nombre"),
-                rs.getDouble("precio"),
-                rs.getString("tipo"),
-                rs.getInt("cantidad"),
-                rs.getString("posicion")
+                        rs.getString("nombre"),
+                        rs.getDouble("precio"),
+                        rs.getString("tipo"),
+                        rs.getInt("cantidad"),
+                        rs.getString("posicion")
                 ));
             }
         } catch (Exception e) {
@@ -70,20 +70,23 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
     @Override
     public int changeSaborOrPrecioByPosicion(String posicion, String nuevoSabor, double nuevoPrecio) throws Exception {
         int registrosAfectados = 0;
-        String sql = "WHERE posicion = ?";
-        if (nuevoSabor.isEmpty() && Double.toString(nuevoPrecio).length() > 0) {
+        String sql = " WHERE posicion = ?";
+        //Si precio esta vacio y nombre no
+        if (nuevoPrecio == 0 && nuevoSabor.length() > 0) {
             sql = "UPDATE helado SET nombre = ? " + sql;
-        } else if (!nuevoSabor.isEmpty() && Double.toString(nuevoPrecio).length() == 0) {
+            //Si nombre esta vacio y precio no
+        } else if (nuevoSabor.isEmpty() && nuevoPrecio > 0) {
             sql = "UPDATE helado SET precio = ? " + sql;
+            //Si los dos campos tienen contenido
         } else {
             sql = "UPDATE helado SET nombre = ?, precio = ? " + sql;
         }
 
         try (PreparedStatement pstm = con.prepareStatement(sql);) {
-            if (nuevoSabor.isEmpty() && Double.toString(nuevoPrecio).length() > 0) {
+            if (nuevoPrecio == 0 && nuevoSabor.length() > 0) {
                 pstm.setString(1, nuevoSabor);
                 pstm.setString(2, posicion);
-            } else if (!nuevoSabor.isEmpty() && Double.toString(nuevoPrecio).length() == 0) {
+            } else if (nuevoSabor.isEmpty() && nuevoPrecio > 0) {
                 pstm.setDouble(1, nuevoPrecio);
                 pstm.setString(2, posicion);
             } else {
@@ -91,6 +94,7 @@ public class ExtraDAOimpl implements ExtraDAO, AutoCloseable {
                 pstm.setDouble(2, nuevoPrecio);
                 pstm.setString(3, posicion);
             }
+
             registrosAfectados = pstm.executeUpdate();
 
         } catch (Exception e) {
