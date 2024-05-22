@@ -123,7 +123,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
         tablaVentas.getAccessibleContext().setAccessibleName("");
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 32, 821, 78);
+        jScrollPane1.setBounds(20, 32, 821, 210);
         getContentPane().add(txtError);
         txtError.setBounds(330, 350, 304, 48);
 
