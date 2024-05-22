@@ -272,14 +272,14 @@ public class Exec extends javax.swing.JFrame {
             }
         });
         getContentPane().add(devolverDinero);
-        devolverDinero.setBounds(383, 235, 90, 23);
+        devolverDinero.setBounds(353, 235, 120, 23);
 
         verMonedero.setEditable(false);
         verMonedero.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         verMonedero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         verMonedero.setFocusable(false);
         getContentPane().add(verMonedero);
-        verMonedero.setBounds(286, 232, 70, 29);
+        verMonedero.setBounds(250, 230, 70, 29);
 
         tablaHelados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
