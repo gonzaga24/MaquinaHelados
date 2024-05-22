@@ -603,15 +603,19 @@ public class Exec extends javax.swing.JFrame {
                 }
                 txtCambio.setText(" Su cambio es: " + Utils.formatoDecimal(mh.getMonedero()) + "€");
                 mh.setMonedero(0);
+                verPosicion.setText("");
                 refreshVerMonedero();
                 rellenarTablaHelados();
             } catch (QuantityExceededException | NotValidPositionException | NotEnoughMoneyException ex) {
                 ventanaError(ex.getMessage());
-            } catch (Exception ex) {
+                verPosicion.setText("");
+            } catch (Exception e) {
                 ventanaError("Ha ocurrido un error al pedir el helado.");
+                verPosicion.setText("");
             }
         } else {
             ventanaError("Introduzca una posición porfavor");
+            verPosicion.setText("");
         }
 
     }//GEN-LAST:event_pedirHeladoActionPerformed

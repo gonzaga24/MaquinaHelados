@@ -171,6 +171,9 @@ public class MaquinaHelados {
         Helado helado = new Helado(sabor, precio, tipo, 0, posicion);
         try (ExtraDAOimpl edi = new ExtraDAOimpl();) {
             registrosAfectados = edi.inputHelado(helado);
+            if (registrosAfectados == 0) {
+                throw new NotValidPositionException("Los datos no son correctos.");
+            }
         } catch (Exception e) {
             throw e;
         }
