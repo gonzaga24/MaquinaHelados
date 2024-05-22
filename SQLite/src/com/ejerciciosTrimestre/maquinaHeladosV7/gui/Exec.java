@@ -59,7 +59,6 @@ public class Exec extends javax.swing.JFrame {
         jButtonMasVendido = new javax.swing.JButton();
         jButtonMenosVendido = new javax.swing.JButton();
         tipoHeladoMasMenosVendido = new javax.swing.JLabel();
-        fondo = new javax.swing.JLabel();
         introducirMonedas = new javax.swing.JButton();
         devolverDinero = new javax.swing.JButton();
         verMonedero = new javax.swing.JTextField();
@@ -187,9 +186,6 @@ public class Exec extends javax.swing.JFrame {
         ventanaError.setSize(500, 200);
 
         masMenosVendido.setMinimumSize(new java.awt.Dimension(646, 208));
-        masMenosVendido.getContentPane().setLayout(null);
-        masMenosVendido.getContentPane().add(mostrarHeladoMasMenos);
-        mostrarHeladoMasMenos.setBounds(6, 41, 510, 29);
 
         jButtonMasVendido.setText("Mas Vendido");
         jButtonMasVendido.addActionListener(new java.awt.event.ActionListener() {
@@ -197,8 +193,6 @@ public class Exec extends javax.swing.JFrame {
                 jButtonMasVendidoActionPerformed(evt);
             }
         });
-        masMenosVendido.getContentPane().add(jButtonMasVendido);
-        jButtonMasVendido.setBounds(163, 129, 100, 23);
 
         jButtonMenosVendido.setText("Menos Vendido");
         jButtonMenosVendido.addActionListener(new java.awt.event.ActionListener() {
@@ -206,14 +200,44 @@ public class Exec extends javax.swing.JFrame {
                 jButtonMenosVendidoActionPerformed(evt);
             }
         });
-        masMenosVendido.getContentPane().add(jButtonMenosVendido);
-        jButtonMenosVendido.setBounds(363, 129, 113, 23);
-        masMenosVendido.getContentPane().add(tipoHeladoMasMenosVendido);
-        tipoHeladoMasMenosVendido.setBounds(550, 41, 100, 100);
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/metal.jpg"))); // NOI18N
-        masMenosVendido.getContentPane().add(fondo);
-        fondo.setBounds(-13, -14, 750, 240);
+        javax.swing.GroupLayout masMenosVendidoLayout = new javax.swing.GroupLayout(masMenosVendido.getContentPane());
+        masMenosVendido.getContentPane().setLayout(masMenosVendidoLayout);
+        masMenosVendidoLayout.setHorizontalGroup(
+            masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                .addGroup(masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addGap(363, 363, 363)
+                        .addComponent(jButtonMenosVendido, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(tipoHeladoMasMenosVendido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(mostrarHeladoMasMenos, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(jButtonMasVendido, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(100, 100, 100))
+        );
+        masMenosVendidoLayout.setVerticalGroup(
+            masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                .addGroup(masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jButtonMenosVendido))
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(tipoHeladoMasMenosVendido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(mostrarHeladoMasMenos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jButtonMasVendido)))
+                .addGap(74, 74, 74))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -237,7 +261,7 @@ public class Exec extends javax.swing.JFrame {
             }
         });
         getContentPane().add(introducirMonedas);
-        introducirMonedas.setBounds(491, 235, 130, 23);
+        introducirMonedas.setBounds(491, 235, 170, 23);
 
         devolverDinero.setBackground(new java.awt.Color(255, 0, 0));
         devolverDinero.setForeground(new java.awt.Color(255, 255, 255));
@@ -437,7 +461,6 @@ public class Exec extends javax.swing.JFrame {
         getContentPane().add(pantallaBotones);
         pantallaBotones.setBounds(260, 360, 340, 113);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\gilso\\MaquinaHelados\\SQLite\\src\\resources\\imgs\\metal.jpg")); // NOI18N
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 700, 530);
@@ -794,7 +817,6 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton devolverDinero;
     private javax.swing.JDialog devuelto;
     private javax.swing.JMenuItem eliminarHeladoPosicionMenu;
-    private javax.swing.JLabel fondo;
     private javax.swing.JDialog heladoDevuelto;
     private javax.swing.JMenuItem heladosOrdenPrecio;
     private javax.swing.JMenuItem heladosOrderPrecio;
