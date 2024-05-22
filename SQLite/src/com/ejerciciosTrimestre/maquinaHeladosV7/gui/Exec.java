@@ -28,6 +28,12 @@ public class Exec extends javax.swing.JFrame {
         initComponents();
         //No permite cerrar la ventana
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        try {
+            setIconImage(new ImageIcon(getClass().getResource("/resources/imgs/maquinaHeladosIcono.png")).getImage());
+        } catch (Exception e) {
+        }
+
+        setBounds(500, 250, 694, 554);
     }
 
     /**
@@ -47,11 +53,13 @@ public class Exec extends javax.swing.JFrame {
         tipoHelado = new javax.swing.JLabel();
         ventanaError = new javax.swing.JDialog();
         mensajeError = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         masMenosVendido = new javax.swing.JDialog();
         mostrarHeladoMasMenos = new javax.swing.JLabel();
         jButtonMasVendido = new javax.swing.JButton();
         jButtonMenosVendido = new javax.swing.JButton();
         tipoHeladoMasMenosVendido = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
         introducirMonedas = new javax.swing.JButton();
         devolverDinero = new javax.swing.JButton();
         verMonedero = new javax.swing.JTextField();
@@ -69,12 +77,16 @@ public class Exec extends javax.swing.JFrame {
         posicionNueve = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         posicionCero = new javax.swing.JButton();
-        posicionUno = new javax.swing.JButton();
         pedirHelado = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        posicionUno = new javax.swing.JButton();
+        pantallaBotones = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         informeVentas = new javax.swing.JMenuItem();
         heladosOrderPrecio = new javax.swing.JMenuItem();
+        heladosOrdenPrecio = new javax.swing.JMenuItem();
         jMenuReponerHelado = new javax.swing.JMenuItem();
         jMenuInsertarHelado = new javax.swing.JMenuItem();
         jMenuHeladoMasVendido = new javax.swing.JMenuItem();
@@ -146,26 +158,38 @@ public class Exec extends javax.swing.JFrame {
 
         mensajeError.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/dialogerror.png"))); // NOI18N
+
         javax.swing.GroupLayout ventanaErrorLayout = new javax.swing.GroupLayout(ventanaError.getContentPane());
         ventanaError.getContentPane().setLayout(ventanaErrorLayout);
         ventanaErrorLayout.setHorizontalGroup(
             ventanaErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ventanaErrorLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(mensajeError)
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addGroup(ventanaErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ventanaErrorLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(mensajeError))
+                    .addGroup(ventanaErrorLayout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         ventanaErrorLayout.setVerticalGroup(
             ventanaErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ventanaErrorLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(mensajeError)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         ventanaError.setSize(500, 200);
 
         masMenosVendido.setMinimumSize(new java.awt.Dimension(646, 208));
+        masMenosVendido.getContentPane().setLayout(null);
+        masMenosVendido.getContentPane().add(mostrarHeladoMasMenos);
+        mostrarHeladoMasMenos.setBounds(6, 41, 510, 29);
 
         jButtonMasVendido.setText("Mas Vendido");
         jButtonMasVendido.addActionListener(new java.awt.event.ActionListener() {
@@ -173,6 +197,8 @@ public class Exec extends javax.swing.JFrame {
                 jButtonMasVendidoActionPerformed(evt);
             }
         });
+        masMenosVendido.getContentPane().add(jButtonMasVendido);
+        jButtonMasVendido.setBounds(163, 129, 100, 23);
 
         jButtonMenosVendido.setText("Menos Vendido");
         jButtonMenosVendido.addActionListener(new java.awt.event.ActionListener() {
@@ -180,41 +206,14 @@ public class Exec extends javax.swing.JFrame {
                 jButtonMenosVendidoActionPerformed(evt);
             }
         });
+        masMenosVendido.getContentPane().add(jButtonMenosVendido);
+        jButtonMenosVendido.setBounds(363, 129, 113, 23);
+        masMenosVendido.getContentPane().add(tipoHeladoMasMenosVendido);
+        tipoHeladoMasMenosVendido.setBounds(550, 41, 100, 100);
 
-        javax.swing.GroupLayout masMenosVendidoLayout = new javax.swing.GroupLayout(masMenosVendido.getContentPane());
-        masMenosVendido.getContentPane().setLayout(masMenosVendidoLayout);
-        masMenosVendidoLayout.setHorizontalGroup(
-            masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(masMenosVendidoLayout.createSequentialGroup()
-                .addGroup(masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jButtonMasVendido)
-                        .addGap(100, 100, 100)
-                        .addComponent(jButtonMenosVendido))
-                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(mostrarHeladoMasMenos, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34)
-                .addComponent(tipoHeladoMasMenosVendido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 75, Short.MAX_VALUE))
-        );
-        masMenosVendidoLayout.setVerticalGroup(
-            masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(masMenosVendidoLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
-                        .addComponent(tipoHeladoMasMenosVendido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(masMenosVendidoLayout.createSequentialGroup()
-                        .addComponent(mostrarHeladoMasMenos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 59, Short.MAX_VALUE)
-                        .addGroup(masMenosVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonMasVendido)
-                            .addComponent(jButtonMenosVendido))
-                        .addGap(56, 56, 56))))
-        );
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/metal.jpg"))); // NOI18N
+        masMenosVendido.getContentPane().add(fondo);
+        fondo.setBounds(-13, -14, 750, 240);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -228,6 +227,7 @@ public class Exec extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         introducirMonedas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         introducirMonedas.setText("Introducir monedas");
@@ -236,6 +236,8 @@ public class Exec extends javax.swing.JFrame {
                 introducirMonedasActionPerformed(evt);
             }
         });
+        getContentPane().add(introducirMonedas);
+        introducirMonedas.setBounds(491, 235, 130, 23);
 
         devolverDinero.setBackground(new java.awt.Color(255, 0, 0));
         devolverDinero.setForeground(new java.awt.Color(255, 255, 255));
@@ -245,11 +247,15 @@ public class Exec extends javax.swing.JFrame {
                 devolverDineroActionPerformed(evt);
             }
         });
+        getContentPane().add(devolverDinero);
+        devolverDinero.setBounds(383, 235, 90, 23);
 
         verMonedero.setEditable(false);
         verMonedero.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         verMonedero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         verMonedero.setFocusable(false);
+        getContentPane().add(verMonedero);
+        verMonedero.setBounds(286, 232, 70, 29);
 
         tablaHelados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -270,8 +276,6 @@ public class Exec extends javax.swing.JFrame {
         tablaHelados.setColumnSelectionAllowed(true);
         tablaHelados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tablaHelados.setShowGrid(false);
-        tablaHelados.setShowHorizontalLines(true);
-        tablaHelados.setShowVerticalLines(true);
         tablaHelados.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(tablaHelados);
         tablaHelados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -283,6 +287,9 @@ public class Exec extends javax.swing.JFrame {
             tablaHelados.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(174, 23, 486, 176);
+
         verPosicion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         verPosicion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         verPosicion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -290,85 +297,113 @@ public class Exec extends javax.swing.JFrame {
                 verPosicionKeyTyped(evt);
             }
         });
+        getContentPane().add(verPosicion);
+        verPosicion.setBounds(174, 397, 79, 35);
 
-        posicionDos.setText("2");
+        posicionDos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n2.png"))); // NOI18N
+        posicionDos.setContentAreaFilled(false);
         posicionDos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionDosActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionDos);
+        posicionDos.setBounds(430, 380, 40, 30);
 
-        posicionTres.setText("3");
+        posicionTres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n3.png"))); // NOI18N
+        posicionTres.setContentAreaFilled(false);
         posicionTres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionTresActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionTres);
+        posicionTres.setBounds(472, 380, 40, 30);
 
         borrarPosicion.setBackground(new java.awt.Color(255, 0, 0));
-        borrarPosicion.setForeground(new java.awt.Color(255, 255, 255));
-        borrarPosicion.setText("Borrar");
+        borrarPosicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/delete.png"))); // NOI18N
+        borrarPosicion.setContentAreaFilled(false);
         borrarPosicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarPosicionActionPerformed(evt);
             }
         });
+        getContentPane().add(borrarPosicion);
+        borrarPosicion.setBounds(300, 400, 40, 30);
 
-        posicionCuatro.setText("4");
+        posicionCuatro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n4.png"))); // NOI18N
+        posicionCuatro.setContentAreaFilled(false);
         posicionCuatro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionCuatroActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionCuatro);
+        posicionCuatro.setBounds(512, 380, 40, 30);
 
-        posicionCinco.setText("5");
+        posicionCinco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n5.png"))); // NOI18N
+        posicionCinco.setContentAreaFilled(false);
         posicionCinco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionCincoActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionCinco);
+        posicionCinco.setBounds(350, 420, 40, 30);
 
-        posicionSeis.setText("6");
+        posicionSeis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n6.png"))); // NOI18N
+        posicionSeis.setContentAreaFilled(false);
         posicionSeis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionSeisActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionSeis);
+        posicionSeis.setBounds(390, 420, 40, 30);
 
-        posicionSiete.setText("7");
+        posicionSiete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n7.png"))); // NOI18N
+        posicionSiete.setContentAreaFilled(false);
         posicionSiete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionSieteActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionSiete);
+        posicionSiete.setBounds(430, 420, 40, 30);
 
-        posicionOcho.setText("8");
+        posicionOcho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n8.png"))); // NOI18N
+        posicionOcho.setContentAreaFilled(false);
         posicionOcho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionOchoActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionOcho);
+        posicionOcho.setBounds(472, 420, 40, 30);
 
-        posicionNueve.setText("9");
+        posicionNueve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n9.png"))); // NOI18N
+        posicionNueve.setContentAreaFilled(false);
         posicionNueve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionNueveActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionNueve);
+        posicionNueve.setBounds(512, 418, 40, 35);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(174, 301, 486, 10);
 
-        posicionCero.setText("0");
+        posicionCero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n0.png"))); // NOI18N
+        posicionCero.setActionCommand("0     ");
+        posicionCero.setContentAreaFilled(false);
+        posicionCero.setMaximumSize(new java.awt.Dimension(50, 23));
         posicionCero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionCeroActionPerformed(evt);
             }
         });
-
-        posicionUno.setText("1");
-        posicionUno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionUnoActionPerformed(evt);
-            }
-        });
+        getContentPane().add(posicionCero);
+        posicionCero.setBounds(350, 380, 40, 30);
 
         pedirHelado.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         pedirHelado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/carritoCompra.png"))); // NOI18N
@@ -380,6 +415,32 @@ public class Exec extends javax.swing.JFrame {
                 pedirHeladoActionPerformed(evt);
             }
         });
+        getContentPane().add(pedirHelado);
+        pedirHelado.setBounds(361, 317, 187, 37);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/pantalla_confondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(160, 9, 510, 200);
+
+        posicionUno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n1.png"))); // NOI18N
+        posicionUno.setContentAreaFilled(false);
+        posicionUno.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        posicionUno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionUnoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionUno);
+        posicionUno.setBounds(390, 380, 40, 30);
+
+        pantallaBotones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/espacio botones.png"))); // NOI18N
+        getContentPane().add(pantallaBotones);
+        pantallaBotones.setBounds(260, 360, 340, 113);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\gilso\\MaquinaHelados\\SQLite\\src\\resources\\imgs\\metal.jpg")); // NOI18N
+        jLabel2.setToolTipText("");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 700, 530);
 
         jMenu1.setText("Menu");
 
@@ -398,6 +459,14 @@ public class Exec extends javax.swing.JFrame {
             }
         });
         jMenu1.add(heladosOrderPrecio);
+
+        heladosOrdenPrecio.setText("Ver helados ordenados por posicion");
+        heladosOrdenPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                heladosOrdenPrecioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(heladosOrdenPrecio);
 
         jMenuReponerHelado.setText("Reponer helado");
         jMenuReponerHelado.addActionListener(new java.awt.event.ActionListener() {
@@ -442,103 +511,6 @@ public class Exec extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(286, 286, 286)
-                        .addComponent(verMonedero, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(devolverDinero)
-                        .addGap(18, 18, 18)
-                        .addComponent(introducirMonedas))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(361, 361, 361)
-                        .addComponent(pedirHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(verPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(borrarPosicion)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(posicionCero)
-                            .addComponent(posicionCinco))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(posicionUno)
-                            .addComponent(posicionSeis))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(posicionDos)
-                            .addComponent(posicionSiete))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(posicionTres)
-                            .addComponent(posicionOcho))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(posicionCuatro)
-                            .addComponent(posicionNueve))))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(verMonedero, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(devolverDinero)
-                            .addComponent(introducirMonedas))))
-                .addGap(40, 40, 40)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(pedirHelado)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(verPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(borrarPosicion))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(posicionCero)
-                        .addGap(18, 18, 18)
-                        .addComponent(posicionCinco))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(posicionUno)
-                        .addGap(18, 18, 18)
-                        .addComponent(posicionSeis))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(posicionDos)
-                        .addGap(18, 18, 18)
-                        .addComponent(posicionSiete))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(posicionTres)
-                        .addGap(18, 18, 18)
-                        .addComponent(posicionOcho))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(posicionCuatro)
-                        .addGap(18, 18, 18)
-                        .addComponent(posicionNueve)))
-                .addContainerGap(78, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -740,6 +712,11 @@ public class Exec extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonMenosVendidoActionPerformed
 
+    private void heladosOrdenPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heladosOrdenPrecioActionPerformed
+        // TODO add your handling code here:
+        rellenarTablaHelados();
+    }//GEN-LAST:event_heladosOrdenPrecioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -813,12 +790,17 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JButton devolverDinero;
     private javax.swing.JDialog devuelto;
     private javax.swing.JMenuItem eliminarHeladoPosicionMenu;
+    private javax.swing.JLabel fondo;
     private javax.swing.JDialog heladoDevuelto;
+    private javax.swing.JMenuItem heladosOrdenPrecio;
     private javax.swing.JMenuItem heladosOrderPrecio;
     private javax.swing.JMenuItem informeVentas;
     private javax.swing.JButton introducirMonedas;
     private javax.swing.JButton jButtonMasVendido;
     private javax.swing.JButton jButtonMenosVendido;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCambiarDatos;
@@ -830,6 +812,7 @@ public class Exec extends javax.swing.JFrame {
     private javax.swing.JDialog masMenosVendido;
     private javax.swing.JLabel mensajeError;
     private javax.swing.JLabel mostrarHeladoMasMenos;
+    private javax.swing.JLabel pantallaBotones;
     private javax.swing.JButton pedirHelado;
     private javax.swing.JButton posicionCero;
     private javax.swing.JButton posicionCinco;

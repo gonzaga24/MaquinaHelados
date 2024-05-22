@@ -19,6 +19,7 @@ public class DialogCambioFinal extends javax.swing.JDialog {
         super(parent, modal);
         this.padre = (Exec) parent;
         initComponents();
+        setBounds(500, 250, 300, 200);
     }
 
     /**
@@ -31,6 +32,8 @@ public class DialogCambioFinal extends javax.swing.JDialog {
     private void initComponents() {
 
         devolverCambio = new javax.swing.JLabel();
+        gif = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -38,26 +41,20 @@ public class DialogCambioFinal extends javax.swing.JDialog {
                 formComponentShown(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         devolverCambio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         devolverCambio.setText("No olvide su dinero: ");
+        getContentPane().add(devolverCambio);
+        devolverCambio.setBounds(30, 27, 313, 41);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(devolverCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(devolverCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
+        gif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/giphy.gif"))); // NOI18N
+        getContentPane().add(gif);
+        gif.setBounds(160, 70, 90, 80);
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/metal.jpg"))); // NOI18N
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 490, 320);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,6 +108,8 @@ public class DialogCambioFinal extends javax.swing.JDialog {
     private Exec padre;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel devolverCambio;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel gif;
     // End of variables declaration//GEN-END:variables
 
 }

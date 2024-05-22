@@ -17,6 +17,7 @@ public class DialogIntroducirHelado extends javax.swing.JDialog {
         super(parent, modal);
         this.padre = (Exec) parent;
         initComponents();
+        setBounds(500, 250, 300, 400);
     }
 
     /**
@@ -39,6 +40,7 @@ public class DialogIntroducirHelado extends javax.swing.JDialog {
         textoAlusuario3 = new javax.swing.JLabel();
         insertarHelado = new javax.swing.JButton();
         tipoIntroducido = new javax.swing.JTextField();
+        fondo = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -47,24 +49,39 @@ public class DialogIntroducirHelado extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
+        getContentPane().setLayout(null);
 
         textoAlusuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoAlusuario.setText("Introduzca la posición del helado");
+        getContentPane().add(textoAlusuario);
+        textoAlusuario.setBounds(24, 18, 229, 20);
 
         posicionIntroducida.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 posicionIntroducidaKeyTyped(evt);
             }
         });
+        getContentPane().add(posicionIntroducida);
+        posicionIntroducida.setBounds(24, 50, 182, 22);
 
         textoAlusuario1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoAlusuario1.setText("Introduzca el sabor del helado");
+        getContentPane().add(textoAlusuario1);
+        textoAlusuario1.setBounds(24, 90, 229, 20);
+        getContentPane().add(saborIntroducido);
+        saborIntroducido.setBounds(24, 122, 182, 22);
 
         textoAlusuario2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoAlusuario2.setText("Introduzca el precio del helado");
+        getContentPane().add(textoAlusuario2);
+        textoAlusuario2.setBounds(24, 162, 229, 20);
+        getContentPane().add(precioIntroducido);
+        precioIntroducido.setBounds(24, 194, 182, 22);
 
         textoAlusuario3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoAlusuario3.setText("Introduzca el tipo del helado");
+        getContentPane().add(textoAlusuario3);
+        textoAlusuario3.setBounds(24, 228, 229, 20);
 
         insertarHelado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         insertarHelado.setText("Insertar");
@@ -73,55 +90,14 @@ public class DialogIntroducirHelado extends javax.swing.JDialog {
                 insertarHeladoActionPerformed(evt);
             }
         });
+        getContentPane().add(insertarHelado);
+        insertarHelado.setBounds(60, 310, 87, 32);
+        getContentPane().add(tipoIntroducido);
+        tipoIntroducido.setBounds(24, 260, 182, 22);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tipoIntroducido, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(insertarHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoAlusuario3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(precioIntroducido, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoAlusuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(saborIntroducido, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoAlusuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(posicionIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoAlusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(131, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(textoAlusuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(posicionIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(textoAlusuario1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(saborIntroducido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(textoAlusuario2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(precioIntroducido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textoAlusuario3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tipoIntroducido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(insertarHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-        );
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/metal.jpg"))); // NOI18N
+        getContentPane().add(fondo);
+        fondo.setBounds(-13, -4, 410, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -189,6 +165,7 @@ public class DialogIntroducirHelado extends javax.swing.JDialog {
     }
     private Exec padre;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton insertarHelado;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;

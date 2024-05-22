@@ -19,6 +19,7 @@ public class DialogMonedas extends javax.swing.JDialog {
         super(parent, modal);
         this.padre = (Exec) parent;
         initComponents();
+        setBounds(750, 350, 340, 240);
     }
 
     /**
@@ -39,6 +40,7 @@ public class DialogMonedas extends javax.swing.JDialog {
         cincuentaCentimos = new javax.swing.JButton();
         unEuro = new javax.swing.JButton();
         dosEuros = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -49,119 +51,101 @@ public class DialogMonedas extends javax.swing.JDialog {
                 formComponentShown(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         verCantidadIntroducida.setEditable(false);
         verCantidadIntroducida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         verCantidadIntroducida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         verCantidadIntroducida.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verCantidadIntroducida.setFocusable(false);
+        getContentPane().add(verCantidadIntroducida);
+        verCantidadIntroducida.setBounds(40, 10, 250, 32);
 
         unCentimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/unCentimo.png"))); // NOI18N
         unCentimo.setToolTipText("");
+        unCentimo.setContentAreaFilled(false);
         unCentimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unCentimoActionPerformed(evt);
             }
         });
+        getContentPane().add(unCentimo);
+        unCentimo.setBounds(33, 56, 56, 57);
 
         dosCentimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/dosCentimos.png"))); // NOI18N
+        dosCentimos.setContentAreaFilled(false);
+        dosCentimos.setDefaultCapable(false);
         dosCentimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dosCentimosActionPerformed(evt);
             }
         });
+        getContentPane().add(dosCentimos);
+        dosCentimos.setBounds(107, 56, 56, 57);
 
         cincoCentimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/cincoCentimos.png"))); // NOI18N
+        cincoCentimos.setContentAreaFilled(false);
         cincoCentimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cincoCentimosActionPerformed(evt);
             }
         });
+        getContentPane().add(cincoCentimos);
+        cincoCentimos.setBounds(181, 56, 56, 57);
 
         diezCentimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/diezCentimos.png"))); // NOI18N
+        diezCentimos.setContentAreaFilled(false);
         diezCentimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 diezCentimosActionPerformed(evt);
             }
         });
+        getContentPane().add(diezCentimos);
+        diezCentimos.setBounds(258, 56, 56, 57);
 
         veinteCentimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/veinteCentimos.png"))); // NOI18N
+        veinteCentimos.setContentAreaFilled(false);
         veinteCentimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 veinteCentimosActionPerformed(evt);
             }
         });
+        getContentPane().add(veinteCentimos);
+        veinteCentimos.setBounds(33, 131, 56, 57);
 
         cincuentaCentimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/cincuentaCentimos.png"))); // NOI18N
+        cincuentaCentimos.setContentAreaFilled(false);
         cincuentaCentimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cincuentaCentimosActionPerformed(evt);
             }
         });
+        getContentPane().add(cincuentaCentimos);
+        cincuentaCentimos.setBounds(107, 131, 56, 57);
 
         unEuro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/unEuro.png"))); // NOI18N
+        unEuro.setContentAreaFilled(false);
         unEuro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unEuroActionPerformed(evt);
             }
         });
+        getContentPane().add(unEuro);
+        unEuro.setBounds(181, 131, 59, 57);
 
         dosEuros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/dosEuros.png"))); // NOI18N
+        dosEuros.setContentAreaFilled(false);
         dosEuros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dosEurosActionPerformed(evt);
             }
         });
+        getContentPane().add(dosEuros);
+        dosEuros.setBounds(258, 131, 56, 57);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(veinteCentimos)
-                                .addGap(18, 18, 18)
-                                .addComponent(cincuentaCentimos)
-                                .addGap(18, 18, 18)
-                                .addComponent(unEuro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(unCentimo)
-                                .addGap(18, 18, 18)
-                                .addComponent(dosCentimos)
-                                .addGap(18, 18, 18)
-                                .addComponent(cincoCentimos)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(diezCentimos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dosEuros)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(verCantidadIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(verCantidadIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(unCentimo)
-                    .addComponent(dosCentimos)
-                    .addComponent(cincoCentimos)
-                    .addComponent(diezCentimos))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(veinteCentimos)
-                    .addComponent(cincuentaCentimos)
-                    .addComponent(unEuro)
-                    .addComponent(dosEuros))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/metal.jpg"))); // NOI18N
+        getContentPane().add(fondo);
+        fondo.setBounds(-13, -4, 430, 220);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -267,6 +251,7 @@ public class DialogMonedas extends javax.swing.JDialog {
     private javax.swing.JButton diezCentimos;
     private javax.swing.JButton dosCentimos;
     private javax.swing.JButton dosEuros;
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton unCentimo;
     private javax.swing.JButton unEuro;
     private javax.swing.JButton veinteCentimos;

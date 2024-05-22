@@ -18,6 +18,7 @@ public class DialogoEliminarHeladoPosicion extends javax.swing.JDialog {
         super(parent, modal);
         this.padre = (Exec) parent;
         initComponents();
+        setBounds(500, 250, 394, 314);
     }
 
     /**
@@ -47,6 +48,8 @@ public class DialogoEliminarHeladoPosicion extends javax.swing.JDialog {
         posicionDos = new javax.swing.JButton();
         posicionTres = new javax.swing.JButton();
         borrarPosicion = new javax.swing.JButton();
+        pantallaBotones = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         confirmaciónHelado.setAlwaysOnTop(true);
         confirmaciónHelado.setModal(true);
@@ -100,15 +103,20 @@ public class DialogoEliminarHeladoPosicion extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
+        getContentPane().setLayout(null);
 
         textoAlUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textoAlUsuario.setText("Introduzca la posición del helado");
+        getContentPane().add(textoAlUsuario);
+        textoAlUsuario.setBounds(53, 28, 301, 25);
 
         posicionIntroducida.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 posicionIntroducidaKeyTyped(evt);
             }
         });
+        getContentPane().add(posicionIntroducida);
+        posicionIntroducida.setBounds(119, 71, 139, 33);
 
         eliminarHelado.setText("Eliminar");
         eliminarHelado.addActionListener(new java.awt.event.ActionListener() {
@@ -116,155 +124,126 @@ public class DialogoEliminarHeladoPosicion extends javax.swing.JDialog {
                 eliminarHeladoActionPerformed(evt);
             }
         });
+        getContentPane().add(eliminarHelado);
+        eliminarHelado.setBounds(130, 240, 137, 33);
 
-        posicionCuatro.setText("4");
+        posicionCuatro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n4.png"))); // NOI18N
+        posicionCuatro.setContentAreaFilled(false);
         posicionCuatro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionCuatroActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionCuatro);
+        posicionCuatro.setBounds(275, 138, 40, 30);
 
-        posicionCinco.setText("5");
+        posicionCinco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n5.png"))); // NOI18N
+        posicionCinco.setContentAreaFilled(false);
         posicionCinco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionCincoActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionCinco);
+        posicionCinco.setBounds(110, 185, 40, 30);
 
-        posicionSeis.setText("6");
+        posicionSeis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n6.png"))); // NOI18N
+        posicionSeis.setContentAreaFilled(false);
         posicionSeis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionSeisActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionSeis);
+        posicionSeis.setBounds(150, 185, 40, 30);
 
-        posicionSiete.setText("7");
+        posicionSiete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n7.png"))); // NOI18N
+        posicionSiete.setContentAreaFilled(false);
         posicionSiete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionSieteActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionSiete);
+        posicionSiete.setBounds(190, 185, 40, 30);
 
-        posicionOcho.setText("8");
+        posicionOcho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n8.png"))); // NOI18N
+        posicionOcho.setContentAreaFilled(false);
         posicionOcho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionOchoActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionOcho);
+        posicionOcho.setBounds(230, 185, 40, 30);
 
-        posicionNueve.setText("9");
+        posicionNueve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n9.png"))); // NOI18N
+        posicionNueve.setContentAreaFilled(false);
         posicionNueve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionNueveActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionNueve);
+        posicionNueve.setBounds(270, 185, 40, 30);
 
-        posicionCero.setText("0");
+        posicionCero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n0.png"))); // NOI18N
+        posicionCero.setContentAreaFilled(false);
         posicionCero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionCeroActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionCero);
+        posicionCero.setBounds(110, 138, 40, 30);
 
-        posicionUno.setText("1");
+        posicionUno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n1.png"))); // NOI18N
+        posicionUno.setContentAreaFilled(false);
         posicionUno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionUnoActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionUno);
+        posicionUno.setBounds(154, 138, 40, 30);
 
-        posicionDos.setText("2");
+        posicionDos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n2.png"))); // NOI18N
+        posicionDos.setContentAreaFilled(false);
         posicionDos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionDosActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionDos);
+        posicionDos.setBounds(195, 138, 40, 30);
 
-        posicionTres.setText("3");
+        posicionTres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n3.png"))); // NOI18N
+        posicionTres.setContentAreaFilled(false);
         posicionTres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posicionTresActionPerformed(evt);
             }
         });
+        getContentPane().add(posicionTres);
+        posicionTres.setBounds(232, 138, 42, 30);
 
-        borrarPosicion.setText("Borrar");
+        borrarPosicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/delete.png"))); // NOI18N
+        borrarPosicion.setContentAreaFilled(false);
         borrarPosicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarPosicionActionPerformed(evt);
             }
         });
+        getContentPane().add(borrarPosicion);
+        borrarPosicion.setBounds(60, 160, 40, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 53, Short.MAX_VALUE)
-                .addComponent(textoAlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(borrarPosicion)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(posicionCinco)
-                                .addGap(18, 18, 18)
-                                .addComponent(posicionSeis)
-                                .addGap(18, 18, 18)
-                                .addComponent(posicionSiete)
-                                .addGap(18, 18, 18)
-                                .addComponent(posicionOcho)
-                                .addGap(18, 18, 18)
-                                .addComponent(posicionNueve))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(posicionCero)
-                                .addGap(18, 18, 18)
-                                .addComponent(posicionUno)
-                                .addGap(18, 18, 18)
-                                .addComponent(posicionDos)
-                                .addGap(18, 18, 18)
-                                .addComponent(posicionTres)
-                                .addGap(18, 18, 18)
-                                .addComponent(posicionCuatro))
-                            .addComponent(eliminarHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(posicionIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(textoAlUsuario)
-                .addGap(18, 18, 18)
-                .addComponent(posicionIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(posicionCero)
-                            .addComponent(posicionUno)
-                            .addComponent(posicionDos)
-                            .addComponent(posicionTres)
-                            .addComponent(posicionCuatro))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(posicionCinco)
-                            .addComponent(posicionSeis)
-                            .addComponent(posicionSiete)
-                            .addComponent(posicionOcho)
-                            .addComponent(posicionNueve)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(borrarPosicion)))
-                .addGap(18, 18, 18)
-                .addComponent(eliminarHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        pantallaBotones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/espacio botones.png"))); // NOI18N
+        getContentPane().add(pantallaBotones);
+        pantallaBotones.setBounds(20, 50, 360, 250);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/metal.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-10, -10, 420, 290);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -421,6 +400,8 @@ public class DialogoEliminarHeladoPosicion extends javax.swing.JDialog {
     private javax.swing.JButton botonSi;
     private javax.swing.JDialog confirmaciónHelado;
     private javax.swing.JButton eliminarHelado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel pantallaBotones;
     private javax.swing.JButton posicionCero;
     private javax.swing.JButton posicionCinco;
     private javax.swing.JButton posicionCuatro;

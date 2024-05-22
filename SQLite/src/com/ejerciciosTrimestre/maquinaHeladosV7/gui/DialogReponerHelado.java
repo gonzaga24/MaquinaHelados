@@ -18,6 +18,7 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         super(parent, modal);
         this.padre = (Exec) parent;
         initComponents();
+        setBounds(500, 250, 410, 314);
     }
 
     /**
@@ -36,17 +37,19 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         textoAlUsuario = new javax.swing.JLabel();
         posicionIntroducida = new javax.swing.JTextField();
         reponerHelado = new javax.swing.JButton();
-        posicionCuatro = new javax.swing.JButton();
-        posicionCinco = new javax.swing.JButton();
-        posicionSeis = new javax.swing.JButton();
-        posicionSiete = new javax.swing.JButton();
-        posicionOcho = new javax.swing.JButton();
-        posicionNueve = new javax.swing.JButton();
+        borrarPosicion = new javax.swing.JButton();
         posicionCero = new javax.swing.JButton();
         posicionUno = new javax.swing.JButton();
         posicionDos = new javax.swing.JButton();
         posicionTres = new javax.swing.JButton();
-        borrarPosicion = new javax.swing.JButton();
+        posicionCuatro = new javax.swing.JButton();
+        posicionNueve = new javax.swing.JButton();
+        posicionOcho = new javax.swing.JButton();
+        posicionSiete = new javax.swing.JButton();
+        posicionSeis = new javax.swing.JButton();
+        posicionCinco = new javax.swing.JButton();
+        pantallaBotones = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         confirmaciónHelado.setAlwaysOnTop(true);
         confirmaciónHelado.setModal(true);
@@ -99,15 +102,20 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         confirmaciónHelado.setSize(400, 200);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         textoAlUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textoAlUsuario.setText("Introduzca la posición del helado");
+        getContentPane().add(textoAlUsuario);
+        textoAlUsuario.setBounds(38, 28, 301, 25);
 
         posicionIntroducida.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 posicionIntroducidaKeyTyped(evt);
             }
         });
+        getContentPane().add(posicionIntroducida);
+        posicionIntroducida.setBounds(47, 71, 268, 33);
 
         reponerHelado.setText("Reponer");
         reponerHelado.addActionListener(new java.awt.event.ActionListener() {
@@ -115,155 +123,130 @@ public class DialogReponerHelado extends javax.swing.JDialog {
                 reponerHeladoActionPerformed(evt);
             }
         });
+        getContentPane().add(reponerHelado);
+        reponerHelado.setBounds(275, 234, 119, 33);
 
-        posicionCuatro.setText("4");
-        posicionCuatro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionCuatroActionPerformed(evt);
-            }
-        });
-
-        posicionCinco.setText("5");
-        posicionCinco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionCincoActionPerformed(evt);
-            }
-        });
-
-        posicionSeis.setText("6");
-        posicionSeis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionSeisActionPerformed(evt);
-            }
-        });
-
-        posicionSiete.setText("7");
-        posicionSiete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionSieteActionPerformed(evt);
-            }
-        });
-
-        posicionOcho.setText("8");
-        posicionOcho.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionOchoActionPerformed(evt);
-            }
-        });
-
-        posicionNueve.setText("9");
-        posicionNueve.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionNueveActionPerformed(evt);
-            }
-        });
-
-        posicionCero.setText("0");
-        posicionCero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionCeroActionPerformed(evt);
-            }
-        });
-
-        posicionUno.setText("1");
-        posicionUno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionUnoActionPerformed(evt);
-            }
-        });
-
-        posicionDos.setText("2");
-        posicionDos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionDosActionPerformed(evt);
-            }
-        });
-
-        posicionTres.setText("3");
-        posicionTres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionTresActionPerformed(evt);
-            }
-        });
-
-        borrarPosicion.setText("Borrar");
+        borrarPosicion.setBackground(new java.awt.Color(255, 0, 0));
+        borrarPosicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/delete.png"))); // NOI18N
+        borrarPosicion.setContentAreaFilled(false);
         borrarPosicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarPosicionActionPerformed(evt);
             }
         });
+        getContentPane().add(borrarPosicion);
+        borrarPosicion.setBounds(60, 150, 40, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(reponerHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoAlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(posicionIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(borrarPosicion)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(posicionCinco)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionSeis)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionSiete)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionOcho)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionNueve))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(posicionCero)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionUno)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionDos)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionTres)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(posicionCuatro))))))
-                        .addGap(0, 55, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(textoAlUsuario)
-                .addGap(18, 18, 18)
-                .addComponent(posicionIntroducida, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(posicionCero)
-                            .addComponent(posicionUno)
-                            .addComponent(posicionDos)
-                            .addComponent(posicionTres)
-                            .addComponent(posicionCuatro))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(posicionCinco)
-                            .addComponent(posicionSeis)
-                            .addComponent(posicionSiete)
-                            .addComponent(posicionOcho)
-                            .addComponent(posicionNueve)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(borrarPosicion)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(reponerHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        posicionCero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n0.png"))); // NOI18N
+        posicionCero.setActionCommand("0     ");
+        posicionCero.setContentAreaFilled(false);
+        posicionCero.setMaximumSize(new java.awt.Dimension(50, 23));
+        posicionCero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionCeroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionCero);
+        posicionCero.setBounds(110, 130, 40, 30);
+
+        posicionUno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n1.png"))); // NOI18N
+        posicionUno.setContentAreaFilled(false);
+        posicionUno.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        posicionUno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionUnoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionUno);
+        posicionUno.setBounds(150, 130, 40, 30);
+
+        posicionDos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n2.png"))); // NOI18N
+        posicionDos.setContentAreaFilled(false);
+        posicionDos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionDosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionDos);
+        posicionDos.setBounds(190, 130, 40, 30);
+
+        posicionTres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n3.png"))); // NOI18N
+        posicionTres.setContentAreaFilled(false);
+        posicionTres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionTresActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionTres);
+        posicionTres.setBounds(230, 130, 40, 30);
+
+        posicionCuatro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n4.png"))); // NOI18N
+        posicionCuatro.setContentAreaFilled(false);
+        posicionCuatro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionCuatroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionCuatro);
+        posicionCuatro.setBounds(270, 130, 40, 30);
+
+        posicionNueve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n9.png"))); // NOI18N
+        posicionNueve.setContentAreaFilled(false);
+        posicionNueve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionNueveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionNueve);
+        posicionNueve.setBounds(270, 168, 40, 35);
+
+        posicionOcho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n8.png"))); // NOI18N
+        posicionOcho.setContentAreaFilled(false);
+        posicionOcho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionOchoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionOcho);
+        posicionOcho.setBounds(230, 170, 40, 30);
+
+        posicionSiete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n7.png"))); // NOI18N
+        posicionSiete.setContentAreaFilled(false);
+        posicionSiete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionSieteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionSiete);
+        posicionSiete.setBounds(190, 170, 40, 30);
+
+        posicionSeis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n6.png"))); // NOI18N
+        posicionSeis.setContentAreaFilled(false);
+        posicionSeis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionSeisActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionSeis);
+        posicionSeis.setBounds(150, 170, 40, 30);
+
+        posicionCinco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/n5.png"))); // NOI18N
+        posicionCinco.setContentAreaFilled(false);
+        posicionCinco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posicionCincoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(posicionCinco);
+        posicionCinco.setBounds(110, 170, 40, 30);
+
+        pantallaBotones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/espacio botones.png"))); // NOI18N
+        getContentPane().add(pantallaBotones);
+        pantallaBotones.setBounds(20, 110, 340, 113);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/metal.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-3, -10, 420, 290);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -277,61 +260,6 @@ public class DialogReponerHelado extends javax.swing.JDialog {
             confirmaciónHelado.setVisible(true);
         }
     }//GEN-LAST:event_reponerHeladoActionPerformed
-
-    private void posicionCuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCuatroActionPerformed
-        // TODO add your handling code here:
-        introducirPosicion("4");
-    }//GEN-LAST:event_posicionCuatroActionPerformed
-
-    private void posicionCincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCincoActionPerformed
-        // TODO add your handling code here:
-        introducirPosicion("5");
-    }//GEN-LAST:event_posicionCincoActionPerformed
-
-    private void posicionSeisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionSeisActionPerformed
-        // TODO add your handling code here:
-        introducirPosicion("6");
-    }//GEN-LAST:event_posicionSeisActionPerformed
-
-    private void posicionSieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionSieteActionPerformed
-        // TODO add your handling code here:
-        introducirPosicion("7");
-    }//GEN-LAST:event_posicionSieteActionPerformed
-
-    private void posicionOchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionOchoActionPerformed
-        // TODO add your handling code here:
-        introducirPosicion("8");
-    }//GEN-LAST:event_posicionOchoActionPerformed
-
-    private void posicionNueveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionNueveActionPerformed
-        // TODO add your handling code here:
-        introducirPosicion("9");
-    }//GEN-LAST:event_posicionNueveActionPerformed
-
-    private void posicionCeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCeroActionPerformed
-        // TODO add your handling code here:
-        introducirPosicion("0");
-    }//GEN-LAST:event_posicionCeroActionPerformed
-
-    private void posicionUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionUnoActionPerformed
-        // TODO add your handling code here:
-        introducirPosicion("1");
-    }//GEN-LAST:event_posicionUnoActionPerformed
-
-    private void posicionDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionDosActionPerformed
-        // TODO add your handling code here:
-        introducirPosicion("2");
-    }//GEN-LAST:event_posicionDosActionPerformed
-
-    private void posicionTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionTresActionPerformed
-        // TODO add your handling code here:
-        introducirPosicion("3");
-    }//GEN-LAST:event_posicionTresActionPerformed
-
-    private void borrarPosicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarPosicionActionPerformed
-        // TODO add your handling code here:
-        posicionIntroducida.setText("");
-    }//GEN-LAST:event_borrarPosicionActionPerformed
 
     private void posicionIntroducidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_posicionIntroducidaKeyTyped
         // TODO add your handling code here:
@@ -360,6 +288,50 @@ public class DialogReponerHelado extends javax.swing.JDialog {
         //Volver atras
         confirmaciónHelado.dispose();
     }//GEN-LAST:event_botonNoActionPerformed
+
+    private void borrarPosicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarPosicionActionPerformed
+        posicionIntroducida.setText("");
+    }//GEN-LAST:event_borrarPosicionActionPerformed
+
+    private void posicionCeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCeroActionPerformed
+        introducirPosicion("0");
+    }//GEN-LAST:event_posicionCeroActionPerformed
+
+    private void posicionUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionUnoActionPerformed
+        introducirPosicion("1");
+    }//GEN-LAST:event_posicionUnoActionPerformed
+
+    private void posicionDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionDosActionPerformed
+        introducirPosicion("2");
+    }//GEN-LAST:event_posicionDosActionPerformed
+
+    private void posicionTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionTresActionPerformed
+        introducirPosicion("3");
+    }//GEN-LAST:event_posicionTresActionPerformed
+
+    private void posicionCuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCuatroActionPerformed
+        introducirPosicion("4");
+    }//GEN-LAST:event_posicionCuatroActionPerformed
+
+    private void posicionNueveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionNueveActionPerformed
+        introducirPosicion("9");
+    }//GEN-LAST:event_posicionNueveActionPerformed
+
+    private void posicionOchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionOchoActionPerformed
+        introducirPosicion("8");
+    }//GEN-LAST:event_posicionOchoActionPerformed
+
+    private void posicionSieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionSieteActionPerformed
+        introducirPosicion("7");
+    }//GEN-LAST:event_posicionSieteActionPerformed
+
+    private void posicionSeisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionSeisActionPerformed
+        introducirPosicion("6");
+    }//GEN-LAST:event_posicionSeisActionPerformed
+
+    private void posicionCincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionCincoActionPerformed
+        introducirPosicion("5");
+    }//GEN-LAST:event_posicionCincoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,6 +387,8 @@ public class DialogReponerHelado extends javax.swing.JDialog {
     private javax.swing.JButton botonNo;
     private javax.swing.JButton botonSi;
     private javax.swing.JDialog confirmaciónHelado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel pantallaBotones;
     private javax.swing.JButton posicionCero;
     private javax.swing.JButton posicionCinco;
     private javax.swing.JButton posicionCuatro;

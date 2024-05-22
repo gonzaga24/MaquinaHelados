@@ -22,6 +22,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
         super(parent, modal);
         this.padre = (Exec) parent;
         initComponents();
+        setBounds(500, 250, 880, 500);
     }
 
     /**
@@ -39,6 +40,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVentas = new javax.swing.JTable();
         txtError = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuVentas = new javax.swing.JMenu();
         verIngresosTotales = new javax.swing.JMenuItem();
@@ -77,6 +79,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
                 formComponentShown(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,6 +122,15 @@ public class DialogInformeVentas extends javax.swing.JDialog {
         }
         tablaVentas.getAccessibleContext().setAccessibleName("");
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(20, 32, 821, 78);
+        getContentPane().add(txtError);
+        txtError.setBounds(330, 350, 304, 48);
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/metal.jpg"))); // NOI18N
+        getContentPane().add(fondo);
+        fondo.setBounds(-10, -30, 880, 500);
+
         menuVentas.setText("Menú");
 
         verIngresosTotales.setText("Ver ingresos totales");
@@ -132,29 +144,6 @@ public class DialogInformeVentas extends javax.swing.JDialog {
         jMenuBar1.add(menuVentas);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1)
-                .addGap(23, 23, 23))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(276, 276, 276)
-                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(284, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
-                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -232,6 +221,7 @@ public class DialogInformeVentas extends javax.swing.JDialog {
     private Exec padre;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fondo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
