@@ -17,7 +17,6 @@ public class DialogCambiarDatos extends javax.swing.JDialog {
         super(parent, modal);
         this.padre = (Exec) parent;
         initComponents();
-        setBounds(500, 250, 300, 350);
     }
 
     /**
@@ -36,10 +35,8 @@ public class DialogCambiarDatos extends javax.swing.JDialog {
         jTexttSaborHelado = new java.awt.TextField();
         labelPrecioHealdo = new java.awt.Label();
         jTexttPrecioHelado = new java.awt.TextField();
-        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         jButtonInsertarModificaciones.setText("Modificar");
         jButtonInsertarModificaciones.addActionListener(new java.awt.event.ActionListener() {
@@ -47,36 +44,63 @@ public class DialogCambiarDatos extends javax.swing.JDialog {
                 jButtonInsertarModificacionesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonInsertarModificaciones);
-        jButtonInsertarModificaciones.setBounds(87, 269, 81, 23);
 
         labelPsocionHelado.setText("Introduzca la posicion del helado");
-        getContentPane().add(labelPsocionHelado);
-        labelPsocionHelado.setBounds(31, 34, 184, 20);
 
         jTextPosicionHelado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextPosicionHeladoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextPosicionHelado);
-        jTextPosicionHelado.setBounds(31, 64, 82, 20);
 
         labelSaborHealdo.setText("Introduzca el nuevo sabor del helado");
-        getContentPane().add(labelSaborHealdo);
-        labelSaborHealdo.setBounds(31, 103, 205, 20);
-        getContentPane().add(jTexttSaborHelado);
-        jTexttSaborHelado.setBounds(31, 133, 206, 20);
 
         labelPrecioHealdo.setText("Introduzca el nuevo precio del helado");
-        getContentPane().add(labelPrecioHealdo);
-        labelPrecioHealdo.setBounds(31, 172, 207, 20);
-        getContentPane().add(jTexttPrecioHelado);
-        jTexttPrecioHelado.setBounds(31, 202, 206, 20);
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imgs/metal.jpg"))); // NOI18N
-        getContentPane().add(fondo);
-        fondo.setBounds(-13, -14, 380, 340);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(labelPsocionHelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jTextPosicionHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(labelSaborHealdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jTexttSaborHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(labelPrecioHealdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jTexttPrecioHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(jButtonInsertarModificaciones))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(labelPsocionHelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jTextPosicionHelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(labelSaborHealdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jTexttSaborHelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(labelPrecioHealdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jTexttPrecioHelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jButtonInsertarModificaciones))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -146,7 +170,6 @@ public class DialogCambiarDatos extends javax.swing.JDialog {
     }
     private Exec padre;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel fondo;
     private javax.swing.JButton jButtonInsertarModificaciones;
     private java.awt.TextField jTextPosicionHelado;
     private java.awt.TextField jTexttPrecioHelado;
